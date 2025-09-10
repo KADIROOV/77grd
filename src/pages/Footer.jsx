@@ -4,9 +4,9 @@ import { FaTelegram } from "react-icons/fa6";
 export default function Footer() {
   return (
     <div>
-      <h4>Footer</h4>
+      {/* <h4>Footer</h4>
       <FaInstagram />
-      <FaTelegram />
+      <FaTelegram /> */}
     </div>
   );
 }

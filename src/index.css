@@ -69,7 +69,7 @@ nav .contact-a {
 }
 
 .contact-a:hover {
-  border: solid 1px gray;
+  border: solid 1px #808080;
 }
 
 .contact-a:hover::after {
@@ -83,4 +83,20 @@ select {
   color: white;
   border: none;
   outline: none;
+}
+
+.hero-1 {
+  font-family: "Poppins", sans-serif;
+}
+
+.hero-1 p {
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-style: Medium;
+  letter-spacing: -3px;
+}
+
+/* index.css */
+.text-shadow-down {
+  text-shadow: 0 100px 90px rgba(255, 251, 251, 0.35);
 }
