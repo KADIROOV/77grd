@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { IoIosArrowDown } from "react-icons/io";
+import { IoIosArrowDown, IoMdClose } from "react-icons/io";
 import { RxHamburgerMenu } from "react-icons/rx";
 
 export default function Header() {
@@ -39,30 +39,39 @@ export default function Header() {
         </select>
         <IoIosArrowDown className="absolute right-[30px] top-2.5 w-[17px] h-[17px]" />
       </div>
-      <button className="md:hidden" onClick={() => setIsOpen(!isOpen)}>
-        <RxHamburgerMenu className="w-7 h-7" />
+      <button
+        className="md:hidden  transition-all duration-100"
+        onClick={() => setIsOpen(!isOpen)}
+      >
+        {isOpen ? (
+          <IoMdClose className="w-7 h-7" />
+        ) : (
+          <RxHamburgerMenu className="w-7 h-7" />
+        )}
       </button>
-      {isOpen && (
-        <div className="absolute top-26 right-0 w-full bg-white text-black text-2xl shadow-md flex flex-col justify-center items-center gap-4 p-4 md:hidden font-['Open_Sans'] rounded-xl">
-          <a href="#services">Xizmatlar</a>
-          <a href="#whyWe">Nega biz ?</a>
-          <a href="#faq">FAQ</a>
-          <a href="#contact">Bog'lanish</a>
 
-          <div className="flex bg-black w-[127px] h-[40px] p-[1.5px] relative border-[1px] border-white justify-center items-center rounded-2xl">
-            <select
-              name="lang"
-              id="languages"
-              className="appearance-none w-full text-center bg-black rounded-2xl"
-            >
-              <option value="uz">UZ</option>
-              <option value="ru">RU</option>
-              <option value="en">EN</option>
-            </select>
-            <IoIosArrowDown className="absolute right-[28px] text-white top-2.5 w-[17px] h-[17px]" />
-          </div>
+      <div
+        className={`fixed top-26 right-0 text-black flex flex-col items-center justify-center gap-4 py-2 h-72 w-full rounded-xl text-xl bg-white shadow-lg transform transition-transform duration-300 ease md:hidden
+  ${isOpen ? "translate-x-0" : "translate-x-full"}`}
+      >
+        <a href="#services">Xizmatlar</a>
+        <a href="#whyWe">Nega biz ?</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contact">Bog'lanish</a>
+
+        <div className="flex bg-black w-[127px] h-[40px] p-[1.5px] relative border-[1px] border-white justify-center items-center rounded-2xl">
+          <select
+            name="lang"
+            id="languages"
+            className="appearance-none w-full text-center bg-black rounded-2xl"
+          >
+            <option value="uz">UZ</option>
+            <option value="ru">RU</option>
+            <option value="en">EN</option>
+          </select>
+          <IoIosArrowDown className="absolute right-[28px] text-white top-2.5 w-[17px] h-[17px]" />
         </div>
-      )}
+      </div>
     </div>
   );
 }
