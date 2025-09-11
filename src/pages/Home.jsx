@@ -190,11 +190,11 @@ export default function Home() {
       </div>
 
       <div className="mx-4">
-        <div className="max-w-[1380px] mx-auto flex flex-col">
-          <h1 className="font-['Poppins'] font-normal text-[200px] leading-[150px] tracking-[-7px] mb-[158px]">
+        <div className="max-w-[1380px] mx-auto lg:px-0 px-20 flex flex-col">
+          <h1 className="font-['Poppins'] font-normal lg:text-[200px] text-[50px] leading-[150px] lg:tracking-[-7px] text-start lg:mb-[158px] mb-[40px]">
             Nega Biz?
           </h1>
-          <h1 className="font-['Poppins'] font-normal text-[200px] leading-[150px] tracking-[-8px] text-end mb-[131px]">
+          <h1 className="font-['Poppins'] font-normal lg:text-[200px] text-[50px]  leading-[150px] lg:tracking-[-8px] text-end lg:mb-[131px] mb-[80px]">
             Chunki:
           </h1>
         </div>
