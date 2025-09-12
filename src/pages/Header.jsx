@@ -17,7 +17,9 @@ export default function Header() {
         />
       </a>
       <nav className="md:flex hidden justify-center items-center lg:gap-[76px] gap-[37px] lg:text-[25px] text-[18px]">
-        <a href="#services">Xizmatlar</a>
+        <a href="#services" smooth="true">
+          Xizmatlar
+        </a>
         <a href="#whyWe">Nega biz ?</a>
         <a href="#faq">FAQ</a>
         <a
@@ -40,20 +42,30 @@ export default function Header() {
         <IoIosArrowDown className="absolute right-[30px] top-2.5 w-[17px] h-[17px]" />
       </div>
       <button
-        className="md:hidden  transition-all duration-100"
+        className="md:hidden  transition-all duration-800"
         onClick={() => setIsOpen(!isOpen)}
       >
         {isOpen ? (
-          <IoMdClose className="w-7 h-7" />
+          <IoMdClose className="w-7 h-7 hidden" />
         ) : (
           <RxHamburgerMenu className="w-7 h-7" />
         )}
       </button>
 
       <div
-        className={`fixed top-26 right-0 text-black flex flex-col items-center justify-center gap-4 py-2 h-72 w-full rounded-xl text-xl bg-white shadow-lg transform transition-transform duration-300 ease md:hidden
+        className={` fixed top-26 right-0 text-black flex flex-col items-center justify-center gap-4 py-2 h-72 w-full rounded-xl text-xl bg-white shadow-lg transform transition-transform duration-300 ease md:hidden
   ${isOpen ? "translate-x-0" : "translate-x-full"}`}
       >
+        <button
+          className=" transition-all duration-400 absolute  right-2 top-2"
+          onClick={() => setIsOpen(!isOpen)}
+        >
+          {isOpen ? (
+            <IoMdClose className="w-7 h-7" />
+          ) : (
+            <RxHamburgerMenu className="w-7 h-7" />
+          )}
+        </button>
         <a href="#services">Xizmatlar</a>
         <a href="#whyWe">Nega biz ?</a>
         <a href="#faq">FAQ</a>
