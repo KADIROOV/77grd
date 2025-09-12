@@ -7,7 +7,7 @@ export default function Header() {
   return (
     <div
       id="home"
-      className="max-w-[1920px] mx-auto flex items-center justify-around pt-[43px] px-2"
+      className="max-w-[1920px] md:mx-auto mx-[35px] flex items-center md:justify-around justify-between  pt-[43px] px-2"
     >
       <a href="#home">
         <img

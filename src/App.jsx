@@ -8,12 +8,12 @@ export default function App() {
       {/* Background Shadows */}
       <img
         src="/images/bg_shadow.svg"
-        className="absolute right-0 top-[648px] hidden lg:block z-0"
+        className="absolute right-0 md:top-[648px] top-[937px]  z-0"
         alt=""
       />
       <img
         src="/images/bg_shadow2.svg"
-        className="absolute left-0 top-[2417px] hidden lg:block z-0"
+        className="absolute left-0 top-[2417px] hidden md:block  z-0"
         alt=""
       />
 

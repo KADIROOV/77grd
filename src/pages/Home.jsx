@@ -30,10 +30,10 @@ export default function Home() {
     <div className="max-w-[1580px] mx-auto transition-all ease duration-800">
       <div className="md:mt-[215px] mt-[207px] flex lg:justify-center items-start px-2">
         <div className="hero-1">
-          <p className=" lg:max-w-[1054px] max-w-[731px] md:leading-[80px] xl:leading-[100px] leading-[40px] xl:text-[90px] md:text-[80px] text-[40px] lg:text-start text-center">
+          <p className=" lg:max-w-[1054px] md:leading-[80px] xl:leading-[100px] leading-[40px] md:mx-0 mx-[35px]  xl:text-[90px] md:text-[80px] text-[40px] text-start">
             Biz bilan birga biznesingizni yangi bosqichga olib chiqing!
           </p>
-          <button className="cursor-pointer lg:w-[290px] w-[191px]  h-[60px] rounded-[20px] hover:border-[#808080]  border-[1px] border-white font-normal md:text-[25px] text-[17px] tracking-[-2px] flex justify-center items-center mt-[131px] ">
+          <button className="cursor-pointer lg:w-[290px] w-[191px] md:mx-0 mx-[35px]  h-[60px] rounded-[20px] hover:border-[#808080]  border-[1px] border-white font-normal md:text-[25px] text-[17px] md:tracking-[-2px] flex justify-center items-center md:mt-[131px] mt-[86px] ">
             Bog'lanish
           </button>
         </div>
@@ -50,12 +50,12 @@ export default function Home() {
           Xizmatlarimiz :
         </h2>
         <div className="md:t-[163px] mt-[47px] grid grid-cols-1 lg:grid-cols-3 gap-[50px]">
-          <div className="flex flex-col justify-between rounded-[40px] px-[20px] py-[30px] bg-white shadow-lg">
+          <div className="flex flex-col justify-between rounded-[40px] md:px-[20px] py-[30px] md:mx-0 mx-[65px] bg-white shadow-lg translate transition-all  duration-400 hover:translate-y-[-10px]">
             <div>
-              <h4 className="font-['Poppins'] font-medium text-[40px] text-black tracking-[-2px] text-center">
+              <h4 className="font-['Poppins'] font-medium md:text-[40px] text-[30px]  text-black tracking-[-2px] text-center">
                 Marketing
               </h4>
-              <p className="max-w-[90%] mx-auto font-['Poppins'] font-normal text-[20px] text-[#424242] mt-6 mb-8 text-center">
+              <p className="max-w-[90%] mx-auto font-['Poppins'] font-normal md:text-[20px]  text-[#424242] mt-6 md:mb-8 md:text-center text-start">
                 Biznesingizni ijtimoiy tarmoqlarda ommalashtirish, sotuv va
                 obunachilar oqimini ko‘paytirish.
               </p>
@@ -67,12 +67,12 @@ export default function Home() {
             />
           </div>
 
-          <div className="flex flex-col justify-between rounded-[40px] px-[20px] py-[30px] bg-white shadow-lg">
+          <div className="flex flex-col justify-between rounded-[40px] px-[20px] py-[30px] md:mx-0 mx-[65px]  bg-white shadow-lg translate transition-all  duration-400 hover:translate-y-[-10px]">
             <div>
-              <h4 className="font-['Poppins'] font-medium text-[40px] text-black tracking-[-2px] text-center">
+              <h4 className="font-['Poppins'] font-medium md:text-[40px] text-[30px]  text-black tracking-[-2px] text-center">
                 Website
               </h4>
-              <p className="max-w-[90%] mx-auto font-['Poppins'] font-normal text-[20px] text-[#424242] mt-6 mb-8 text-center">
+              <p className="max-w-[90%] mx-auto font-['Poppins'] font-normal md:text-[20px] text-[12px]  text-[#424242] mt-6 md:mb-8 text-center">
                 Kompaniyangiz uchun zamonaviy va qulay web-site yaratish,
                 mijozlar bilan aloqa va savdolarni onlayn rivojlantirish.
               </p>
@@ -84,12 +84,12 @@ export default function Home() {
             />
           </div>
 
-          <div className="flex flex-col justify-between rounded-[40px] px-[20px] py-[30px] bg-white shadow-lg">
+          <div className="flex flex-col justify-between rounded-[40px] px-[20px] py-[30px] md:mx-0 mx-[65px]  bg-white shadow-lg translate transition-all  duration-400 hover:translate-y-[-10px]">
             <div>
-              <h4 className="font-['Poppins'] font-medium text-[40px] text-black tracking-[-2px] text-center">
+              <h4 className="font-['Poppins'] font-medium md:text-[40px] text-[30px]  text-black tracking-[-2px] text-center">
                 Shaxsiy brend
               </h4>
-              <p className="max-w-[90%] mx-auto font-['Poppins'] font-normal text-[20px] text-[#424242] mt-6 mb-8 text-center">
+              <p className="max-w-[90%] mx-auto font-['Poppins'] font-normal md:text-[20px] text-[12px]  text-[#424242] mt-6 md:mb-8 text-center">
                 Tadbirkor yoki mutaxassis sifatida onlayn imidjingizni
                 shakllantirish, kontent va reklama orqali ko‘proq auditoriyaga
                 yetib borish.
@@ -104,12 +104,12 @@ export default function Home() {
         </div>
 
         <div className="mt-[163px] grid grid-cols-1 md:grid-cols-3 gap-[50px]">
-          <div className="flex flex-col justify-between rounded-[40px] px-[20px] py-[30px] bg-white shadow-lg">
+          <div className="flex flex-col justify-between rounded-[40px] px-[20px] py-[30px] md:mx-0 mx-[65px]  bg-white shadow-lg translate transition-all  duration-400 hover:translate-y-[-10px]">
             <div>
-              <h4 className="font-['Poppins'] font-medium text-[40px] text-black tracking-[-2px] text-center">
+              <h4 className="font-['Poppins'] font-medium md:text-[40px] text-[30px]  text-black tracking-[-2px] text-center">
                 Brending
               </h4>
-              <p className="max-w-[90%] mx-auto font-['Poppins'] font-normal text-[20px] text-[#424242] mt-6 mb-8 text-center">
+              <p className="max-w-[90%] mx-auto font-['Poppins'] font-normal md:text-[20px] text-[12px]  text-[#424242] mt-6 md:mb-8 text-center">
                 Logotip, firma uslubi va marketing materiallari orqali brend
                 imidjini shakllantirish, mustahkamlash hamda uni auditoriya
                 xotirasida esda qolarli qilish.
@@ -122,12 +122,12 @@ export default function Home() {
             />
           </div>
 
-          <div className="flex flex-col justify-between rounded-[40px] px-[20px] py-[30px] bg-white shadow-lg">
+          <div className="flex flex-col justify-between rounded-[40px] px-[20px] py-[30px] md:mx-0 mx-[65px]  bg-white shadow-lg translate transition-all  duration-400 hover:translate-y-[-10px]">
             <div>
-              <h4 className="font-['Poppins'] font-medium text-[40px] text-black tracking-[-2px] text-center">
-                CRM-bot
+              <h4 className="font-['Poppins'] font-medium md:text-[40px] text-[30px]  text-black tracking-[-2px] text-center">
+                Telegram bot
               </h4>
-              <p className="max-w-[90%] mx-auto font-['Poppins'] font-normal text-[20px] text-[#424242] mt-6 mb-8 text-center">
+              <p className="max-w-[90%] mx-auto font-['Poppins'] font-normal md:text-[30px] text-[12px]  text-[#424242] mt-6 md:mb-8 text-center">
                 Mijozlar bilan ishlashni avtomatlashtirish, buyurtmalarni
                 boshqarish va sotuvlarni yengillashtirish vositasi.
               </p>
@@ -139,12 +139,12 @@ export default function Home() {
             />
           </div>
 
-          <div className="flex flex-col justify-between rounded-[40px] px-[20px] py-[30px] bg-white shadow-lg">
+          <div className="flex flex-col justify-between rounded-[40px] px-[20px] py-[30px] md:mx-0 mx-[65px]  bg-white shadow-lg translate transition-all  duration-400 hover:translate-y-[-10px]">
             <div>
-              <h4 className="font-['Poppins'] font-medium text-[40px] text-black tracking-[-2px] text-center">
+              <h4 className="font-['Poppins'] font-medium md:text-[40px] text-[30px]  text-black tracking-[-2px] text-center">
                 Special Taklif
               </h4>
-              <p className="max-w-[90%] mx-auto font-['Poppins'] font-normal text-[20px] text-[#424242] mt-6 mb-8 text-center">
+              <p className="max-w-[90%] mx-auto font-['Poppins'] font-normal md:text-[20px] text-[12px] text-[#424242] mt-6 md:mb-8 text-center">
                 Biznesingizni ijtimoiy tarmoqlarda ommalashtirish, mijozlar
                 oqimini ko‘paytirish, zamonaviy veb-sayt yaratish va kuchli
                 brend imidjini shakllantirish.
@@ -160,10 +160,10 @@ export default function Home() {
       </div>
 
       <div id="contact" className="px-2">
-        <h1 className="font-['Poppins'] font-normal lg:text-[80px] md:text-[60px] text-[35px] leading-[-7px] lg:tracking-[-7px] tracking-[-1px]  md:tracking-[-6px] md:text-right text-left md:mt-[213px] mt-[76px] mb-[131px] mx-2">
+        <h1 className="font-['Poppins'] font-normal lg:text-[80px] md:text-[60px] text-[35px] leading-[-7px] lg:tracking-[-7px] tracking-[-1px]  md:tracking-[-6px] text-left md:mt-[213px] mt-[76px] md:mb-[131px] mb-[58px]  mx-[53px]  md:mx-2">
           Xizmatlarimiz va narxlar haqida ko‘proq ma’lumot olmoqchimisiz ?
         </h1>
-        <div className="max-w-[1580px] flex lg:flex-row flex-col lg:justify-around justify-center items-center  lg:text-left text-center rounded-[50px]  bg-white mx-auto text-black lg:mb-[441px] md:mb-[303px] mb-[151px]">
+        <div className="max-w-[1580px] flex lg:flex-row flex-col lg:justify-around justify-center items-center  lg:text-left md:text-center rounded-[50px]  bg-white md:mx-auto mx-10 px-14  text-black lg:mb-[441px] md:mb-[303px] mb-[151px]">
           <h2 className="max-w-[601px] font-['Poppins'] font-normal md:text-[90px] text-[30px] md:leading-[80px] leading-[34px] tracking-[-3px] mt-[42px]">
             Unda biz bilan bog’laning !
           </h2>
@@ -203,8 +203,8 @@ export default function Home() {
         </div>
         <div className="flex flex-col gap-[66px]">
           <div className="max-w-[1580] flex lg:justify-start  justify-center  items-start">
-            <div className="lg:max-w-[747px]   flex justify-center items-center  rounded-[30px] bg-white text-black py-2 px-4 gap-4">
-              <span className="w-[173px] flex justify-center items-center font-['Poppins'] font-normal text-[150px] leading-[150px] tracking-[-8px]">
+            <div className="lg:max-w-[747px]   flex justify-center items-center  rounded-[30px] bg-white text-black md:mx-0 mx-12  py-2 px-4 gap-4">
+              <span className="w-[173px] flex justify-center items-center font-['Poppins'] font-normal md:text-[150px] text-[80px]  tracking-[-8px]">
                 1
               </span>
               <p className="max-w-[534px] font-['Open_Sans'] font-normal md:text-[30px] text-[12px] lg:leading-[35px] lg:tracking-[-2px] flex justify-center items-center">
@@ -216,8 +216,8 @@ export default function Home() {
           </div>
 
           <div className="max-w-[1580px] flex lg:justify-end  justify-center  items-end">
-            <div className="lg:max-w-[664px] flex justify-center items-center rounded-[30px] bg-white text-black py-2 px-4 gap-4">
-              <span className="w-[173px] flex justify-center items-center font-['Poppins'] font-normal text-[150px] leading-[150px] tracking-[-8px]">
+            <div className="lg:max-w-[664px] flex justify-center items-center rounded-[30px] bg-white text-black md:mx-0 mx-12  py-2 px-4 gap-4">
+              <span className="w-[173px] flex justify-center items-center font-['Poppins'] font-normal md:text-[150px] text-[80px]  tracking-[-8px]">
                 2
               </span>
               <p className="max-w-[511px] font-['Open_Sans'] font-normal md:text-[30px] text-[12px] lg:leading-[35px] lg:tracking-[-2px] flex justify-center items-center">
@@ -228,8 +228,8 @@ export default function Home() {
           </div>
 
           <div className="max-w-[1580px] flex lg:justify-start  justify-center  items-start">
-            <div className="max-w-[684px]   flex justify-center items-center rounded-[30px] bg-white text-black py-2 px-4 gap-4">
-              <span className="w-[173px] flex justify-center items-center font-['Poppins'] font-normal text-[150px] leading-[150px] tracking-[-8px]">
+            <div className="max-w-[684px]   flex justify-center items-center rounded-[30px] bg-white text-black md:mx-0 mx-12  py-2 px-4 gap-4">
+              <span className="w-[173px] flex justify-center items-center font-['Poppins'] font-normal md:text-[150px] text-[80px]  tracking-[-8px]">
                 3
               </span>
               <p className="max-w-[476px] font-['Open_Sans'] font-normal md:text-[30px] text-[12px] lg:leading-[35px] lg:tracking-[-2px] flex justify-center items-center">
@@ -241,8 +241,8 @@ export default function Home() {
           </div>
 
           <div className="max-w-[1580px] flex lg:justify-end  justify-center  items-end">
-            <div className="max-w-[650px]   flex justify-center items-center rounded-[30px] bg-white text-black py-2 px-4 gap-4">
-              <span className="w-[173px] flex justify-center items-center font-['Poppins'] font-normal text-[150px] leading-[150px] tracking-[-8px]">
+            <div className="max-w-[650px]   flex justify-center items-center rounded-[30px] bg-white text-black md:mx-0 mx-12  py-2 px-4 gap-4">
+              <span className="w-[173px] flex justify-center items-center font-['Poppins'] font-normal md:text-[150px] text-[80px]  tracking-[-8px]">
                 4
               </span>
               <p className="max-w-[476px] font-['Open_Sans'] font-normal md:text-[30px] text-[12px] lg:leading-[35px] lg:tracking-[-2px] flex justify-center items-center">
@@ -254,8 +254,8 @@ export default function Home() {
           </div>
 
           <div className="max-w-[1580px] flex lg:justify-start  justify-center  items-start">
-            <div className="max-w-[650px]   flex justify-center items-center rounded-[30px] bg-white text-black py-2 px-4 gap-4">
-              <span className="w-[173px] flex justify-center items-center font-['Poppins'] font-normal text-[150px] leading-[150px] tracking-[-8px]">
+            <div className="max-w-[650px]   flex justify-center items-center rounded-[30px] bg-white text-black md:mx-0 mx-12  py-2 px-4 gap-4">
+              <span className="w-[173px] flex justify-center items-center font-['Poppins'] font-normal md:text-[150px] text-[80px]  tracking-[-8px]">
                 5
               </span>
               <p className="max-w-[411px] font-['Open_Sans'] font-normal md:text-[30px] text-[12px] lg:leading-[35px] lg:tracking-[-2px] flex justify-center items-center">
@@ -267,8 +267,8 @@ export default function Home() {
           </div>
 
           <div className="max-w-[1580px] flex lg:justify-end  justify-center  items-end">
-            <div className="max-w-[650px]   flex justify-center items-center rounded-[30px] bg-white text-black py-2 px-4 gap-4">
-              <span className="w-[173px] flex justify-center items-center font-['Poppins'] font-normal text-[150px] leading-[150px] tracking-[-8px]">
+            <div className="max-w-[650px]   flex justify-center items-center rounded-[30px] bg-white text-black md:mx-0 mx-12  py-2 px-4 gap-4">
+              <span className="w-[173px] flex justify-center items-center font-['Poppins'] font-normal md:text-[150px] text-[80px]  tracking-[-8px]">
                 6
               </span>
               <p className="max-w-[411px] font-['Open_Sans'] font-normal md:text-[30px] text-[12px] lg:leading-[35px] lg:tracking-[-2px] flex justify-center items-center">
@@ -279,8 +279,8 @@ export default function Home() {
           </div>
 
           <div className="max-w-[1580px] flex lg:justify-center  justify-center  items-center">
-            <div className="max-w-[1096px]   flex justify-center items-center rounded-[30px] bg-white text-black py-2 px-4 gap-4">
-              <span className="w-[173px] flex justify-center items-center font-['Poppins'] font-normal text-[150px] leading-[150px] tracking-[-8px]">
+            <div className="max-w-[1096px]   flex justify-center items-center rounded-[30px] bg-white text-black md:mx-0 mx-12  py-2 px-4 gap-4">
+              <span className="w-[173px] flex justify-center items-center font-['Poppins'] font-normal md:text-[150px] text-[80px]  tracking-[-8px]">
                 7
               </span>
               <p className="max-w-[828px] font-['Open_Sans'] font-normal md:text-[30px] text-[12px] lg:leading-[35px] lg:tracking-[-2px] flex justify-center items-center">
