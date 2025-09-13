@@ -1,298 +1,539 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
+import Footer from "./Footer";
 
 export default function Home() {
-  const [number, setNumber] = useState("");
-  const [text, setText] = useState("");
-  console.log(text);
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [clientName, setClientName] = useState("");
+  const [isVisible, setIsVisible] = useState(false);
+  const [openFaqIndex, setOpenFaqIndex] = useState(null);
+  const [isFaqAnimating, setIsFaqAnimating] = useState(false);
 
-  const formatPhone = (number) => {
-    // faqat raqamlarni olamiz
-    let digits = number.replace(/\D/g, "");
+  const sectionRefs = {
+    hero: useRef(null),
+    services: useRef(null),
+    contact: useRef(null),
+    whyWe: useRef(null),
+    faq: useRef(null),
+    footer: useRef(null),
+  };
 
-    // 13 ta belgidan oshmasin (+998991234567)
+  useEffect(() => {
+    // Komponent yuklanganda animatsiyalarni boshlash
+    setIsVisible(true);
+
+    // Scroll animatsiyalari uchun Intersection Observer
+    const observerOptions = {
+      root: null,
+      rootMargin: "0px",
+      threshold: 0.1,
+    };
+
+    const observerCallback = (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.remove("opacity-0");
+          entry.target.classList.add("animate-fade-in-up");
+        }
+      });
+    };
+
+    const observer = new IntersectionObserver(
+      observerCallback,
+      observerOptions
+    );
+
+    // Barcha sectionlarni kuzatish
+    Object.values(sectionRefs).forEach((ref) => {
+      if (ref.current) {
+        observer.observe(ref.current);
+      }
+    });
+
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
+
+  const formatPhoneNumber = (value) => {
+    // Faqat raqamlarni olamiz
+    let digits = value.replace(/\D/g, "");
+
+    // 12 ta raqamdan oshmasin (+998991234567)
     if (digits.length > 12) digits = digits.slice(0, 12);
 
-    // formatlash
-    let result = "+";
-    if (digits.length > 0) result += digits.slice(0, 3); // 998
-    if (digits.length > 3) result += "-" + digits.slice(3, 5); // 99
-    if (digits.length > 5) result += "-" + digits.slice(5, 8); // 596
-    if (digits.length > 8) result += "-" + digits.slice(8, 10); // 65
-    if (digits.length > 10) result += "-" + digits.slice(10, 12); // 64
+    // Formatlash
+    let formatted = "+";
+    if (digits.length > 0) formatted += digits.slice(0, 3); // 998
+    if (digits.length > 3) formatted += "-" + digits.slice(3, 5); // 99
+    if (digits.length > 5) formatted += "-" + digits.slice(5, 8); // 596
+    if (digits.length > 8) formatted += "-" + digits.slice(8, 10); // 65
+    if (digits.length > 10) formatted += "-" + digits.slice(10, 12); // 64
 
-    return result;
+    return formatted;
   };
 
-  const handleChange = (e) => {
-    setNumber(formatPhone(e.target.value));
+  const handlePhoneChange = (e) => {
+    setPhoneNumber(formatPhoneNumber(e.target.value));
   };
+
+  const handleSubmit = () => {
+    // Form submit logic bu yerga
+    console.log("Phone:", phoneNumber, "Name:", clientName);
+  };
+
+  // FAQ toggle function - animatsiyasiz
+  const toggleFaq = (index) => {
+    if (isFaqAnimating) return;
+
+    setOpenFaqIndex(openFaqIndex === index ? null : index);
+  };
+
+  // Service card component - animatsiya qo'shilgan
+  const ServiceCard = ({ title, description, imageSrc, altText, delay }) => (
+    <div
+      className={`flex flex-col justify-between rounded-[40px] px-5 py-7 mx-8 md:mx-0 bg-white shadow-lg transform transition-all duration-400 hover:-translate-y-3 opacity-0 ${
+        isVisible ? "animate-fade-in-up" : ""
+      }`}
+      style={{ animationDelay: delay }}
+    >
+      <div>
+        <h4 className="font-['Poppins'] font-medium text-2xl md:text-3xl lg:text-4xl text-black tracking-[-2px] text-center">
+          {title}
+        </h4>
+        <p className="max-w-[90%] mx-auto font-['Poppins'] font-normal text-sm md:text-base lg:text-xl text-[#424242] mt-6 mb-6 md:mb-8 text-center">
+          {description}
+        </p>
+      </div>
+      <img
+        src={imageSrc}
+        alt={altText}
+        className="mx-auto max-h-[220px] object-contain"
+      />
+    </div>
+  );
+
+  // Why choose us item component - animatsiya qo'shilgan
+  const WhyChooseUsItem = ({
+    number,
+    description,
+    alignment = "left",
+    delay,
+  }) => (
+    <div
+      className={`max-w-[1580px] flex ${
+        alignment === "right" ? "lg:justify-end" : "lg:justify-start"
+      } justify-center items-${
+        alignment === "right" ? "end" : "start"
+      } opacity-0 ${isVisible ? "animate-fade-in-up" : ""}`}
+      style={{ animationDelay: delay }}
+    >
+      <div className="lg:max-w-[747px] max-w-[684px] flex justify-center items-center rounded-[30px] bg-white text-black mx-8 md:mx-0 py-2 px-4 gap-4">
+        <span className="w-[173px] flex justify-center items-center font-['Poppins'] font-normal text-[80px] md:text-[120px] lg:text-[150px] tracking-[-8px]">
+          {number}
+        </span>
+        <p className="max-w-[534px] font-['Open_Sans'] font-normal text-xs md:text-xl lg:text-3xl lg:leading-[35px] lg:tracking-[-2px] flex justify-center items-center">
+          {description}
+        </p>
+      </div>
+    </div>
+  );
+
+  // FAQ Item Component - animatsiyasiz
+  const FaqItem = ({ question, answer, index }) => (
+    <div>
+      <div
+        onClick={() => toggleFaq(index)}
+        className={`rounded-[20px] bg-white text-black overflow-hidden px-6 py-4 cursor-pointer hover:bg-gray-50 transition-colors duration-200 ${
+          openFaqIndex === index ? "max-h-96 opacity-100" : "max-h-18"
+        }`}
+      >
+        <div className="flex justify-between items-center">
+          <p className="font-['Poppins'] font-normal text-lg md:text-xl lg:text-2xl">
+            {question}
+          </p>
+          <span
+            className="text-3xl md:text-4xl font-light transition-transform duration-200"
+            style={{
+              transform: openFaqIndex === index ? "rotate(45deg)" : "rotate(0)",
+            }}
+          >
+            +
+          </span>
+        </div>
+        <div className="bg-white rounded-b-[20px] px-6 py-4">
+          <p className="font-['Open_Sans'] font-light text-base md:text-lg lg:text-xl text-black tracking-[-1px]">
+            {answer}
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+
+  // Contact Form Component
+  const ContactForm = () => (
+    <div className="max-w-[1580px] flex flex-col lg:flex-row justify-between items-center rounded-[50px] bg-white mx-10 md:mx-auto px-8 md:px-14 py-10 text-black mb-20">
+      <div className="w-full lg:w-1/2 mb-10 lg:mb-0">
+        <h2 className="font-['Poppins'] font-normal text-[30px] md:text-[50px] lg:text-[60px] leading-[34px] md:leading-[60px] lg:leading-[70px] tracking-[-3px]">
+          Qaysi xizmatni maslahat beramiz?
+        </h2>
+        <p className="font-['Open_Sans'] font-normal text-base md:text-lg mt-6 text-gray-700">
+          Taklifingiz bormi? Biz bilan bog'laning va mutaxassislarimiz sizga eng
+          yaxshi yechimni taklif qilishadi.
+        </p>
+      </div>
+
+      <div className="w-full lg:w-1/2">
+        <div className="flex flex-col gap-5">
+          <input
+            type="tel"
+            value={phoneNumber}
+            onChange={handlePhoneChange}
+            className="rounded-[14px] px-4 py-3 w-full outline-none border border-gray-300 text-[#333333] font-['Poppins'] font-light text-[15px] md:text-[18px] transition-colors duration-200 focus:border-black"
+            placeholder="+998-99-999-99-99"
+          />
+          <input
+            type="text"
+            value={clientName}
+            onChange={(e) => setClientName(e.target.value)}
+            className="rounded-[14px] px-4 py-3 w-full outline-none border border-gray-300 text-[#333333] font-['Poppins'] font-light text-[15px] md:text-[18px] transition-colors duration-200 focus:border-black"
+            placeholder="Ismingiz"
+          />
+          <button
+            onClick={handleSubmit}
+            className="cursor-pointer rounded-[14px] px-4 py-3 w-full outline-none bg-black text-white mb-[55px] font-['Poppins'] font-light text-[15px] md:text-[20px] transition-colors duration-200 hover:bg-gray-800"
+          >
+            Jo'natish
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+
+  // Services data
+  const services = [
+    {
+      title: "Marketing",
+      description:
+        "Biznesingizni ijtimoiy tarmoqlarda ommalashtirish, sotuv va obunachilar oqimini ko'paytirish.",
+      imageSrc: "/images/card1_img.png",
+      altText: "marketing image",
+      delay: "0.1s",
+    },
+    {
+      title: "Website",
+      description:
+        "Kompaniyangiz uchun zamonaviy va qulay web-site yaratish, mijozlar bilan aloqa va savdolarni onlayn rivojlantirish.",
+      imageSrc: "/images/card2_img.png",
+      altText: "website image",
+      delay: "0.2s",
+    },
+    {
+      title: "Shaxsiy brend",
+      description:
+        "Tadbirkor yoki mutaxassis sifatida onlayn imidjingizni shakllantirish, kontent va reklama orqali ko'proq auditoriyaga yetib borish.",
+      imageSrc: "/images/card3_img.png",
+      altText: "personal brand image",
+      delay: "0.3s",
+    },
+    {
+      title: "Brending",
+      description:
+        "Logotip, firma uslubi va marketing materiallari orqali brend imidjini shakllantirish, mustahkamlash hamda uni auditoriya xotirasida esda qolarli qilish.",
+      imageSrc: "/images/card4_img.png",
+      altText: "brending image",
+      delay: "0.4s",
+    },
+    {
+      title: "Telegram bot",
+      description:
+        "Mijozlar bilan ishlashni avtomatlashtirish, buyurtmalarni boshqarish va sotuvlarni yengillashtirish vositasi.",
+      imageSrc: "/images/card5_img.png",
+      altText: "telegram bot image",
+      delay: "0.5s",
+    },
+    {
+      title: "Special Taklif",
+      description:
+        "Biznesingizni ijtimoiy tarmoqlarda ommalashtirish, mijozlar oqimini ko'paytirish, zamonaviy veb-sayt yaratish va kuchli brend imidjini shakllantirish.",
+      imageSrc: "/images/card6_img.png",
+      altText: "special offer image",
+      delay: "0.6s",
+    },
+  ];
+
+  // Why choose us data
+  const whyChooseUsItems = [
+    {
+      number: 1,
+      description:
+        "Bizning ishimiz nafaqat chiroyli ko'rinadi, balki real natija ham beradi. Haftalik va oylik hisobotlar orqali siz loyihaning qayerga ketayotganini aniq ko'rasiz.",
+      alignment: "left",
+      delay: "0.1s",
+    },
+    {
+      number: 2,
+      description:
+        "Bizning kontent va dizayn bo'yicha kreativ yechimlar bazamiz doimiy yangilanib boradi va mijozning talablarini qondiradi",
+      alignment: "right",
+      delay: "0.2s",
+    },
+    {
+      number: 3,
+      description:
+        "Bizda marketing, dizayn, kontent va boshqaruv bo'yicha tajribali mutaxassislar bor, har biri vazifasini professional bajaradi.",
+      alignment: "left",
+      delay: "0.3s",
+    },
+    {
+      number: 4,
+      description:
+        "Biz vaqtingizni qadrlaymiz. Shu sababli ishlar belgilangan muddatda topshiriladi. Muddatlar biz uchun majburiyat, siz uchun esa kafolatdir.",
+      alignment: "right",
+      delay: "0.4s",
+    },
+    {
+      number: 5,
+      description:
+        "Biz jamoamizni doimiy o'qitib va rivojlantirib boramiz. Bu sizning loyihangizga yangi bilimlar, trendlar va texnologiyalarni olib kirish imkonini beradi.",
+      alignment: "left",
+      delay: "0.5s",
+    },
+    {
+      number: 6,
+      description:
+        "Biz siz bilan uzoq muddatli hamkorlik o'rnatishga intilamiz va biznesingizning rivojiga sherik bo'lamiz.",
+      alignment: "right",
+      delay: "0.6s",
+    },
+  ];
+
+  // FAQ ma'lumotlari
+  const faqData = [
+    {
+      question: "Shaxsiy brend savdo va ishonchga qanday ta'sir qiladi?",
+      answer:
+        "Odamlar mahsulot yoki xizmatni ko'pincha kampaniya emas, balki uning ortidagi shaxsga ishonib sotib olishadi. Agar sizning shaxsiy brendingiz kuchli bo'lsa — mijozlar sizga ko'proq ishonadi, shu ishonch esa savdo o'sishiga olib keladi.",
+      delay: "0.1s",
+    },
+    {
+      question:
+        "Tadbirkor uchun shaxsiy brend rivojlantirish nima uchun zarur?",
+      answer:
+        "Shaxsiy brend sizga raqobatdosh ustunlik beradi, mijozlar ishonchini oshiradi va sizni sohangizning yetakchi mutaxassisi sifatida ko'rsatadi. Bu esa yangi imkoniyatlar va hamkorliklar ochadi.",
+      delay: "0.2s",
+    },
+    {
+      question: "Veb-sayt ijtimoiy tarmoqlardan qaysi jihatlarda ustun?",
+      answer:
+        "Veb-sayt - bu sizning onlayn ofisingiz. U doimiy, ishonchli va barcha ma'lumotlaringizni bitta joyda jamlaydi. Ijtimoiy tarmoqlar algoritmlarga bog'liq, veb-sayt esa to'liq sizning nazoratingizda.",
+      delay: "0.3s",
+    },
+    {
+      question: "Marketing SMM o'zi kerakmi va nimaga?",
+      answer:
+        "SMM - bu zamonaviy marketingning muhim qismi. U auditoriya bilan to'g'ridan-to'g'ri aloqa o'rnatish, brendni insoniylashtirish va sotuvlarni oshirish imkoniyatini beradi. Lekin u boshqa marketing kanallari bilan integratsiyada eng yaxshi samara beradi.",
+      delay: "0.4s",
+    },
+    {
+      question: "Qaysi xizmatni maslahat beramiz?",
+      answer:
+        "Biz sizning biznesingizni tahlil qilamiz va ehtiyojlaringizga qarab eng samarali yechimni taklif etamiz. Ba'zi mijozlar uchun faqat SMM yetarli bo'lsa, boshqalari uchun kompleks yondashuv kerak bo'ladi.",
+      delay: "0.5s",
+    },
+  ];
+
   return (
     <div className="max-w-[1580px] mx-auto transition-all ease duration-800">
-      <div className="md:mt-[215px] mt-[207px] flex lg:justify-center items-start px-2">
+      {/* Hero Section */}
+      <div
+        ref={sectionRefs.hero}
+        className="mt-[207px] md:mt-[215px] flex lg:justify-center items-start px-2 opacity-0"
+      >
         <div className="hero-1">
-          <p className=" lg:max-w-[1054px] md:leading-[80px] xl:leading-[100px] leading-[40px] md:mx-0 mx-[35px]  xl:text-[90px] md:text-[80px] text-[40px] text-start">
+          <p className="lg:max-w-[1054px] text-3xl md:text-5xl lg:text-6xl xl:text-[90px] leading-[40px] md:leading-[60px] lg:leading-[80px] xl:leading-[100px] mx-8 md:mx-0 text-start">
             Biz bilan birga biznesingizni yangi bosqichga olib chiqing!
           </p>
-          <button className="cursor-pointer lg:w-[290px] w-[191px] md:mx-0 mx-[35px]  h-[60px] rounded-[20px] hover:border-[#808080]  border-[1px] border-white font-normal md:text-[25px] text-[17px] md:tracking-[-2px] flex justify-center items-center md:mt-[131px] mt-[86px] ">
+          <button className="cursor-pointer w-[191px] lg:w-[290px] h-[60px] rounded-[20px] hover:bg-white hover:text-black border border-white font-normal text-[17px] md:text-[25px] md:tracking-[-2px] flex justify-center items-center mt-[86px] md:mt-[131px] mx-8 md:mx-0 transition-all duration-200 hover:scale-105">
             Bog'lanish
           </button>
         </div>
-        <p className="lg:flex hidden font-['Poppins']  font-medium xl:text-[200px] text-[150px] transform rotate-[7deg] text-white text-shadow-down">
+        <p className="lg:flex hidden font-['Poppins'] font-medium xl:text-[200px] text-[150px] transform rotate-[7deg] text-white text-shadow-down">
           77grd
         </p>
       </div>
 
-      <div
+      {/* Services Section */}
+      <section
+        ref={sectionRefs.services}
         id="services"
-        className="md:mt-[321px] mt-[234px] max-w-full mx-auto px-4"
+        className="mt-[234px] md:mt-[321px] max-w-full mx-auto px-4 opacity-0"
       >
-        <h2 className="font-['Poppins'] font-medium md:text-[70px] text-[30px] md:tracking-[-4px] tracking-[-2px]  text-white text-center">
+        <h2 className="font-['Poppins'] font-medium text-3xl md:text-5xl lg:text-[70px] md:tracking-[-4px] tracking-[-2px] text-white text-center">
           Xizmatlarimiz :
         </h2>
-        <div className="md:t-[163px] mt-[47px] grid grid-cols-1 lg:grid-cols-3 gap-[50px]">
-          <div className="flex flex-col justify-between rounded-[40px] md:px-[20px] py-[30px] md:mx-0 mx-[65px] bg-white shadow-lg translate transition-all  duration-400 hover:translate-y-[-10px]">
-            <div>
-              <h4 className="font-['Poppins'] font-medium md:text-[40px] text-[30px]  text-black tracking-[-2px] text-center">
-                Marketing
-              </h4>
-              <p className="max-w-[90%] mx-auto font-['Poppins'] font-normal md:text-[20px]  text-[#424242] mt-6 md:mb-8 md:text-center text-start">
-                Biznesingizni ijtimoiy tarmoqlarda ommalashtirish, sotuv va
-                obunachilar oqimini ko‘paytirish.
-              </p>
-            </div>
-            <img
-              src="/images/card1_img.png"
-              alt="marketing image"
-              className="mx-auto max-h-[220px] object-contain"
-            />
-          </div>
 
-          <div className="flex flex-col justify-between rounded-[40px] px-[20px] py-[30px] md:mx-0 mx-[65px]  bg-white shadow-lg translate transition-all  duration-400 hover:translate-y-[-10px]">
-            <div>
-              <h4 className="font-['Poppins'] font-medium md:text-[40px] text-[30px]  text-black tracking-[-2px] text-center">
-                Website
-              </h4>
-              <p className="max-w-[90%] mx-auto font-['Poppins'] font-normal md:text-[20px] text-[12px]  text-[#424242] mt-6 md:mb-8 text-center">
-                Kompaniyangiz uchun zamonaviy va qulay web-site yaratish,
-                mijozlar bilan aloqa va savdolarni onlayn rivojlantirish.
-              </p>
-            </div>
-            <img
-              src="/images/card2_img.png"
-              alt="website image"
-              className="mx-auto max-h-[220px] object-contain"
-            />
-          </div>
-
-          <div className="flex flex-col justify-between rounded-[40px] px-[20px] py-[30px] md:mx-0 mx-[65px]  bg-white shadow-lg translate transition-all  duration-400 hover:translate-y-[-10px]">
-            <div>
-              <h4 className="font-['Poppins'] font-medium md:text-[40px] text-[30px]  text-black tracking-[-2px] text-center">
-                Shaxsiy brend
-              </h4>
-              <p className="max-w-[90%] mx-auto font-['Poppins'] font-normal md:text-[20px] text-[12px]  text-[#424242] mt-6 md:mb-8 text-center">
-                Tadbirkor yoki mutaxassis sifatida onlayn imidjingizni
-                shakllantirish, kontent va reklama orqali ko‘proq auditoriyaga
-                yetib borish.
-              </p>
-            </div>
-            <img
-              src="/images/card3_img.png"
-              alt="personal brand image"
-              className="mx-auto max-h-[220px] object-contain"
-            />
-          </div>
+        {/* First row of services */}
+        <div className="mt-[47px] md:mt-[163px] grid grid-cols-1 lg:grid-cols-3 gap-[50px]">
+          {services.slice(0, 3).map((service, index) => (
+            <ServiceCard key={index} {...service} />
+          ))}
         </div>
 
+        {/* Second row of services */}
         <div className="mt-[163px] grid grid-cols-1 md:grid-cols-3 gap-[50px]">
-          <div className="flex flex-col justify-between rounded-[40px] px-[20px] py-[30px] md:mx-0 mx-[65px]  bg-white shadow-lg translate transition-all  duration-400 hover:translate-y-[-10px]">
-            <div>
-              <h4 className="font-['Poppins'] font-medium md:text-[40px] text-[30px]  text-black tracking-[-2px] text-center">
-                Brending
-              </h4>
-              <p className="max-w-[90%] mx-auto font-['Poppins'] font-normal md:text-[20px] text-[12px]  text-[#424242] mt-6 md:mb-8 text-center">
-                Logotip, firma uslubi va marketing materiallari orqali brend
-                imidjini shakllantirish, mustahkamlash hamda uni auditoriya
-                xotirasida esda qolarli qilish.
-              </p>
-            </div>
-            <img
-              src="/images/card4_img.png"
-              alt="marketing image"
-              className="mx-auto max-h-[220px] object-contain"
-            />
-          </div>
-
-          <div className="flex flex-col justify-between rounded-[40px] px-[20px] py-[30px] md:mx-0 mx-[65px]  bg-white shadow-lg translate transition-all  duration-400 hover:translate-y-[-10px]">
-            <div>
-              <h4 className="font-['Poppins'] font-medium md:text-[40px] text-[30px]  text-black tracking-[-2px] text-center">
-                Telegram bot
-              </h4>
-              <p className="max-w-[90%] mx-auto font-['Poppins'] font-normal md:text-[30px] text-[12px]  text-[#424242] mt-6 md:mb-8 text-center">
-                Mijozlar bilan ishlashni avtomatlashtirish, buyurtmalarni
-                boshqarish va sotuvlarni yengillashtirish vositasi.
-              </p>
-            </div>
-            <img
-              src="/images/card5_img.png"
-              alt="website image"
-              className="mx-auto max-h-[220px] object-contain"
-            />
-          </div>
-
-          <div className="flex flex-col justify-between rounded-[40px] px-[20px] py-[30px] md:mx-0 mx-[65px]  bg-white shadow-lg translate transition-all  duration-400 hover:translate-y-[-10px]">
-            <div>
-              <h4 className="font-['Poppins'] font-medium md:text-[40px] text-[30px]  text-black tracking-[-2px] text-center">
-                Special Taklif
-              </h4>
-              <p className="max-w-[90%] mx-auto font-['Poppins'] font-normal md:text-[20px] text-[12px] text-[#424242] mt-6 md:mb-8 text-center">
-                Biznesingizni ijtimoiy tarmoqlarda ommalashtirish, mijozlar
-                oqimini ko‘paytirish, zamonaviy veb-sayt yaratish va kuchli
-                brend imidjini shakllantirish.
-              </p>
-            </div>
-            <img
-              src="/images/card6_img.png"
-              alt="personal brand image"
-              className="mx-auto max-h-[220px] object-contain"
-            />
-          </div>
+          {services.slice(3, 6).map((service, index) => (
+            <ServiceCard key={index + 3} {...service} />
+          ))}
         </div>
-      </div>
+      </section>
 
-      <div id="contact" className="px-2">
-        <h1 className="font-['Poppins'] font-normal lg:text-[80px] md:text-[60px] text-[35px] leading-[-7px] lg:tracking-[-7px] tracking-[-1px]  md:tracking-[-6px] text-left md:mt-[213px] mt-[76px] md:mb-[131px] mb-[58px]  mx-[53px]  md:mx-2">
-          Xizmatlarimiz va narxlar haqida ko‘proq ma’lumot olmoqchimisiz ?
+      {/* Contact Section */}
+      <section
+        ref={sectionRefs.contact}
+        id="contact"
+        className="px-2 opacity-0"
+      >
+        <h1 className="font-['Poppins'] font-normal text-[35px] md:text-[45px] lg:text-[60px] xl:text-[80px] leading-tight lg:tracking-[-7px] tracking-[-1px] md:tracking-[-6px] text-left mt-[76px] md:mt-[213px] mb-[58px] md:mb-[131px] mx-[53px] md:mx-2">
+          Xizmatlarimiz va narxlar haqida ko'proq ma'lumot olmoqchimisiz ?
         </h1>
-        <div className="max-w-[1580px] flex lg:flex-row flex-col lg:justify-around justify-center items-center  lg:text-left md:text-center rounded-[50px]  bg-white md:mx-auto mx-10 px-14  text-black lg:mb-[441px] md:mb-[303px] mb-[151px]">
-          <h2 className="max-w-[601px] font-['Poppins'] font-normal md:text-[90px] text-[30px] md:leading-[80px] leading-[34px] tracking-[-3px] mt-[42px]">
-            Unda biz bilan bog’laning !
+
+        <div className="max-w-[1580px] flex lg:flex-row flex-col lg:justify-around justify-center items-center lg:text-left md:text-center rounded-[50px] bg-white mx-10 md:mx-auto px-14 text-black mb-[151px] md:mb-[303px] lg:mb-[441px] transition-all duration-500 hover:shadow-2xl">
+          <h2 className="max-w-[601px] font-['Poppins'] font-normal text-[30px] md:text-[60px] lg:text-[80px] xl:text-[90px] leading-[34px] md:leading-[70px] lg:leading-[80px] tracking-[-3px] mt-[42px]">
+            Unda biz bilan bog'laning !
           </h2>
-          <div className="flex-col flex lg:items-start items:center justify-center gap-[12px] md:gap-[26px]">
+
+          <div className="flex flex-col lg:items-start items-center justify-center gap-3 md:gap-[26px]">
             <input
               type="tel"
-              value={number}
-              onChange={handleChange}
-              className=" rounded-[14px] px-4 py-2 lg:w-[360px] md:w-[317px] w-[218px] outline-none border-[1px] border-black text-[#333333] mt-[55px] font-['Poppins'] font-light text-[15px]  md:text-[25px]"
+              value={phoneNumber}
+              onChange={handlePhoneChange}
+              className="rounded-[14px] px-4 py-2 w-[218px] md:w-[317px] lg:w-[360px] outline-none border border-black text-[#333333] mt-[55px] font-['Poppins'] font-light text-[15px] md:text-[20px] lg:text-[25px] transition-all duration-300 focus:scale-105 focus:shadow-md"
               placeholder="+998-99-999-99-99"
             />
             <input
               type="text"
-              value={text}
-              onChange={(e) => setText(e.target.value)}
-              className=" rounded-[14px] px-4 py-2 lg:w-[360px] md:w-[317px] w-[218px] outline-none border-[1px] border-black text-[#333333] font-['Poppins'] font-light text-[15px]  md:text-[25px]"
+              value={clientName}
+              onChange={(e) => setClientName(e.target.value)}
+              className="rounded-[14px] px-4 py-2 w-[218px] md:w-[317px] lg:w-[360px] outline-none border border-black text-[#333333] font-['Poppins'] font-light text-[15px] md:text-[20px] lg:text-[25px] transition-all duration-300 focus:scale-105 focus:shadow-md"
               placeholder="Ismingiz"
             />
             <button
-              className="cursor-pointer rounded-[14px] px-4 py-2 lg:w-[360px] md:w-[317px] w-[218px] outline-none border-[1px] border-black text-[#333333] mb-[55px] font-['Poppins'] font-light text-[15px]  md:text-[30px]"
-              placeholder="Ismingiz"
+              onClick={handleSubmit}
+              className="cursor-pointer rounded-[14px] px-4 py-2 w-[218px] md:w-[317px] lg:w-[360px] outline-none border border-black text-[#333333] mb-[55px] font-['Poppins'] font-light text-[15px] md:text-[25px] lg:text-[30px] hover:bg-gray-50 transition-all duration-300 hover:scale-105"
             >
               Ariza qoldirish
             </button>
           </div>
         </div>
-      </div>
+      </section>
 
-      <div id="whyWe" className="md:mx-4">
+      {/* Why Choose Us Section */}
+      <section ref={sectionRefs.whyWe} id="whyWe" className="md:mx-4 opacity-0">
         <div className="max-w-[1380px] lg:px-0 md:px-0 px-[45px] flex flex-col">
-          <h1 className="font-['Poppins'] font-normal lg:text-[200px] md:text-[150px] text-[50px] lg:tracking-[-7px] tracking-[-3px]  text-left lg:mb-[158px] mb-[40px]">
+          <h1 className="font-['Poppins'] font-normal text-[50px] md:text-[120px] lg:text-[150px] xl:text-[200px] lg:tracking-[-7px] tracking-[-3px] text-left mb-[40px] lg:mb-[158px]">
             Nega Biz?
           </h1>
-          <h1 className="font-['Poppins'] font-normal lg:text-[200px] md:text-[150px] text-[50px]  lg:tracking-[-7px] tracking-[-3px]  text-right lg:mb-[131px] mb-[80px]">
+          <h1 className="font-['Poppins'] font-normal text-[50px] md:text-[120px] lg:text-[150px] xl:text-[200px] lg:tracking-[-7px] tracking-[-3px] text-right mb-[80px] lg:mb-[131px]">
             Chunki:
           </h1>
         </div>
+
         <div className="flex flex-col gap-[66px]">
-          <div className="max-w-[1580] flex lg:justify-start  justify-center  items-start">
-            <div className="lg:max-w-[747px]   flex justify-center items-center  rounded-[30px] bg-white text-black md:mx-0 mx-12  py-2 px-4 gap-4">
-              <span className="w-[173px] flex justify-center items-center font-['Poppins'] font-normal md:text-[150px] text-[80px]  tracking-[-8px]">
-                1
-              </span>
-              <p className="max-w-[534px] font-['Open_Sans'] font-normal md:text-[30px] text-[12px] lg:leading-[35px] lg:tracking-[-2px] flex justify-center items-center">
-                Bizning ishimiz nafaqat chiroyli ko‘rinadi, balki real natija
-                ham beradi. Haftalik va oylik hisobotlar orqali siz loyihaning
-                qayerga ketayotganini aniq ko‘rasiz.
-              </p>
-            </div>
-          </div>
+          {whyChooseUsItems.map((item, index) => (
+            <WhyChooseUsItem key={index} {...item} />
+          ))}
 
-          <div className="max-w-[1580px] flex lg:justify-end  justify-center  items-end">
-            <div className="lg:max-w-[664px] flex justify-center items-center rounded-[30px] bg-white text-black md:mx-0 mx-12  py-2 px-4 gap-4">
-              <span className="w-[173px] flex justify-center items-center font-['Poppins'] font-normal md:text-[150px] text-[80px]  tracking-[-8px]">
-                2
-              </span>
-              <p className="max-w-[511px] font-['Open_Sans'] font-normal md:text-[30px] text-[12px] lg:leading-[35px] lg:tracking-[-2px] flex justify-center items-center">
-                Bizning kontent va dizayn bo‘yicha kreativ yechimlar bazamiz
-                doimiy yangilanib boradi va mijozning talablarini qondiradi
-              </p>
-            </div>
-          </div>
-
-          <div className="max-w-[1580px] flex lg:justify-start  justify-center  items-start">
-            <div className="max-w-[684px]   flex justify-center items-center rounded-[30px] bg-white text-black md:mx-0 mx-12  py-2 px-4 gap-4">
-              <span className="w-[173px] flex justify-center items-center font-['Poppins'] font-normal md:text-[150px] text-[80px]  tracking-[-8px]">
-                3
-              </span>
-              <p className="max-w-[476px] font-['Open_Sans'] font-normal md:text-[30px] text-[12px] lg:leading-[35px] lg:tracking-[-2px] flex justify-center items-center">
-                Bizda marketing , dizayn, kontent va boshqaruv bo‘yicha
-                tajribali mutaxassislar bor, har biri vazifasini professional
-                bajaradi.
-              </p>
-            </div>
-          </div>
-
-          <div className="max-w-[1580px] flex lg:justify-end  justify-center  items-end">
-            <div className="max-w-[650px]   flex justify-center items-center rounded-[30px] bg-white text-black md:mx-0 mx-12  py-2 px-4 gap-4">
-              <span className="w-[173px] flex justify-center items-center font-['Poppins'] font-normal md:text-[150px] text-[80px]  tracking-[-8px]">
-                4
-              </span>
-              <p className="max-w-[476px] font-['Open_Sans'] font-normal md:text-[30px] text-[12px] lg:leading-[35px] lg:tracking-[-2px] flex justify-center items-center">
-                Biz vaqtingizni qadrlaymiz. Shu sababli ishlar belgilangan
-                muddatda topshiriladi. Muddatlar biz uchun majburiyat, siz uchun
-                esa kafolatdir.
-              </p>
-            </div>
-          </div>
-
-          <div className="max-w-[1580px] flex lg:justify-start  justify-center  items-start">
-            <div className="max-w-[650px]   flex justify-center items-center rounded-[30px] bg-white text-black md:mx-0 mx-12  py-2 px-4 gap-4">
-              <span className="w-[173px] flex justify-center items-center font-['Poppins'] font-normal md:text-[150px] text-[80px]  tracking-[-8px]">
-                5
-              </span>
-              <p className="max-w-[411px] font-['Open_Sans'] font-normal md:text-[30px] text-[12px] lg:leading-[35px] lg:tracking-[-2px] flex justify-center items-center">
-                Biz jamoamizni doimiy o‘qitib va rivojlantirib boramiz. Bu
-                sizning loyihangizga yangi bilimlar, trendlar va
-                texnologiyalarni olib kirish imkonini beradi.
-              </p>
-            </div>
-          </div>
-
-          <div className="max-w-[1580px] flex lg:justify-end  justify-center  items-end">
-            <div className="max-w-[650px]   flex justify-center items-center rounded-[30px] bg-white text-black md:mx-0 mx-12  py-2 px-4 gap-4">
-              <span className="w-[173px] flex justify-center items-center font-['Poppins'] font-normal md:text-[150px] text-[80px]  tracking-[-8px]">
-                6
-              </span>
-              <p className="max-w-[411px] font-['Open_Sans'] font-normal md:text-[30px] text-[12px] lg:leading-[35px] lg:tracking-[-2px] flex justify-center items-center">
-                Biz siz bilan uzoq muddatli hamkorlik o‘rnatishga intilamiz va
-                biznesingizning rivojiga sherik bo‘lamiz.
-              </p>
-            </div>
-          </div>
-
-          <div className="max-w-[1580px] flex lg:justify-center  justify-center  items-center">
-            <div className="max-w-[1096px]   flex justify-center items-center rounded-[30px] bg-white text-black md:mx-0 mx-12  py-2 px-4 gap-4">
-              <span className="w-[173px] flex justify-center items-center font-['Poppins'] font-normal md:text-[150px] text-[80px]  tracking-[-8px]">
+          {/* Special centered item */}
+          <div
+            className="max-w-[1580px] flex justify-center items-center opacity-0 animate-fade-in-up"
+            style={{ animationDelay: "0.7s" }}
+          >
+            <div className="max-w-[1096px] flex justify-center items-center rounded-[30px] bg-white text-black mx-8 md:mx-0 py-2 px-4 gap-4 transition-all duration-300 hover:scale-105">
+              <span className="w-[173px] flex justify-center items-center font-['Poppins'] font-normal text-[80px] md:text-[120px] lg:text-[150px] tracking-[-8px]">
                 7
               </span>
-              <p className="max-w-[828px] font-['Open_Sans'] font-normal md:text-[30px] text-[12px] lg:leading-[35px] lg:tracking-[-2px] flex justify-center items-center">
+              <p className="max-w-[828px] font-['Open_Sans'] font-normal text-xs md:text-xl lg:text-3xl lg:leading-[35px] lg:tracking-[-2px] flex justify-center items-center">
                 Hamkorlik davomida nafaqat loyiha, balki sizning biznesingiz va
-                shaxsiy rivojlanishingiz ham parallel ravishda o‘sadi. Biz
-                natijaga yo‘naltirilgan strategiya va ijodiy yechimlar orqali
+                shaxsiy rivojlanishingiz ham parallel ravishda o'sadi. Biz
+                natijaga yo'naltirilgan strategiya va ijodiy yechimlar orqali
                 har bir qadamda siz bilan birga rivojlanamiz.
               </p>
             </div>
           </div>
         </div>
-      </div>
+      </section>
+
+      {/* FAQ Section - YANGI QO'SHILGAN */}
+      <section
+        ref={sectionRefs.faq}
+        id="faq"
+        className="mt-[150px] md:mt-[250px] px-4 md:px-8 opacity-0"
+      >
+        <div className="max-w-[1280px] mx-auto">
+          <h1 className="font-['Poppins'] font-normal text-[40px] md:text-[80px] lg:text-[120px] xl:text-[150px] lg:tracking-[-7px] tracking-[-3px] leading-10 md:leading-18 lg:leading-32 text-left mb-[60px] md:mb-[100px]">
+            Savollarga <br /> Javoblar :
+          </h1>
+
+          <div className="flex flex-col gap-6">
+            {faqData.map((faq, index) => (
+              <FaqItem
+                key={index}
+                question={faq.question}
+                answer={faq.answer}
+                index={index}
+              />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Contact Form Section - YANGI QO'SHILGAN */}
+      <section className="my-20 px-4 md:px-8">
+        <ContactForm />
+      </section>
+
+      {/* Footer Section - YANGI QO'SHILGAN */}
+      <footer>
+        <Footer />
+      </footer>
+
+      {/* Animatsiya stillari */}
+      <style jsx>{`
+        @keyframes fadeInUp {
+          from {
+            opacity: 0;
+            transform: translateY(30px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        @keyframes float {
+          0% {
+            transform: translateY(0px) rotate(7deg);
+          }
+          50% {
+            transform: translateY(-10px) rotate(7deg);
+          }
+          100% {
+            transform: translateY(0px) rotate(7deg);
+          }
+        }
+
+        .animate-fade-in-up {
+          animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        .animate-float {
+          animation: float 4s ease-in-out infinite;
+        }
+
+        .text-shadow-down {
+          text-shadow: 90px 30px 100px #a9a9a9;
+        }
+      `}</style>
     </div>
   );
 }
