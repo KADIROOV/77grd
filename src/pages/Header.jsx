@@ -53,7 +53,7 @@ export default function Header() {
       </button>
 
       <div
-        className={` fixed top-26 right-0 text-black flex flex-col items-center justify-center gap-4 py-2 h-72 w-full rounded-xl text-xl bg-white shadow-lg transform transition-transform duration-300 ease md:hidden
+        className={` fixed top-26 right-0 text-black flex flex-col items-center z-50  justify-center gap-4 py-2 h-72 w-full rounded-xl text-xl bg-white shadow-lg transform transition-transform duration-300 ease md:hidden
   ${isOpen ? "translate-x-0" : "translate-x-full"}`}
       >
         <button
