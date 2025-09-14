@@ -3,52 +3,32 @@ import { FaTelegram } from "react-icons/fa6";
 
 export default function Footer() {
   return (
-    <footer className="bg-black text-white py-12 px-4 md:px-8 border-t border-gray-800">
-      <div className="max-w-[1580px] mx-auto">
-        <div className="flex flex-col md:flex-row justify-between items-center">
-          <div className="mb-8 md:mb-0">
-            <h3 className="font-['Poppins'] font-medium text-2xl md:text-3xl">
-              77GRADE MARKETING AGENCY
-            </h3>
-            <p className="font-['Open_Sans'] font-normal text-sm md:text-base mt-2 text-gray-400">
-              Biznesingizni yangi bosqichga olib chiqing
-            </p>
-          </div>
+    <>
+      <div className="md:h-[170px] bg-white text-black py-12 px-[30px] md:px-[86px] rounded-t-[30px]">
+        <div className="flex justify-between items-center">
+          <h3 className="font-['Poppins'] font-medium text-[15px] lg:text-[50px]">
+            77GRADE MARKETING AGENCY
+          </h3>
 
-          <div className="flex flex-col items-center md:items-end">
-            <div className="flex space-x-4 mb-4">
+          <div>
+            <div className="flex items-center lg:gap-[70px] gap-[19px]">
               <a
                 href="#"
-                className="text-gray-400 hover:text-white transition-colors duration-200"
+                className="md:text-[70px] text-[30px]  text-black transition-all duration-200 transform hover:scale-110"
               >
-                <i className="fab fa-telegram text-xl"></i>
+                <FaInstagram />
               </a>
               <a
                 href="#"
-                className="text-gray-400 hover:text-white transition-colors duration-200"
+                className="md:text-[70px] text-[30px]  text-black transition-all duration-200 transform hover:scale-110"
               >
-                <i className="fab fa-instagram text-xl"></i>
-              </a>
-              <a
-                href="#"
-                className="text-gray-400 hover:text-white transition-colors duration-200"
-              >
-                <i className="fab fa-facebook text-xl"></i>
-              </a>
-              <a
-                href="#"
-                className="text-gray-400 hover:text-white transition-colors duration-200"
-              >
-                <i className="fab fa-youtube text-xl"></i>
+                <FaTelegram />
               </a>
             </div>
-            <div>
-              <FaInstagram />
-              <FaTelegram />
-            </div>
+            <div></div>
           </div>
         </div>
       </div>
-    </footer>
+    </>
   );
 }

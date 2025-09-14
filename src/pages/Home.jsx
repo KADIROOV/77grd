@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
-import Footer from "./Footer";
+import ContactForm from "./ContactForm";
+import { FiPlus } from "react-icons/fi";
 
 export default function Home() {
   const [phoneNumber, setPhoneNumber] = useState("");
@@ -91,7 +92,7 @@ export default function Home() {
   // Service card component - animatsiya qo'shilgan
   const ServiceCard = ({ title, description, imageSrc, altText, delay }) => (
     <div
-      className={`flex flex-col justify-between rounded-[40px] px-5 py-7 mx-8 md:mx-0 bg-white shadow-lg transform transition-all duration-400 hover:-translate-y-3 opacity-0 ${
+      className={`flex flex-col justify-between rounded-[40px]  pt-7 mx-8 md:mx-0 bg-white shadow-lg transform transition-all duration-400 hover:-translate-y-3 opacity-0 ${
         isVisible ? "animate-fade-in-up" : ""
       }`}
       style={{ animationDelay: delay }}
@@ -107,7 +108,7 @@ export default function Home() {
       <img
         src={imageSrc}
         alt={altText}
-        className="mx-auto max-h-[220px] object-contain"
+        className="max-w-[547px] mx-auto  max-h-[220px] object-contain"
       />
     </div>
   );
@@ -127,7 +128,7 @@ export default function Home() {
       } opacity-0 ${isVisible ? "animate-fade-in-up" : ""}`}
       style={{ animationDelay: delay }}
     >
-      <div className="lg:max-w-[747px] max-w-[684px] flex justify-center items-center rounded-[30px] bg-white text-black mx-8 md:mx-0 py-2 px-4 gap-4">
+      <div className="lg:max-w-[747px] max-w-[684px] flex justify-center items-center rounded-[20px] bg-white text-black mx-8 md:mx-0 py-2 px-4 gap-4">
         <span className="w-[173px] flex justify-center items-center font-['Poppins'] font-normal text-[80px] md:text-[120px] lg:text-[150px] tracking-[-8px]">
           {number}
         </span>
@@ -143,67 +144,29 @@ export default function Home() {
     <div>
       <div
         onClick={() => toggleFaq(index)}
-        className={`rounded-[20px] bg-white text-black overflow-hidden px-6 py-4 cursor-pointer hover:bg-gray-50 transition-colors duration-200 ${
-          openFaqIndex === index ? "max-h-96 opacity-100" : "max-h-18"
+        className={`md:rounded-[25px] rounded-[8px] relative  bg-white text-black overflow-hidden px-8 md:py-8 py-2  cursor-pointer hover:bg-gray-50 transition-colors duration-200 ${
+          openFaqIndex === index ? "max-h-96" : "max-h-[43px]  md:max-h-[81px]"
         }`}
       >
-        <div className="flex justify-between items-center">
-          <p className="font-['Poppins'] font-normal text-lg md:text-xl lg:text-2xl">
+        <div className="max-w-[211px] md:max-w-full mb-[31px]">
+          <p className="font-['Poppins'] font-normal md:text-[35px] text-[15px] tracking-[-1px] md:leading-[40px] leading-[15px]  md:tracking-[-3px]">
             {question}
           </p>
           <span
-            className="text-3xl md:text-4xl font-light transition-transform duration-200"
+            className="absolute right-4 md:top-6 top-3  text-2xl md:text-4xl ml-2 transition-transform duration-200"
             style={{
               transform: openFaqIndex === index ? "rotate(45deg)" : "rotate(0)",
             }}
           >
-            +
+            <FiPlus />
           </span>
         </div>
-        <div className="bg-white rounded-b-[20px] px-6 py-4">
-          <p className="font-['Open_Sans'] font-light text-base md:text-lg lg:text-xl text-black tracking-[-1px]">
+        <div>
+          <p
+            className={`font-['Open_Sans'] font-light text-base md:text-lg lg:text-xl text-black tracking-[-1px]`}
+          >
             {answer}
           </p>
-        </div>
-      </div>
-    </div>
-  );
-
-  // Contact Form Component
-  const ContactForm = () => (
-    <div className="max-w-[1580px] flex flex-col lg:flex-row justify-between items-center rounded-[50px] bg-white mx-10 md:mx-auto px-8 md:px-14 py-10 text-black mb-20">
-      <div className="w-full lg:w-1/2 mb-10 lg:mb-0">
-        <h2 className="font-['Poppins'] font-normal text-[30px] md:text-[50px] lg:text-[60px] leading-[34px] md:leading-[60px] lg:leading-[70px] tracking-[-3px]">
-          Qaysi xizmatni maslahat beramiz?
-        </h2>
-        <p className="font-['Open_Sans'] font-normal text-base md:text-lg mt-6 text-gray-700">
-          Taklifingiz bormi? Biz bilan bog'laning va mutaxassislarimiz sizga eng
-          yaxshi yechimni taklif qilishadi.
-        </p>
-      </div>
-
-      <div className="w-full lg:w-1/2">
-        <div className="flex flex-col gap-5">
-          <input
-            type="tel"
-            value={phoneNumber}
-            onChange={handlePhoneChange}
-            className="rounded-[14px] px-4 py-3 w-full outline-none border border-gray-300 text-[#333333] font-['Poppins'] font-light text-[15px] md:text-[18px] transition-colors duration-200 focus:border-black"
-            placeholder="+998-99-999-99-99"
-          />
-          <input
-            type="text"
-            value={clientName}
-            onChange={(e) => setClientName(e.target.value)}
-            className="rounded-[14px] px-4 py-3 w-full outline-none border border-gray-300 text-[#333333] font-['Poppins'] font-light text-[15px] md:text-[18px] transition-colors duration-200 focus:border-black"
-            placeholder="Ismingiz"
-          />
-          <button
-            onClick={handleSubmit}
-            className="cursor-pointer rounded-[14px] px-4 py-3 w-full outline-none bg-black text-white mb-[55px] font-['Poppins'] font-light text-[15px] md:text-[20px] transition-colors duration-200 hover:bg-gray-800"
-          >
-            Jo'natish
-          </button>
         </div>
       </div>
     </div>
@@ -353,7 +316,7 @@ export default function Home() {
           <p className="lg:max-w-[1054px] text-3xl md:text-5xl lg:text-6xl xl:text-[90px] leading-[40px] md:leading-[60px] lg:leading-[80px] xl:leading-[100px] mx-8 md:mx-0 text-start">
             Biz bilan birga biznesingizni yangi bosqichga olib chiqing!
           </p>
-          <button className="cursor-pointer w-[191px] lg:w-[290px] h-[60px] rounded-[20px] hover:bg-white hover:text-black border border-white font-normal text-[17px] md:text-[25px] md:tracking-[-2px] flex justify-center items-center mt-[86px] md:mt-[131px] mx-8 md:mx-0 transition-all duration-200 hover:scale-105">
+          <button className="cursor-pointer w-[191px] lg:w-[290px] md:h-[60px] h-[40px] rounded-[10px] hover:bg-white hover:text-black border border-white font-normal text-[17px] md:text-[25px] md:tracking-[-2px] flex justify-center items-center mt-[86px] md:mt-[131px] mx-8 md:mx-0 transition-all duration-200 hover:scale-105">
             Bog'lanish
           </button>
         </div>
@@ -397,8 +360,8 @@ export default function Home() {
           Xizmatlarimiz va narxlar haqida ko'proq ma'lumot olmoqchimisiz ?
         </h1>
 
-        <div className="max-w-[1580px] flex lg:flex-row flex-col lg:justify-around justify-center items-center lg:text-left md:text-center rounded-[50px] bg-white mx-10 md:mx-auto px-14 text-black mb-[151px] md:mb-[303px] lg:mb-[441px] transition-all duration-500 hover:shadow-2xl">
-          <h2 className="max-w-[601px] font-['Poppins'] font-normal text-[30px] md:text-[60px] lg:text-[80px] xl:text-[90px] leading-[34px] md:leading-[70px] lg:leading-[80px] tracking-[-3px] mt-[42px]">
+        <div className="max-w-[1580px] flex lg:flex-row flex-col lg:justify-around justify-center items-center lg:text-left md:text-center rounded-[30px] bg-white mx-14 md:mx-auto md:px-14 px-[42px] md:py-0 py-[40px] text-black mb-[151px] md:mb-[303px] lg:mb-[441px] transition-all duration-500 hover:shadow-2xl">
+          <h2 className="max-w-[601px] font-['Poppins'] font-normal text-[30px] md:text-[60px] lg:text-[80px] xl:text-[90px] leading-[34px] md:leading-[70px] lg:leading-[80px] tracking-[-3px] md:mt-[42px]">
             Unda biz bilan bog'laning !
           </h2>
 
@@ -407,7 +370,7 @@ export default function Home() {
               type="tel"
               value={phoneNumber}
               onChange={handlePhoneChange}
-              className="rounded-[14px] px-4 py-2 w-[218px] md:w-[317px] lg:w-[360px] outline-none border border-black text-[#333333] mt-[55px] font-['Poppins'] font-light text-[15px] md:text-[20px] lg:text-[25px] transition-all duration-300 focus:scale-105 focus:shadow-md"
+              className="rounded-[14px] px-4 py-2 w-[218px] md:w-[317px] lg:w-[360px] outline-none border border-black text-[#333333] md:mt-[55px] mt-[27px] font-['Poppins'] font-light text-[15px] md:text-[20px] lg:text-[25px] transition-all duration-300 focus:scale-105 focus:shadow-md"
               placeholder="+998-99-999-99-99"
             />
             <input
@@ -419,7 +382,7 @@ export default function Home() {
             />
             <button
               onClick={handleSubmit}
-              className="cursor-pointer rounded-[14px] px-4 py-2 w-[218px] md:w-[317px] lg:w-[360px] outline-none border border-black text-[#333333] mb-[55px] font-['Poppins'] font-light text-[15px] md:text-[25px] lg:text-[30px] hover:bg-gray-50 transition-all duration-300 hover:scale-105"
+              className="cursor-pointer rounded-[14px] px-4 py-2 w-[218px] md:w-[317px] lg:w-[360px] outline-none border border-black text-[#333333] md:mb-[55px] font-['Poppins'] font-light text-[15px] md:text-[25px] lg:text-[30px] hover:bg-gray-50 transition-all duration-300 hover:scale-105"
             >
               Ariza qoldirish
             </button>
@@ -430,10 +393,10 @@ export default function Home() {
       {/* Why Choose Us Section */}
       <section ref={sectionRefs.whyWe} id="whyWe" className="md:mx-4 opacity-0">
         <div className="max-w-[1380px] lg:px-0 md:px-0 px-[45px] flex flex-col">
-          <h1 className="font-['Poppins'] font-normal text-[50px] md:text-[120px] lg:text-[150px] xl:text-[200px] lg:tracking-[-7px] tracking-[-3px] text-left mb-[40px] lg:mb-[158px]">
+          <h1 className="font-['Poppins'] font-normal text-[60px] md:text-[120px] lg:text-[150px] xl:text-[200px] lg:tracking-[-7px] tracking-[-3px] text-left mb-[40px] lg:mb-[158px]">
             Nega Biz?
           </h1>
-          <h1 className="font-['Poppins'] font-normal text-[50px] md:text-[120px] lg:text-[150px] xl:text-[200px] lg:tracking-[-7px] tracking-[-3px] text-right mb-[80px] lg:mb-[131px]">
+          <h1 className="font-['Poppins'] font-normal text-[60px] md:text-[120px] lg:text-[150px] xl:text-[200px] lg:tracking-[-7px] tracking-[-3px] text-right mb-[80px] lg:mb-[131px]">
             Chunki:
           </h1>
         </div>
@@ -448,7 +411,7 @@ export default function Home() {
             className="max-w-[1580px] flex justify-center items-center opacity-0 animate-fade-in-up"
             style={{ animationDelay: "0.7s" }}
           >
-            <div className="max-w-[1096px] flex justify-center items-center rounded-[30px] bg-white text-black mx-8 md:mx-0 py-2 px-4 gap-4 transition-all duration-300 hover:scale-105">
+            <div className="max-w-[1096px] flex justify-center items-center rounded-[20px] bg-white text-black mx-8 md:mx-0 py-2 px-4 gap-4 transition-all duration-300 hover:scale-105">
               <span className="w-[173px] flex justify-center items-center font-['Poppins'] font-normal text-[80px] md:text-[120px] lg:text-[150px] tracking-[-8px]">
                 7
               </span>
@@ -467,14 +430,14 @@ export default function Home() {
       <section
         ref={sectionRefs.faq}
         id="faq"
-        className="mt-[150px] md:mt-[250px] px-4 md:px-8 opacity-0"
+        className="mt-[65px] md:mt-[250px] px-4 md:px-8 opacity-0"
       >
         <div className="max-w-[1280px] mx-auto">
           <h1 className="font-['Poppins'] font-normal text-[40px] md:text-[80px] lg:text-[120px] xl:text-[150px] lg:tracking-[-7px] tracking-[-3px] leading-10 md:leading-18 lg:leading-32 text-left mb-[60px] md:mb-[100px]">
             Savollarga <br /> Javoblar :
           </h1>
 
-          <div className="flex flex-col gap-6">
+          <div className="flex flex-col gap-[47px]">
             {faqData.map((faq, index) => (
               <FaqItem
                 key={index}
@@ -488,16 +451,9 @@ export default function Home() {
       </section>
 
       {/* Contact Form Section - YANGI QO'SHILGAN */}
-      <section className="my-20 px-4 md:px-8">
+      <section>
         <ContactForm />
       </section>
-
-      {/* Footer Section - YANGI QO'SHILGAN */}
-      <footer>
-        <Footer />
-      </footer>
-
-      {/* Animatsiya stillari */}
       <style jsx>{`
         @keyframes fadeInUp {
           from {

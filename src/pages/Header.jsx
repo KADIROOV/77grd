@@ -11,9 +11,9 @@ export default function Header() {
     >
       <a href="#home">
         <img
-          src="/images/logo_image.svg"
+          src="/images/logo_img.svg"
           alt="77 Logo image"
-          className="w-[61px] h-[78px]"
+          className="lg:w-[61px] md:w-[54px] w-[43px]"
         />
       </a>
       <nav className="md:flex hidden justify-center items-center lg:gap-[76px] gap-[37px] lg:text-[25px] text-[18px]">
@@ -46,9 +46,9 @@ export default function Header() {
         onClick={() => setIsOpen(!isOpen)}
       >
         {isOpen ? (
-          <IoMdClose className="w-7 h-7 hidden" />
+          <IoMdClose className="w-[43px] h-[24px] hidden" />
         ) : (
-          <RxHamburgerMenu className="w-7 h-7" />
+          <RxHamburgerMenu className="w-[43px] h-[24px]" />
         )}
       </button>
 
