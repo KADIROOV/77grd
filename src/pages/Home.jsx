@@ -8,6 +8,27 @@ export default function Home() {
   const [isVisible, setIsVisible] = useState(false);
   const [openFaqIndex, setOpenFaqIndex] = useState(null);
   const [isFaqAnimating, setIsFaqAnimating] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ phoneNumber, clientName }),
+      });
+
+      if (res.ok) {
+        setShowModal(true); // modalni ochish
+      } else {
+        setShowModal(true);
+      }
+    } catch (err) {
+      console.error("Error:", err);
+    }
+  };
 
   const sectionRefs = {
     hero: useRef(null),
@@ -75,11 +96,6 @@ export default function Home() {
 
   const handlePhoneChange = (e) => {
     setPhoneNumber(formatPhoneNumber(e.target.value));
-  };
-
-  const handleSubmit = () => {
-    // Form submit logic bu yerga
-    console.log("Phone:", phoneNumber, "Name:", clientName);
   };
 
   // FAQ toggle function - animatsiyasiz
@@ -282,25 +298,25 @@ export default function Home() {
       question:
         "Tadbirkor uchun shaxsiy brend rivojlantirish nima uchun zarur?",
       answer:
-        "Shaxsiy brend sizga raqobatdosh ustunlik beradi, mijozlar ishonchini oshiradi va sizni sohangizning yetakchi mutaxassisi sifatida ko'rsatadi. Bu esa yangi imkoniyatlar va hamkorliklar ochadi.",
+        "Shaxsiy brend — bu tadbirkorning yuzidir. U orqali siz mijoz va hamkorlarda ishonch uyg‘otasiz, raqobatchilardan ajralib turasiz va o‘z sohangizda ekspert sifatida tanilasiz. Kuchli brend esa sizga barqaror obro‘ va cheksiz imkoniyatlar eshigini ochadi.",
       delay: "0.2s",
     },
     {
       question: "Veb-sayt ijtimoiy tarmoqlardan qaysi jihatlarda ustun?",
       answer:
-        "Veb-sayt - bu sizning onlayn ofisingiz. U doimiy, ishonchli va barcha ma'lumotlaringizni bitta joyda jamlaydi. Ijtimoiy tarmoqlar algoritmlarga bog'liq, veb-sayt esa to'liq sizning nazoratingizda.",
+        "Veb-sayt biznesingiz uchun 24/7 ishlaydi: mijozlar kunu-tun ma’lumot olishi, buyurtma berishi yoki bog‘lanishi mumkin. Shu bilan birga, professional sayt kompaniyaning obro‘sini oshiradi va uni ijtimoiy tarmoqlardan ko‘ra ishonchliroq ko‘rsatadi.",
       delay: "0.3s",
     },
     {
       question: "Marketing SMM o'zi kerakmi va nimaga?",
       answer:
-        "SMM - bu zamonaviy marketingning muhim qismi. U auditoriya bilan to'g'ridan-to'g'ri aloqa o'rnatish, brendni insoniylashtirish va sotuvlarni oshirish imkoniyatini beradi. Lekin u boshqa marketing kanallari bilan integratsiyada eng yaxshi samara beradi.",
+        "Marketing va SMM biznes uchun zarur, chunki ular mahsulot va xizmatlarni to‘g‘ri auditoriyaga yetkazadi, brendni tanitadi, mijozlarni jalb qiladi, savdoni oshiradi va kompaniyaning obro‘sini mustahkamlaydi.",
       delay: "0.4s",
     },
     {
       question: "Qaysi xizmatni maslahat beramiz?",
       answer:
-        "Biz sizning biznesingizni tahlil qilamiz va ehtiyojlaringizga qarab eng samarali yechimni taklif etamiz. Ba'zi mijozlar uchun faqat SMM yetarli bo'lsa, boshqalari uchun kompleks yondashuv kerak bo'ladi.",
+        "Biz sizga special taklifni tavsiya qilamiz, chunki u biznesingizni har tomonlama rivojlantiradi: obro‘ni mustahkamlaydi , savdoni oshiradi va yangi mijozlarni jalb qilishda yordam beradi. Shu orqali siz qisqa muddatda natija ko‘rib , uzoq muddatli barqaror o‘sishga erishasiz.",
       delay: "0.5s",
     },
   ];
@@ -365,7 +381,10 @@ export default function Home() {
             Unda biz bilan bog'laning !
           </h2>
 
-          <div className="flex flex-col lg:items-start items-center justify-center gap-3 md:gap-[26px]">
+          <form
+            onSubmit={handleSubmit}
+            className="flex flex-col lg:items-start items-center justify-center gap-3 md:gap-[26px]"
+          >
             <input
               type="tel"
               value={phoneNumber}
@@ -381,14 +400,37 @@ export default function Home() {
               placeholder="Ismingiz"
             />
             <button
-              onClick={handleSubmit}
+              type="submit"
               className="cursor-pointer rounded-[14px] px-4 py-2 w-[218px] md:w-[317px] lg:w-[360px] outline-none border border-black text-[#333333] md:mb-[55px] font-['Poppins'] font-light text-[15px] md:text-[25px] lg:text-[30px] hover:bg-gray-50 transition-all duration-300 hover:scale-105"
             >
               Ariza qoldirish
             </button>
-          </div>
+          </form>
         </div>
       </section>
+
+      {showModal && (
+        <div
+          onClick={() => setShowModal(false)} // tashqariga bosganda yopiladi
+          className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50"
+        >
+          <div
+            onClick={(e) => e.stopPropagation()} // ichiga bosganda yopilmasin
+            className="bg-white rounded-[30px] text-black max-w-[615px] px-6 py-14 relative text-center shadow-lg"
+          >
+            <button
+              onClick={() => setShowModal(false)}
+              className="absolute top-0 right-6 font-light text-[70px]"
+            >
+              ×
+            </button>
+
+            <p className="font-['Poppins'] text-xl md:text-[30px] font-normal mx-15 my-10">
+              Arizangiz jo‘natildi tez orada siz bilan bog‘lanamiz!
+            </p>
+          </div>
+        </div>
+      )}
 
       {/* Why Choose Us Section */}
       <section ref={sectionRefs.whyWe} id="whyWe" className="md:mx-4 opacity-0">
@@ -452,7 +494,13 @@ export default function Home() {
 
       {/* Contact Form Section - YANGI QO'SHILGAN */}
       <section>
-        <ContactForm />
+        <ContactForm
+          phoneNumber={phoneNumber}
+          handlePhoneChange={handlePhoneChange}
+          clientName={clientName}
+          handleSubmit={handleSubmit}
+          setClientName={setClientName}
+        />
       </section>
       <style jsx>{`
         @keyframes fadeInUp {
