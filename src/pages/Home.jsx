@@ -491,8 +491,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-      {/* Contact Form Section - YANGI QO'SHILGAN */}
       <section>
         <ContactForm
           phoneNumber={phoneNumber}
