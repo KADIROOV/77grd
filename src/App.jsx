@@ -15,7 +15,7 @@ export default function App() {
         className="absolute left-0 top-[2417px] hidden md:block  z-0"
         alt=""
       />
-      
+
       <div className="relative z-10">
         <Header />
         <Home />
