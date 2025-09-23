@@ -13,7 +13,7 @@ export default function Header() {
         <img
           src="/images/logo_img.svg"
           alt="77 Logo image"
-          className="lg:w-[61px] md:w-[54px] w-[43px]"
+          className="lg:w-[78px] md:w-[64px] w-[53px]"
         />
       </a>
       <nav className="md:flex hidden justify-center items-center lg:gap-[76px] gap-[37px] lg:text-[25px] text-[18px]">

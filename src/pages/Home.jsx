@@ -5,9 +5,9 @@ import { FiPlus } from "react-icons/fi";
 export default function Home() {
   const [phoneNumber, setPhoneNumber] = useState("");
   const [clientName, setClientName] = useState("");
+  const [clientComment, setClientComment] = useState("");
   const [isVisible, setIsVisible] = useState(false);
   const [openFaqIndex, setOpenFaqIndex] = useState(null);
-  const [isFaqAnimating, setIsFaqAnimating] = useState(false);
   const [showModal, setShowModal] = useState(false);
 
   const handleSubmit = async (e) => {
@@ -17,13 +17,17 @@ export default function Home() {
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ phoneNumber, clientName }),
+        body: JSON.stringify({ phoneNumber, clientName, clientComment }),
       });
 
       if (res.ok) {
-        setShowModal(true); // modalni ochish
+        setShowModal(true);
+        // modalni ochish
       } else {
         setShowModal(true);
+        setPhoneNumber("");
+        setClientName("");
+        setClientComment("");
       }
     } catch (err) {
       console.error("Error:", err);
@@ -100,32 +104,48 @@ export default function Home() {
 
   // FAQ toggle function - animatsiyasiz
   const toggleFaq = (index) => {
-    if (isFaqAnimating) return;
-
     setOpenFaqIndex(openFaqIndex === index ? null : index);
   };
 
   // Service card component - animatsiya qo'shilgan
-  const ServiceCard = ({ title, description, imageSrc, altText, delay }) => (
+  const ServiceCard = ({
+    id,
+    title,
+    description,
+    imageSrc,
+    altText,
+    delay,
+  }) => (
     <div
-      className={`flex flex-col justify-between rounded-[40px]  pt-7 mx-8 md:mx-0 bg-white shadow-lg transform transition-all duration-400 hover:-translate-y-3 opacity-0 ${
+      className={`md:max-w-[520px] mx-auto md:rounded-[80px] rounded-[30px] md:mx-0 bg-white shadow-lg transform transition-all duration-400 hover:-translate-y-3 opacity-0 ${
         isVisible ? "animate-fade-in-up" : ""
       }`}
       style={{ animationDelay: delay }}
     >
-      <div>
-        <h4 className="font-['Poppins'] font-medium text-2xl md:text-3xl lg:text-4xl text-black tracking-[-2px] text-center">
+      <div className="pt-10 lg:px-[44px] px-[30px]">
+        <h4 className="font-['Poppins'] font-medium text-2xl md:text-[60px] lg:text-[60px] text-black md:tracking-[-5px] text-center">
           {title}
         </h4>
-        <p className="max-w-[90%] mx-auto font-['Poppins'] font-normal text-sm md:text-base lg:text-xl text-[#424242] mt-6 mb-6 md:mb-8 text-center">
-          {description}
-        </p>
+        {id === 1 ? (
+          <p className="w-[96%] mt-8 md:mb-[80px] mb-[10px] font-['Poppins'] font-normal text-sm md:text-xl lg:text-[25px] text-[#424242] text-left">
+            {description}
+          </p>
+        ) : (
+          <p className="w-[96%] mt-8 md:mb-[30px] mb-[10px] font-['Poppins'] font-normal text-sm md:text-xl lg:text-[25px] text-[#424242] text-left">
+            {description}
+          </p>
+        )}
       </div>
-      <img
-        src={imageSrc}
-        alt={altText}
-        className="max-w-[547px] mx-auto  max-h-[220px] object-contain"
-      />
+
+      {id === 4 ? (
+        <img src={imageSrc} alt={altText} className="" />
+      ) : (
+        <img
+          src={imageSrc}
+          alt={altText}
+          className="md:w-[300px]  lg:w-[349px] mx-auto"
+        />
+      )}
     </div>
   );
 
@@ -160,17 +180,19 @@ export default function Home() {
     <div>
       <div
         onClick={() => toggleFaq(index)}
-        className={`md:rounded-[25px] rounded-[8px] relative  bg-white text-black overflow-hidden px-8 md:py-8 py-2  cursor-pointer hover:bg-gray-50 transition-all duration-300 ${
-          openFaqIndex === index ? "max-h-96" : "max-h-[48px]  md:max-h-[99px]"
+        className={`faq md:rounded-[25px] rounded-[8px] relative  bg-white text-black overflow-hidden px-8 md:py-8 py-2  cursor-pointer ${
+          openFaqIndex === index
+            ? "max-h-96 "
+            : " max-h-[58px]  md:max-h-[110px]"
         }`}
       >
-        <div className="max-w-[211px] md:max-w-full mb-[31px]">
-          <p className="font-['Poppins'] font-normal md:text-[38px] text-[18px] tracking-[-1px] md:leading-[40px] leading-[15px]  md:tracking-[-3px]">
+        <div className="max-w-full mb-[31px]">
+          <p className="font-['Poppins'] font-normal md:pt-0 mt-3  md:text-[38px] text-[18px] tracking-[-1px] md:leading-[40px] leading-[16px]  md:tracking-[-3px]">
             {question}
           </p>
-          <span className="absolute right-4 md:top-8 top-3 text-2xl md:text-4xl ml-2">
+          <span className="absolute right-3 md:top-8 top-4 text-2xl md:text-4xl ml-2">
             <FiPlus
-              className={`transition-transform duration-800 ease-in-out ${
+              className={`transition-all duration-800 ease ${
                 openFaqIndex === index ? "rotate-45" : "rotate-0"
               }`}
             />
@@ -178,7 +200,7 @@ export default function Home() {
         </div>
         <div>
           <p
-            className={`font-['Open_Sans'] font-light text-[18px] md:text-[20px] lg:text-[22px] text-black tracking-[-1px]`}
+            className={`font-['Open_Sans'] mb-[10px] font-light text-[16px] md:text-[20px] lg:text-[22px] text-black md:tracking-[-1px]`}
           >
             {answer}
           </p>
@@ -190,6 +212,7 @@ export default function Home() {
   // Services data
   const services = [
     {
+      id: 1,
       title: "Marketing",
       description:
         "Biznesingizni ijtimoiy tarmoqlarda ommalashtirish, sotuv va obunachilar oqimini ko'paytirish.",
@@ -198,6 +221,7 @@ export default function Home() {
       delay: "0.1s",
     },
     {
+      id: 2,
       title: "Website",
       description:
         "Kompaniyangiz uchun zamonaviy va qulay web-site yaratish, mijozlar bilan aloqa va savdolarni onlayn rivojlantirish.",
@@ -206,6 +230,7 @@ export default function Home() {
       delay: "0.2s",
     },
     {
+      id: 3,
       title: "Shaxsiy brend",
       description:
         "Tadbirkor yoki mutaxassis sifatida onlayn imidjingizni shakllantirish, kontent va reklama orqali ko'proq auditoriyaga yetib borish.",
@@ -214,6 +239,7 @@ export default function Home() {
       delay: "0.3s",
     },
     {
+      id: 4,
       title: "Brending",
       description:
         "Logotip, firma uslubi va marketing materiallari orqali brend imidjini shakllantirish, mustahkamlash hamda uni auditoriya xotirasida esda qolarli qilish.",
@@ -222,7 +248,8 @@ export default function Home() {
       delay: "0.4s",
     },
     {
-      title: "Telegram bot",
+      id: 5,
+      title: "Telegram-bot",
       description:
         "Mijozlar bilan ishlashni avtomatlashtirish, buyurtmalarni boshqarish va sotuvlarni yengillashtirish vositasi.",
       imageSrc: "/images/card5_img.png",
@@ -230,6 +257,7 @@ export default function Home() {
       delay: "0.5s",
     },
     {
+      id: 6,
       title: "Special Taklif",
       description:
         "Biznesingizni ijtimoiy tarmoqlarda ommalashtirish, mijozlar oqimini ko'paytirish, zamonaviy veb-sayt yaratish va kuchli brend imidjini shakllantirish.",
@@ -321,17 +349,17 @@ export default function Home() {
   ];
 
   return (
-    <div className="max-w-[1580px] mx-auto transition-all ease duration-800">
+    <div className="max-w-[1580px] mx-auto p-2 transition-all ease duration-800">
       {/* Hero Section */}
       <div
         ref={sectionRefs.hero}
         className="mt-[207px] md:mt-[215px] flex lg:justify-center items-start px-2 opacity-0"
       >
         <div className="hero-1">
-          <p className="lg:max-w-[1054px] text-[40px] md:text-5xl lg:text-6xl xl:text-[90px] leading-[50px] md:leading-[60px] lg:leading-[80px] xl:leading-[100px] mx-8 md:mx-0 text-start">
+          <p className="lg:max-w-[1054px] text-[40px] md:text-5xl lg:text-6xl xl:text-[90px] leading-[50px] md:leading-[60px] lg:leading-[80px] xl:leading-[100px] mx-[33px] md:mx-0 text-start">
             Biz bilan birga biznesingizni yangi bosqichga olib chiqing!
           </p>
-          <button className="cursor-pointer w-[191px] lg:w-[290px] md:h-[60px] h-[40px] rounded-[10px] hover:bg-white hover:text-black border border-white font-normal text-[17px] md:text-[25px] md:tracking-[-2px] flex justify-center items-center mt-[86px] md:mt-[131px] mx-8 md:mx-0 transition-all duration-200 hover:scale-105">
+          <button className="cursor-pointer w-[191px] lg:w-[290px] md:h-[60px] h-[40px] rounded-[10px] hover:bg-white hover:text-black border border-white font-normal text-[17px] md:text-[25px] md:tracking-[-2px] flex justify-center items-center mt-[86px] md:mt-[131px] mx-8 md:mx-0 transition-all duration-200">
             Bog'lanish
           </button>
         </div>
@@ -344,21 +372,21 @@ export default function Home() {
       <section
         ref={sectionRefs.services}
         id="services"
-        className="mt-[234px] md:mt-[321px] max-w-full mx-auto px-4 opacity-0"
+        className="mt-[234px] md:mt-[321px] mx-auto px-12 opacity-0"
       >
-        <h2 className="font-['Poppins'] font-medium text-3xl md:text-5xl lg:text-[70px] md:tracking-[-4px] tracking-[-2px] text-white text-center">
+        <h2 className="font-['Poppins'] font-medium text-[30px] md:text-[50px] lg:text-[70px] md:tracking-[-4px] tracking-[-2px] text-white text-center">
           Xizmatlarimiz :
         </h2>
 
         {/* First row of services */}
-        <div className="mt-[47px] md:mt-[163px] grid grid-cols-1 lg:grid-cols-3 gap-[34px]  md:gap-[50px]">
+        <div className="mt-[47px] md:mt-[163px] grid grid-cols-1 lg:grid-cols-3 gap-[34px]  md:gap-[27px] lg:gap-[50px]">
           {services.slice(0, 3).map((service, index) => (
             <ServiceCard key={index} {...service} />
           ))}
         </div>
 
         {/* Second row of services */}
-        <div className="md:mt-[163px] mt-[34px]  grid grid-cols-1 md:grid-cols-3 gap-[34px]  md:gap-[50px]">
+        <div className="lg:mt-[163px] mt-[34px]  grid grid-cols-1 lg:grid-cols-3 gap-[34px]  md:gap-[27px] lg:gap-[50px]">
           {services.slice(3, 6).map((service, index) => (
             <ServiceCard key={index + 3} {...service} />
           ))}
@@ -471,14 +499,14 @@ export default function Home() {
       <section
         ref={sectionRefs.faq}
         id="faq"
-        className="mt-[65px] md:mt-[250px] px-4 md:px-8 opacity-0"
+        className="mt-[65px] md:mt-[250px] px-7 md:px-8 opacity-0 "
       >
         <div className="max-w-[1280px] mx-auto">
           <h1 className="font-['Poppins'] font-normal text-[40px] md:text-[80px] lg:text-[120px] xl:text-[150px] lg:tracking-[-7px] tracking-[-3px] leading-10 md:leading-18 lg:leading-32 text-left mb-[60px] md:mb-[100px]">
             Savollarga <br /> Javoblar :
           </h1>
 
-          <div className="flex flex-col gap-[47px] transition-all duration-200">
+          <div className="flex flex-col md:gap-[47px] gap-[15px] transition-all duration-200">
             {faqData.map((faq, index) => (
               <FaqItem
                 key={index}
@@ -497,6 +525,8 @@ export default function Home() {
           clientName={clientName}
           handleSubmit={handleSubmit}
           setClientName={setClientName}
+          setClientComment={setClientComment}
+          clientComment={clientComment}
         />
       </section>
       <style jsx>{`

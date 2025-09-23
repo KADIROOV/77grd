@@ -47,19 +47,8 @@ nav a {
   transition: all 0.2s ease;
 }
 
-nav a::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  height: 2px;
-  width: 0;
-  background-color: #ffff;
-  transition: width 0.3s ease;
-}
-
-nav a:hover::after {
-  width: 100%;
+nav a:hover {
+  color: #808080;
 }
 
 nav .contact-a {
@@ -73,7 +62,8 @@ nav .contact-a {
 }
 
 .contact-a:hover {
-  border: solid 1px #808080;
+  background-color: white;
+  color: black;
 }
 
 .contact-a:hover::after {
@@ -101,6 +91,3 @@ select {
 }
 
 /* index.css */
-.text-shadow-down {
-  text-shadow: 0 100px 90px rgba(255, 251, 251, 0.35);
-}
