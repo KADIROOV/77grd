@@ -14,13 +14,13 @@ export default function Footer() {
             <div className="flex items-center lg:gap-[70px] gap-[19px]">
               <a
                 href="https://www.instagram.com/sarvar.devmrks"
-                className="md:text-[70px] text-[30px]  text-black transition-all duration-200 transform hover:scale-110"
+                className="md:text-[70px] text-[30px]  text-black"
               >
                 <FaInstagram />
               </a>
               <a
                 href="https://t.me/@grade77agency"
-                className="md:text-[70px] text-[30px]  text-black transition-all duration-200 transform hover:scale-110"
+                className="md:text-[70px] text-[30px]  text-black"
               >
                 <FaTelegram />
               </a>

@@ -160,26 +160,25 @@ export default function Home() {
     <div>
       <div
         onClick={() => toggleFaq(index)}
-        className={`md:rounded-[25px] rounded-[8px] relative  bg-white text-black overflow-hidden px-8 md:py-8 py-2  cursor-pointer hover:bg-gray-50 transition-colors duration-200 ${
-          openFaqIndex === index ? "max-h-96" : "max-h-[43px]  md:max-h-[81px]"
+        className={`md:rounded-[25px] rounded-[8px] relative  bg-white text-black overflow-hidden px-8 md:py-8 py-2  cursor-pointer hover:bg-gray-50 transition-all duration-300 ${
+          openFaqIndex === index ? "max-h-96" : "max-h-[48px]  md:max-h-[99px]"
         }`}
       >
         <div className="max-w-[211px] md:max-w-full mb-[31px]">
-          <p className="font-['Poppins'] font-normal md:text-[35px] text-[15px] tracking-[-1px] md:leading-[40px] leading-[15px]  md:tracking-[-3px]">
+          <p className="font-['Poppins'] font-normal md:text-[38px] text-[18px] tracking-[-1px] md:leading-[40px] leading-[15px]  md:tracking-[-3px]">
             {question}
           </p>
-          <span
-            className="absolute right-4 md:top-6 top-3  text-2xl md:text-4xl ml-2 transition-transform duration-200"
-            style={{
-              transform: openFaqIndex === index ? "rotate(45deg)" : "rotate(0)",
-            }}
-          >
-            <FiPlus />
+          <span className="absolute right-4 md:top-8 top-3 text-2xl md:text-4xl ml-2">
+            <FiPlus
+              className={`transition-transform duration-800 ease-in-out ${
+                openFaqIndex === index ? "rotate-45" : "rotate-0"
+              }`}
+            />
           </span>
         </div>
         <div>
           <p
-            className={`font-['Open_Sans'] font-light text-base md:text-lg lg:text-xl text-black tracking-[-1px]`}
+            className={`font-['Open_Sans'] font-light text-[18px] md:text-[20px] lg:text-[22px] text-black tracking-[-1px]`}
           >
             {answer}
           </p>
@@ -329,7 +328,7 @@ export default function Home() {
         className="mt-[207px] md:mt-[215px] flex lg:justify-center items-start px-2 opacity-0"
       >
         <div className="hero-1">
-          <p className="lg:max-w-[1054px] text-3xl md:text-5xl lg:text-6xl xl:text-[90px] leading-[40px] md:leading-[60px] lg:leading-[80px] xl:leading-[100px] mx-8 md:mx-0 text-start">
+          <p className="lg:max-w-[1054px] text-[40px] md:text-5xl lg:text-6xl xl:text-[90px] leading-[50px] md:leading-[60px] lg:leading-[80px] xl:leading-[100px] mx-8 md:mx-0 text-start">
             Biz bilan birga biznesingizni yangi bosqichga olib chiqing!
           </p>
           <button className="cursor-pointer w-[191px] lg:w-[290px] md:h-[60px] h-[40px] rounded-[10px] hover:bg-white hover:text-black border border-white font-normal text-[17px] md:text-[25px] md:tracking-[-2px] flex justify-center items-center mt-[86px] md:mt-[131px] mx-8 md:mx-0 transition-all duration-200 hover:scale-105">
@@ -352,14 +351,14 @@ export default function Home() {
         </h2>
 
         {/* First row of services */}
-        <div className="mt-[47px] md:mt-[163px] grid grid-cols-1 lg:grid-cols-3 gap-[50px]">
+        <div className="mt-[47px] md:mt-[163px] grid grid-cols-1 lg:grid-cols-3 gap-[34px]  md:gap-[50px]">
           {services.slice(0, 3).map((service, index) => (
             <ServiceCard key={index} {...service} />
           ))}
         </div>
 
         {/* Second row of services */}
-        <div className="mt-[163px] grid grid-cols-1 md:grid-cols-3 gap-[50px]">
+        <div className="md:mt-[163px] mt-[34px]  grid grid-cols-1 md:grid-cols-3 gap-[34px]  md:gap-[50px]">
           {services.slice(3, 6).map((service, index) => (
             <ServiceCard key={index + 3} {...service} />
           ))}
@@ -389,19 +388,19 @@ export default function Home() {
               type="tel"
               value={phoneNumber}
               onChange={handlePhoneChange}
-              className="rounded-[14px] px-4 py-2 w-[218px] md:w-[317px] lg:w-[360px] outline-none border border-black text-[#333333] md:mt-[55px] mt-[27px] font-['Poppins'] font-light text-[15px] md:text-[20px] lg:text-[25px] transition-all duration-300 focus:scale-105 focus:shadow-md"
+              className="rounded-[14px] px-4 py-2 w-[218px] md:w-[317px] lg:w-[360px] outline-none border border-black text-[#333333] md:mt-[55px] mt-[27px] font-['Poppins'] font-light text-[15px] md:text-[20px] lg:text-[25px]"
               placeholder="+998-99-999-99-99"
             />
             <input
               type="text"
               value={clientName}
               onChange={(e) => setClientName(e.target.value)}
-              className="rounded-[14px] px-4 py-2 w-[218px] md:w-[317px] lg:w-[360px] outline-none border border-black text-[#333333] font-['Poppins'] font-light text-[15px] md:text-[20px] lg:text-[25px] transition-all duration-300 focus:scale-105 focus:shadow-md"
+              className="rounded-[14px] px-4 py-2 w-[218px] md:w-[317px] lg:w-[360px] outline-none border border-black text-[#333333] font-['Poppins'] font-light text-[15px] md:text-[20px] lg:text-[25px]"
               placeholder="Ismingiz"
             />
             <button
               type="submit"
-              className="cursor-pointer rounded-[14px] px-4 py-2 w-[218px] md:w-[317px] lg:w-[360px] outline-none border border-black text-[#333333] md:mb-[55px] font-['Poppins'] font-light text-[15px] md:text-[25px] lg:text-[30px] hover:bg-gray-50 transition-all duration-300 hover:scale-105"
+              className="cursor-pointer rounded-[14px] px-4 py-2 w-[218px] md:w-[317px] lg:w-[360px] outline-none border border-black text-[#333333] md:mb-[55px] font-['Poppins'] font-light text-[15px] md:text-[25px] lg:text-[30px] transition-all duration-200 hover:bg-black hover:text-white"
             >
               Ariza qoldirish
             </button>
@@ -453,7 +452,7 @@ export default function Home() {
             className="max-w-[1580px] flex justify-center items-center opacity-0 animate-fade-in-up"
             style={{ animationDelay: "0.7s" }}
           >
-            <div className="max-w-[1096px] flex justify-center items-center rounded-[20px] bg-white text-black mx-8 md:mx-0 py-2 px-4 gap-4 transition-all duration-300 hover:scale-105">
+            <div className="max-w-[1096px] flex justify-center items-center rounded-[20px] bg-white text-black mx-8 md:mx-0 py-2 px-4 gap-4">
               <span className="w-[173px] flex justify-center items-center font-['Poppins'] font-normal text-[80px] md:text-[120px] lg:text-[150px] tracking-[-8px]">
                 7
               </span>
@@ -479,7 +478,7 @@ export default function Home() {
             Savollarga <br /> Javoblar :
           </h1>
 
-          <div className="flex flex-col gap-[47px]">
+          <div className="flex flex-col gap-[47px] transition-all duration-200">
             {faqData.map((faq, index) => (
               <FaqItem
                 key={index}
