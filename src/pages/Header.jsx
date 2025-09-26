@@ -7,13 +7,13 @@ export default function Header() {
   return (
     <div
       id="home"
-      className="max-w-[1920px] md:mx-auto mx-[35px] flex items-center md:justify-around justify-between  pt-[43px] px-2"
+      className="max-w-[1680px] md:mx-auto mx-[35px] flex items-center justify-between  pt-[43px] px-2"
     >
       <a href="#home">
         <img
           src="/images/logo_img.svg"
           alt="77 Logo image"
-          className="lg:w-[78px] md:w-[64px] w-[53px]"
+          className="lg:w-[88px] md:w-[68px] w-[56px]"
         />
       </a>
       <nav className="md:flex hidden justify-center items-center lg:gap-[76px] gap-[37px] lg:text-[25px] text-[18px]">

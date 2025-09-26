@@ -122,12 +122,12 @@ export default function Home() {
       }`}
       style={{ animationDelay: delay }}
     >
-      <div className="pt-10 lg:px-[44px] px-[30px]">
+      <div className="pt-10 flex flex-col items-center px-[30px]">
         <h4 className="font-['Poppins'] font-medium text-2xl md:text-[60px] lg:text-[60px] text-black md:tracking-[-5px] text-center">
           {title}
         </h4>
         {id === 1 ? (
-          <p className="w-[96%] mt-8 md:mb-[80px] mb-[10px] font-['Poppins'] font-normal text-sm md:text-xl lg:text-[25px] text-[#424242] text-left">
+          <p className=" mt-8 md:mb-[80px] mb-[10px] font-['Poppins'] font-normal text-sm md:text-xl lg:text-[25px] text-[#424242] text-left">
             {description}
           </p>
         ) : (
@@ -139,6 +139,12 @@ export default function Home() {
 
       {id === 4 ? (
         <img src={imageSrc} alt={altText} className="" />
+      ) : id == 5 ? (
+        <img
+          src={imageSrc}
+          alt={altText}
+          className="md:w-[300px]  lg:w-[349px] mx-auto mt-20"
+        />
       ) : (
         <img
           src={imageSrc}
@@ -175,33 +181,37 @@ export default function Home() {
     </div>
   );
 
-  // FAQ Item Component - animatsiyasiz
   const FaqItem = ({ question, answer, index }) => (
     <div>
       <div
         onClick={() => toggleFaq(index)}
-        className={`faq md:rounded-[25px] rounded-[8px] relative  bg-white text-black overflow-hidden px-8 md:py-8 py-2  cursor-pointer ${
-          openFaqIndex === index
-            ? "max-h-96 "
-            : " max-h-[58px]  md:max-h-[110px]"
+        className={`md:rounded-[25px] rounded-[8px] relative bg-white text-black overflow-hidden 
+        px-8 md:py-8 py-2 cursor-pointer 
+        transition-[max-height] duration-500 ease-in-out
+        ${
+          openFaqIndex === index ? "max-h-96" : "max-h-[58px] md:max-h-[110px]"
         }`}
       >
         <div className="max-w-full mb-[31px]">
-          <p className="font-['Poppins'] font-normal md:pt-0 mt-3  md:text-[38px] text-[18px] tracking-[-1px] md:leading-[40px] leading-[16px]  md:tracking-[-3px]">
+          <p className="font-['Poppins'] font-normal md:pt-0 mt-3 md:text-[38px] text-[18px] tracking-[-1px] md:leading-[40px] leading-[16px] md:tracking-[-3px]">
             {question}
           </p>
-          <span className="absolute right-3 md:top-8 top-4 text-2xl md:text-4xl ml-2">
+          <span className="absolute right-8 md:top-8 top-4 text-2xl md:text-5xl ml-2">
             <FiPlus
-              className={`transition-all duration-800 ease ${
+              className={`transform transition-transform duration-500 ${
                 openFaqIndex === index ? "rotate-45" : "rotate-0"
               }`}
             />
           </span>
         </div>
-        <div>
-          <p
-            className={`font-['Open_Sans'] mb-[10px] font-light text-[16px] md:text-[20px] lg:text-[22px] text-black md:tracking-[-1px]`}
-          >
+
+        {/* Javob matni */}
+        <div
+          className={`transition-opacity duration-500 ${
+            openFaqIndex === index ? "opacity-100 mt-4" : "opacity-0 h-0"
+          }`}
+        >
+          <p className="font-['Open_Sans'] mb-[10px] font-light text-[16px] md:text-[20px] lg:text-[22px] text-black md:tracking-[-1px]">
             {answer}
           </p>
         </div>
@@ -349,17 +359,17 @@ export default function Home() {
   ];
 
   return (
-    <div className="max-w-[1580px] mx-auto p-2 transition-all ease duration-800">
+    <div className="max-w-[1680px] mx-auto p-2 transition-all ease duration-800">
       {/* Hero Section */}
       <div
         ref={sectionRefs.hero}
         className="mt-[207px] md:mt-[215px] flex lg:justify-center items-start px-2 opacity-0"
       >
         <div className="hero-1">
-          <p className="lg:max-w-[1054px] text-[40px] md:text-5xl lg:text-6xl xl:text-[90px] leading-[50px] md:leading-[60px] lg:leading-[80px] xl:leading-[100px] mx-[33px] md:mx-0 text-start">
-            Biz bilan birga biznesingizni yangi bosqichga olib chiqing!
+          <p className="lg:max-w-[1054px] text-[40px] md:text-5xl lg:text-6xl mr-20 xl:text-[90px] leading-[50px] md:leading-[60px] lg:leading-[80px] xl:leading-[100px] mx-[33px] md:mx-0 text-start">
+            Biz bilan birga biznesingizni yangi bosqichga olib chiqing !
           </p>
-          <button className="cursor-pointer w-[191px] lg:w-[290px] md:h-[60px] h-[40px] rounded-[10px] hover:bg-white hover:text-black border border-white font-normal text-[17px] md:text-[25px] md:tracking-[-2px] flex justify-center items-center mt-[86px] md:mt-[131px] mx-8 md:mx-0 transition-all duration-200">
+          <button className="cursor-pointer w-[191px] lg:w-[290px] md:h-[60px] h-[40px] rounded-[20px] hover:bg-white hover:text-black border border-white font-normal text-[17px] md:text-[25px] md:tracking-[-2px] flex justify-center items-center mt-[86px] md:mt-[131px] mx-8 md:mx-0 transition-all duration-200">
             Bog'lanish
           </button>
         </div>
@@ -462,11 +472,11 @@ export default function Home() {
       {/* Why Choose Us Section */}
       <section ref={sectionRefs.whyWe} id="whyWe" className="md:mx-4 opacity-0">
         <div className="max-w-[1380px] lg:px-0 md:px-0 px-[45px] flex flex-col">
-          <h1 className="font-['Poppins'] font-normal text-[60px] md:text-[120px] lg:text-[150px] xl:text-[200px] lg:tracking-[-7px] tracking-[-3px] text-left mb-[40px] lg:mb-[158px]">
-            Nega Biz?
+          <h1 className="font-['Poppins'] font-normal text-[60px] md:text-[120px] lg:text-[150px] xl:text-[200px] lg:tracking-[-7px] tracking-[-3px] text-left mb-[35px] lg:mb-[145px]">
+            Nega Biz ?
           </h1>
-          <h1 className="font-['Poppins'] font-normal text-[60px] md:text-[120px] lg:text-[150px] xl:text-[200px] lg:tracking-[-7px] tracking-[-3px] text-right mb-[80px] lg:mb-[131px]">
-            Chunki:
+          <h1 className="font-['Poppins'] font-normal text-[60px] md:text-[120px] lg:text-[150px] xl:text-[200px] lg:tracking-[-7px] tracking-[-3px] text-right mb-[70px] lg:mb-[0px]">
+            Chunki :
           </h1>
         </div>
 
