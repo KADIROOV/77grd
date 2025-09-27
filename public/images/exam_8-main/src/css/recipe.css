@@ -1,0 +1,238 @@
+.recipe-page {
+  margin-top: 4.8rem;
+}
+
+.breadcrumb {
+  margin-bottom: 1.6rem;
+}
+
+.title {
+  color: var(--color-neutral-900);
+  font-family: var(--font-primary);
+  font-size: var(--font-size-preset-7);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-loose);
+  letter-spacing: var(--letter-spacing-wider);
+  opacity: 0.6;
+}
+
+.recipe__title {
+  color: var(--color-neutral-900);
+  font-family: var(--font-primary);
+  font-size: var(--font-size-preset-7);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-loose);
+  letter-spacing: var(--letter-spacing-wider);
+}
+
+.recipe-content {
+  display: flex;
+  gap: 4rem;
+}
+
+.recipe-image img {
+  width: 580px;
+  height: 580px;
+  border-radius: 10px;
+}
+
+.recipe-details {
+  width: 100%;
+  max-width: 704px;
+}
+
+.recipe-title {
+  color: var(--color-neutral-900);
+  font-family: var(--font-secondary);
+  font-size: var(--font-size-preset-2);
+  font-weight: var(--font-weight-extrabold);
+  line-height: var(--line-height-snug);
+  letter-spacing: var(--letter-spacing-tight);
+  margin-bottom: 2rem;
+}
+
+.recipe-overview {
+  color: var(--color-neutral-800);
+  font-family: var(--font-secondary);
+  font-size: var(--font-size-preset-6);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-loose);
+  letter-spacing: var(--letter-spacing-wide);
+  margin-bottom: 2rem;
+}
+
+.recipe-meta {
+  display: flex;
+  gap: 1.6rem;
+  margin-bottom: 2rem;
+}
+
+.recipe-meta-item {
+  display: flex;
+  gap: 0.8rem;
+}
+
+.recipe-meta-title {
+  color: var(--color-neutral-900);
+  font-size: var(--font-size-preset-7);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-loose);
+  letter-spacing: var(--letter-spacing-wider);
+}
+
+.recipe-section-title {
+  margin-top: 2rem;
+  color: var(--color-neutral-900);
+  font-family: var(--font-primary);
+  font-size: var(--font-size-preset-4);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-normal);
+  letter-spacing: var(--letter-spacing-snug);
+  margin-bottom: 1.6rem;
+}
+
+.image {
+  object-fit: none;
+}
+
+.ingredients-list li,
+.instructions-list li {
+  align-items: flex-start;
+  display: flex;
+  gap: 0.8rem;
+  margin-bottom: 0.8rem;
+}
+
+.ingredients-list li:last-child {
+  margin-bottom: 2rem;
+}
+
+.ingredients-title {
+  color: var(--color-neutral-800);
+  font-family: var(--font-secondary);
+  font-size: var(--font-size-preset-6);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-loose);
+  letter-spacing: var(--letter-spacing-wide);
+}
+
+.recipe-border {
+  margin-left: -12.4rem;
+  margin-right: -12.4rem;
+  margin-bottom: 6.4rem;
+  padding-bottom: 6.4rem;
+  border-bottom: 1px solid var(--color-neutral-300);
+}
+
+.recipe-border-1 {
+  margin-left: -12.4rem;
+  margin-right: -12.4rem;
+  padding-bottom: 9.6rem;
+  border-bottom: 1px solid var(--color-neutral-300);
+}
+
+.more-recipes-title {
+  color: var(--color-neutral-900);
+  font-family: var(--font-primary);
+  font-size: var(--font-size-preset-3);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-normal);
+  letter-spacing: var(--letter-spacing-snug);
+  margin-bottom: 2.4rem;
+}
+
+.more-recipes-grid {
+  display: flex;
+  gap: 3.2rem;
+}
+
+.item__detail {
+  display: flex;
+  gap: 1.6rem;
+  margin-bottom: 2rem;
+}
+
+.item__details-r {
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
+}
+
+.item__details-textt {
+  align-items: center;
+  display: flex;
+  gap: 0.8rem;
+}
+
+.item__details-r:last-child {
+  justify-content: space-between;
+}
+
+@media (max-width: 850px) {
+  .recipe-page {
+    padding-right: 6.2rem;
+    padding-left: 6.2rem;
+  }
+
+  .recipe-content {
+    flex-direction: column;
+  }
+
+  .recipe-image img {
+    width: 703px;
+    height: 703px;
+  }
+
+  .recipe-title {
+    font-size: var(--font-size-preset-2-mobile);
+  }
+
+  .recipe-border {
+    padding-bottom: 4.8rem;
+    margin-bottom: 4.8rem;
+  }
+
+  .more-recipes-title {
+    margin-bottom: 0;
+  }
+
+  .more-recipes-grid {
+    flex-direction: column;
+  }
+
+  .recipe-border-1 {
+    margin-left: -12.4rem;
+    margin-right: -12.4rem;
+    padding-bottom: 4.8rem;
+    border-bottom: 1px solid var(--color-neutral-300);
+  }
+}
+
+@media (max-width: 450px) {
+  .recipe-page {
+    padding-right: 3.2rem;
+    padding-left: 3.2rem;
+  }
+  .recipe-image img {
+    width: 343px;
+    height: 343px;
+  }
+
+  .recipe-details {
+    max-width: 346px;
+  }
+
+  .item__details-r {
+    display: flex;
+    align-items: center;
+    gap: 1.6rem;
+  }
+
+  .item__detail {
+    display: inline;
+  }
+
+  .item__details-r:last-child {
+    justify-content: space-between;
+  }
+}

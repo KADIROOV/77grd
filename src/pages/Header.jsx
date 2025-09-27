@@ -7,13 +7,13 @@ export default function Header() {
   return (
     <div
       id="home"
-      className="max-w-[1680px] md:mx-auto mx-[35px] flex items-center justify-between  pt-[43px] px-2"
+      className="max-w-[1680px] md:mx-auto mx-[35px] flex items-center justify-between  pt-[43px] md:px-8"
     >
       <a href="#home">
         <img
           src="/images/logo_img.svg"
           alt="77 Logo image"
-          className="lg:w-[88px] md:w-[68px] w-[56px]"
+          className="lg:w-[98px] md:w-[76px] w-[70px]"
         />
       </a>
       <nav className="md:flex hidden justify-center items-center lg:gap-[76px] gap-[37px] lg:text-[25px] text-[18px]">
@@ -46,9 +46,9 @@ export default function Header() {
         onClick={() => setIsOpen(!isOpen)}
       >
         {isOpen ? (
-          <IoMdClose className="w-[43px] h-[24px] hidden" />
+          <IoMdClose className="w-[43px] h-[34px] hidden" />
         ) : (
-          <RxHamburgerMenu className="w-[43px] h-[24px]" />
+          <RxHamburgerMenu className="w-[43px] h-[34px]" />
         )}
       </button>
 

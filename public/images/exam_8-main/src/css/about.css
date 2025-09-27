@@ -1,0 +1,336 @@
+/* Retseplar saytining "About" sahifasi stillari - Akmaljon */
+.main-sect {
+  margin-top: 8rem;
+  display: flex;
+  justify-content: center;
+  gap: 6.4rem;
+}
+
+.info-block {
+  margin-top: 7.7rem;
+}
+
+.little-title {
+  color: var(--color-neutral-900);
+  font-family: var(--font-primary);
+  font-size: var(--font-size-preset-5);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-relaxed);
+  letter-spacing: var(--letter-spacing-normal);
+  background-color: var(--color-orange-500);
+  padding: 2px;
+  align-items: center;
+  border-radius: 6px;
+  width: 119px;
+  display: inline-block;
+  margin-bottom: 2.6rem;
+}
+
+.main-title {
+  width: 100%;
+  max-width: 485px;
+  color: var(--color-neutral-900);
+  font-family: var(--font-primary);
+  font-size: var(--font-size-preset-2);
+  font-weight: var(--font-weight-extrabold);
+  line-height: var(--line-height-snug);
+  letter-spacing: var(--letter-spacing-tight);
+  margin-bottom: 2.4rem;
+}
+
+.maqsad-text {
+  width: 100%;
+  max-width: 510px;
+  color: var(--color-neutral-800);
+  font-family: var(--font-secondary);
+  font-size: var(--font-size-preset-6);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-loose);
+  letter-spacing: var(--letter-spacing-wide);
+  margin-bottom: 1.6rem;
+}
+
+.maqsad-text:last-child {
+  margin-bottom: 0;
+}
+
+.maqsad-rasm img {
+  border-radius: 20px;
+}
+
+.maqsad-rasm::after {
+  content: "";
+  position: absolute;
+  width: 190px;
+  height: 270px;
+  right: 280px;
+  bottom: 170px;
+  background-image: url("/images/pattern-squiggle-2.svg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  z-index: 1;
+}
+
+.border-line {
+  margin-left: 0;
+  margin-right: 0;
+  margin-bottom: 9.6rem;
+  padding-bottom: 9.6rem;
+  border-bottom: 1px solid var(--color-neutral-300);
+}
+
+/* Why Section */
+.why-sect {
+  display: flex;
+  justify-content: space-between;
+  gap: 6.4rem;
+}
+
+.why-title {
+  width: 100%;
+  max-width: 372px;
+  color: var(--color-neutral-900);
+  font-family: var(--font-primary);
+  font-size: var(--font-size-preset-2);
+  font-weight: var(--font-weight-extrabold);
+  line-height: var(--line-height-snug);
+  letter-spacing: var(--letter-spacing-tight);
+}
+
+.why-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.why-content {
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 4.8rem;
+}
+
+.why-content:last-child {
+  margin-bottom: 0;
+}
+
+.why-content-text {
+  width: 100%;
+  max-width: 700px;
+}
+
+.why-content-title {
+  color: var(--color-neutral-900);
+  font-family: var(--font-primary);
+  font-size: var(--font-size-preset-4);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-normal);
+  letter-spacing: var(--letter-spacing-snug);
+  margin-bottom: 1.2rem;
+}
+
+.why-content-subtext {
+  color: var(--color-neutral-800);
+  font-family: var(--font-secondary);
+  font-size: var(--font-size-preset-6);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-loose);
+  letter-spacing: var(--letter-spacing-wide);
+}
+
+/* Beyond Section */
+.beyond-sect {
+  display: flex;
+  justify-content: space-between;
+  gap: 6.4rem;
+  margin-bottom: 9.6rem;
+}
+
+.beyond-text {
+  margin-top: 2rem;
+}
+
+.beyond-title {
+  width: 100%;
+  max-width: 376px;
+  color: var(--color-neutral-900);
+  font-family: var(--font-primary);
+  font-size: var(--font-size-preset-2);
+  font-weight: var(--font-weight-extrabold);
+  line-height: var(--line-height-snug);
+  letter-spacing: var(--letter-spacing-tight);
+  margin-bottom: 2rem;
+}
+
+.beyond-subtext {
+  width: 100%;
+  max-width: 376px;
+  color: var(--color-neutral-800);
+  font-family: var(--font-secondary);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-loose);
+  letter-spacing: var(--letter-spacing-wide);
+  margin-bottom: 1.2rem;
+}
+
+.beyond-list {
+  list-style: disc;
+  padding-left: 1.6rem;
+  width: 100%;
+  max-width: 365px;
+}
+
+.beyond-item {
+  color: var(--color-neutral-800);
+  font-family: var(--font-secondary);
+  font-size: var(--font-size-preset-6);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-loose);
+  letter-spacing: var(--letter-spacing-wide);
+}
+
+.beyond-rasm img {
+  border-radius: 20px;
+}
+
+@media (max-width: 850px) {
+  .main-sect {
+    margin-top: 0.5rem;
+    flex-direction: column;
+    margin-left: 3.2rem;
+    margin-right: 3.2rem;
+  }
+
+  .main-title {
+    max-width: 704px;
+    margin-bottom: 2.4rem;
+  }
+
+  .maqsad-rasm {
+    order: 1;
+    width: 100%;
+    max-width: 704px;
+    height: auto;
+  }
+
+  .maqsad-rasm img {
+    width: 100%;
+    height: 683px;
+    object-fit: cover;
+    border-radius: 16px;
+  }
+
+  .maqsad-rasm::after {
+    display: none;
+  }
+
+  /* Why Section */
+  .why-sect {
+    flex-direction: column;
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 3.2rem;
+    padding-right: 3.2rem;
+    gap: 4rem;
+  }
+
+  .why-title {
+    width: 100%;
+    max-width: 704px;
+  }
+
+  .why-content-text {
+    max-width: 650px;
+  }
+
+  /* Beyond Section */
+  .beyond-sect {
+    flex-direction: column;
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 3.2rem;
+    padding-right: 3.2rem;
+    gap: 4rem;
+    margin-bottom: 8rem;
+  }
+
+  .beyond-title {
+    max-width: 704px;
+  }
+
+  .beyond-subtext {
+    max-width: 704px;
+  }
+
+  .beyond-list {
+    max-width: 704px;
+  }
+
+  .beyond-rasm img {
+    width: 704px;
+    height: 378px;
+  }
+}
+
+@media (max-width: 450px) {
+  .main-sect {
+    gap: 4rem;
+  }
+
+  .main-title {
+    max-width: 350px;
+    font-size: var(--font-size-preset-2-mobile);
+    margin-bottom: 2.4rem;
+  }
+
+  .maqsad-rasm img {
+    width: 343px;
+    height: 333px;
+  }
+
+  /* Why Section */
+  .why-sect {
+    padding-left: 1.6rem;
+    padding-right: 1.6rem;
+  }
+
+  .why-title {
+    width: 100%;
+    max-width: 343px;
+    font-size: var(--font-size-preset-2-mobile);
+  }
+
+  .why-content-text {
+    max-width: 290px;
+  }
+
+  .border-line {
+    margin-bottom: 4.8rem;
+  }
+
+  /* Beyond Section */
+  .beyond-sect {
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 1.6rem;
+    padding-right: 1.6rem;
+    gap: 3.2rem;
+    margin-bottom: 4.8rem;
+  }
+
+  .beyond-title {
+    max-width: 343px;
+    font-size: var(--font-size-preset-2-mobile);
+  }
+
+  .beyond-subtext {
+    max-width: 343px;
+  }
+
+  .beyond-list {
+    max-width: 343px;
+  }
+
+  .beyond-rasm img {
+    width: 343px;
+    height: 184px;
+  }
+}

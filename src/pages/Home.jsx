@@ -127,11 +127,11 @@ export default function Home() {
           {title}
         </h4>
         {id === 1 ? (
-          <p className=" mt-8 md:mb-[80px] mb-[10px] font-['Poppins'] font-normal text-sm md:text-xl lg:text-[25px] text-[#424242] text-left">
+          <p className=" mt-8 md:mb-[80px] mb-[10px] font-['Poppins'] font-normal text-sm sm:text-xl lg:text-[25px] text-[#424242] text-left">
             {description}
           </p>
         ) : (
-          <p className="w-[96%] mt-8 md:mb-[30px] mb-[10px] font-['Poppins'] font-normal text-sm md:text-xl lg:text-[25px] text-[#424242] text-left">
+          <p className="w-[96%] mt-8 md:mb-[30px] mb-[10px] font-['Poppins'] font-normal text-sm sm:text-xl lg:text-[25px] text-[#424242] text-left">
             {description}
           </p>
         )}
@@ -143,13 +143,19 @@ export default function Home() {
         <img
           src={imageSrc}
           alt={altText}
-          className="md:w-[300px]  lg:w-[349px] mx-auto mt-20"
+          className="md:w-[300px]  lg:w-[349px] w-[220px] mx-auto mt-8 md:mt-20"
+        />
+      ) : id === 6 ? (
+        <img
+          src={imageSrc}
+          alt={altText}
+          className="md:w-[280px]  lg:w-[300px] w-[200px] mx-auto mt-8 md:mt-20 mb-10"
         />
       ) : (
         <img
           src={imageSrc}
           alt={altText}
-          className="md:w-[300px]  lg:w-[349px] mx-auto"
+          className="md:w-[300px]  lg:w-[349px] w-[230px] mt-12 md:mt-0 mx-auto"
         />
       )}
     </div>
@@ -193,10 +199,10 @@ export default function Home() {
         }`}
       >
         <div className="max-w-full mb-[31px]">
-          <p className="font-['Poppins'] font-normal md:pt-0 mt-3 md:text-[38px] text-[18px] tracking-[-1px] md:leading-[40px] leading-[16px] md:tracking-[-3px]">
+          <p className="font-['Poppins'] font-normal md:pt-0 mt-2 md:text-[38px] text-[18px] tracking-[-1px] md:leading-[40px] leading-[18px] md:tracking-[-3px]">
             {question}
           </p>
-          <span className="absolute right-8 md:top-8 top-4 text-2xl md:text-5xl ml-2">
+          <span className="absolute md:right-8 right-4 md:top-8 top-4 text-2xl md:text-5xl ml-2">
             <FiPlus
               className={`transform transition-transform duration-500 ${
                 openFaqIndex === index ? "rotate-45" : "rotate-0"
@@ -366,7 +372,7 @@ export default function Home() {
         className="mt-[207px] md:mt-[215px] flex lg:justify-center items-start px-2 opacity-0"
       >
         <div className="hero-1">
-          <p className="lg:max-w-[1054px] text-[40px] md:text-5xl lg:text-6xl mr-20 xl:text-[90px] leading-[50px] md:leading-[60px] lg:leading-[80px] xl:leading-[100px] mx-[33px] md:mx-0 text-start">
+          <p className="lg:max-w-[1054px] text-[40px] md:text-5xl lg:text-6xl sm:mr-20 xl:text-[90px] leading-[50px] md:leading-[60px] lg:leading-[80px] xl:leading-[100px] mx-[33px] md:mx-0 text-start">
             Biz bilan birga biznesingizni yangi bosqichga olib chiqing !
           </p>
           <button className="cursor-pointer w-[191px] lg:w-[290px] md:h-[60px] h-[40px] rounded-[20px] hover:bg-white hover:text-black border border-white font-normal text-[17px] md:text-[25px] md:tracking-[-2px] flex justify-center items-center mt-[86px] md:mt-[131px] mx-8 md:mx-0 transition-all duration-200">
@@ -382,21 +388,21 @@ export default function Home() {
       <section
         ref={sectionRefs.services}
         id="services"
-        className="mt-[234px] md:mt-[321px] mx-auto px-12 opacity-0"
+        className="mt-[234px] md:mt-[321px] mx-auto px-12 lg:px-0 opacity-0"
       >
         <h2 className="font-['Poppins'] font-medium text-[30px] md:text-[50px] lg:text-[70px] md:tracking-[-4px] tracking-[-2px] text-white text-center">
           Xizmatlarimiz :
         </h2>
 
         {/* First row of services */}
-        <div className="mt-[47px] md:mt-[163px] grid grid-cols-1 lg:grid-cols-3 gap-[34px]  md:gap-[27px] lg:gap-[50px]">
+        <div className="mt-[47px] md:mt-[163px] grid grid-cols-1 lg:grid-cols-3 gap-[30px]  md:gap-[22px] lg:gap-[40px]">
           {services.slice(0, 3).map((service, index) => (
             <ServiceCard key={index} {...service} />
           ))}
         </div>
 
         {/* Second row of services */}
-        <div className="lg:mt-[163px] mt-[34px]  grid grid-cols-1 lg:grid-cols-3 gap-[34px]  md:gap-[27px] lg:gap-[50px]">
+        <div className="lg:mt-[163px] mt-[30px]  grid grid-cols-1 lg:grid-cols-3 gap-[30px]  md:gap-[22px] lg:gap-[40px]">
           {services.slice(3, 6).map((service, index) => (
             <ServiceCard key={index + 3} {...service} />
           ))}
@@ -409,7 +415,7 @@ export default function Home() {
         id="contact"
         className="px-2 opacity-0"
       >
-        <h1 className="font-['Poppins'] font-normal text-[35px] md:text-[45px] lg:text-[60px] xl:text-[80px] leading-tight lg:tracking-[-7px] tracking-[-1px] md:tracking-[-6px] text-left mt-[76px] md:mt-[213px] mb-[58px] md:mb-[131px] mx-[53px] md:mx-2">
+        <h1 className="font-['Poppins'] font-normal text-[35px] md:text-[45px] lg:text-[60px] xl:text-[80px] leading-tight lg:tracking-[-4px] tracking-[-1px] md:tracking-[-6px] text-left mt-[76px] md:mt-[213px] mb-[58px] md:mb-[131px] mx-[53px] md:mx-2">
           Xizmatlarimiz va narxlar haqida ko'proq ma'lumot olmoqchimisiz ?
         </h1>
 
