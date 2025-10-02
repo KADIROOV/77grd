@@ -63,67 +63,66 @@ export default function Header() {
       </nav>
 
       {/* Desktop Language Selector (CLICK bilan ishlaydi) */}
-      <div className="flex gap-4 items-center">
-        <div
-          ref={langRef}
-          className="flex relative w-[127px] h-[40px] border border-white rounded-2xl bg-black items-center justify-center cursor-pointer"
-          onClick={() => setLangOpen(!langOpen)}
-        >
-          <div className="text-white font-medium">
-            {languages.find((l) => l.code === selectedLang)?.label}
-          </div>
-          <IoIosArrowDown
-            className={`absolute right-[28px] text-white w-[17px] h-[17px] transition-transform duration-300 ${
-              langOpen ? "rotate-180" : "rotate-0"
-            }`}
-          />
-          {langOpen && (
-            <div className="absolute top-[45px] left-0 w-full bg-black border border-white rounded-2xl overflow-hidden z-50">
-              {languages.map((lang) => (
-                <button
-                  key={lang.code}
-                  onClick={() => handleSelect(lang.code)}
-                  className={`w-full h-[40px] text-white font-medium hover:bg-white/10 transition-colors ${
-                    selectedLang === lang.code ? "bg-white/5" : ""
-                  }`}
-                >
-                  {lang.label}
-                </button>
-              ))}
-            </div>
-          )}
+      <div
+        ref={langRef}
+        className="hidden md:flex relative w-[127px] h-[40px] border border-white rounded-2xl bg-black items-center justify-center cursor-pointer"
+        onClick={() => setLangOpen(!langOpen)}
+      >
+        <div className="text-white font-medium">
+          {languages.find((l) => l.code === selectedLang)?.label}
         </div>
+        <IoIosArrowDown
+          className={`absolute right-[28px] text-white w-[17px] h-[17px] transition-transform duration-300 ${
+            langOpen ? "rotate-180" : "rotate-0"
+          }`}
+        />
+        {langOpen && (
+          <div className="absolute top-[45px] left-0 w-full bg-black border border-white rounded-2xl overflow-hidden z-50">
+            {languages.map((lang) => (
+              <button
+                key={lang.code}
+                onClick={() => handleSelect(lang.code)}
+                className={`w-full h-[40px] text-white font-medium hover:bg-white/10 transition-colors ${
+                  selectedLang === lang.code ? "bg-white/5" : ""
+                }`}
+              >
+                {lang.label}
+              </button>
+            ))}
+          </div>
+        )}
+      </div>
 
-        {/* Mobile Burger */}
+      {/* Mobile Burger */}
+      <button
+        className="md:hidden transition-all duration-800"
+        onClick={() => setIsOpen(!isOpen)}
+      >
+        {isOpen ? (
+          <IoMdClose className="w-[43px] h-[34px]" />
+        ) : (
+          <RxHamburgerMenu className="w-[43px] h-[34px]" />
+        )}
+      </button>
+
+      {/* Mobile Menu */}
+      <div
+        className={`w-[40%] mx-auto fixed top-14 right-0 text-black flex flex-col items-center z-50 justify-center gap-4 py-2 h-72 rounded-xl text-xl bg-white shadow-lg transform transition-transform duration-300 ease md:hidden
+        ${isOpen ? "translate-x-0" : "translate-x-full"}`}
+      >
         <button
-          className="md:hidden transition-all duration-800"
+          className="absolute right-2 top-2"
           onClick={() => setIsOpen(!isOpen)}
         >
-          {isOpen ? (
-            <IoMdClose className="w-[43px] h-[44px]" />
-          ) : (
-            <RxHamburgerMenu className="w-[43px] h-[44px]" />
-          )}
+          <IoMdClose className="w-7 h-7" />
         </button>
+        <a href="#services">Xizmatlar</a>
+        <a href="#whyWe">Nega biz ?</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contact">Bog'lanish</a>
 
-        {/* Mobile Menu */}
+        {/* Mobile Language Selector */}
         <div
-          className={`w-[40%] mx-auto fixed top-14 right-0 text-black flex flex-col items-center z-50 justify-center gap-4 py-2 h-72 rounded-xl text-xl bg-white shadow-lg transform transition-transform duration-300 ease md:hidden
-        ${isOpen ? "translate-x-0" : "translate-x-full"}`}
-        >
-          <button
-            className="absolute right-2 top-2"
-            onClick={() => setIsOpen(!isOpen)}
-          >
-            <IoMdClose className="w-7 h-7" />
-          </button>
-          <a href="#services">Xizmatlar</a>
-          <a href="#whyWe">Nega biz ?</a>
-          <a href="#faq">FAQ</a>
-          <a href="#contact">Bog'lanish</a>
-
-          {/* Mobile Language Selector */}
-          {/* <div
           className="relative w-[127px] h-[40px] border border-white rounded-2xl bg-black items-center justify-center flex cursor-pointer"
           onClick={() => setLangOpen(!langOpen)}
         >
@@ -150,7 +149,6 @@ export default function Header() {
               ))}
             </div>
           )}
-        </div> */}
         </div>
       </div>
     </div>
