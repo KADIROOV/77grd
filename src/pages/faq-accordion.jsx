@@ -1,5 +1,3 @@
-"use client";
-
 import { useState } from "react";
 
 const XIcon = () => (
@@ -36,60 +34,66 @@ const PlusIcon = () => (
   </svg>
 );
 
-interface FaqItem {
-  id: number;
-  question: string;
-  answer: string;
-}
-
-const faqData: FaqItem[] = [
+const faqData = [
   {
-    id: 1,
     question: "Shaxsiy brend savdo va ishonchga qanday ta'sir qiladi ?",
     answer:
       "Odamlar mahsulot yoki xizmatni ko'pincha kampaniya emas, balki uning ortidagi shaxsga ishonib sotib olishadi. Agar sizning shaxsiy brendingiz kuchli bo'lsa — mijozlar sizga ko'proq ishonadi, shu ishonch esa savdo o'sishiga olib keladi.",
+    delay: "0.1s",
   },
   {
-    id: 2,
     question: "Tadbirkor uchun shaxsiy brend rivojlantirish nima uchun zarur ?",
     answer:
-      "Shaxsiy brend rivojlantirish tadbirkorga o'z sohasida ekspert sifatida tanilishga, ishonch va obro' qozonishga yordam beradi. Bu esa yangi mijozlar, hamkorlar va imkoniyatlar jalb qilishni osonlashtiradi.",
+      "Shaxsiy brend — bu tadbirkorning yuzidir. U orqali siz mijoz va hamkorlarda ishonch uyg‘otasiz, raqobatchilardan ajralib turasiz va o‘z sohangizda ekspert sifatida tanilasiz. Kuchli brend esa sizga barqaror obro‘ va cheksiz imkoniyatlar eshigini ochadi.",
+    delay: "0.2s",
   },
   {
-    id: 3,
-    question: "Veb-sayt jitimojy tarmoqlardan qaysi jihatlarda ustun ?",
+    question: "Veb-sayt ijtimoiy tarmoqlardan qaysi jihatlarda ustun ?",
     answer:
-      "Veb-sayt sizning professional onlayn mavjudligingizni ta'minlaydi va to'liq nazorat ostida bo'ladi. Ijtimoiy tarmoqlar esa algoritmlar va platformalar qoidalariga bog'liq.",
+      "Veb-sayt biznesingiz uchun 24/7 ishlaydi: mijozlar kunu-tun ma’lumot olishi, buyurtma berishi yoki bog‘lanishi mumkin. Shu bilan birga, professional sayt kompaniyaning obro‘sini oshiradi va uni ijtimoiy tarmoqlardan ko‘ra ishonchliroq ko‘rsatadi.",
+    delay: "0.3s",
+  },
+  {
+    question: "Marketing SMM o'zi kerakmi va nimaga ?",
+    answer:
+      "Marketing va SMM biznes uchun zarur, chunki ular mahsulot va xizmatlarni to‘g‘ri auditoriyaga yetkazadi, brendni tanitadi, mijozlarni jalb qiladi, savdoni oshiradi va kompaniyaning obro‘sini mustahkamlaydi.",
+    delay: "0.4s",
+  },
+  {
+    question: "Qaysi xizmatni maslahat beramiz ?",
+    answer:
+      "Biz sizga special taklifni tavsiya qilamiz, chunki u biznesingizni har tomonlama rivojlantiradi: obro‘ni mustahkamlaydi , savdoni oshiradi va yangi mijozlarni jalb qilishda yordam beradi. Shu orqali siz qisqa muddatda natija ko‘rib , uzoq muddatli barqaror o‘sishga erishasiz.",
+    delay: "0.5s",
   },
 ];
 
 export function FaqAccordion() {
-  const [openId, setOpenId] = useState<number | null>(1);
+  const [openId, setOpenId] = useState(null);
 
-  const toggleItem = (id: number) => {
+  const toggleItem = (id) => {
     setOpenId(openId === id ? null : id);
   };
 
   return (
     <div className="space-y-6">
-      {faqData.map((item) => {
-        const isOpen = openId === item.id;
+      {faqData.map((item, index) => {
+        const isOpen = openId === index;
 
         return (
           <div
-            key={item.id}
+            key={index}
             className="overflow-hidden rounded-[2rem] bg-[#f5f5f0] transition-all duration-300 ease-in-out"
           >
             <button
-              onClick={() => toggleItem(item.id)}
-              className="flex w-full items-start justify-between gap-4 p-8 text-left transition-all duration-300 md:p-10 lg:p-12"
+              onClick={() => toggleItem(index)}
+              className="flex w-full items-start justify-between gap-4 p-4 text-left transition-all duration-300 md:p-4 lg:p-6"
               aria-expanded={isOpen}
             >
-              <h3 className="text-2xl font-light leading-tight text-black md:text-3xl lg:text-4xl">
+              <h3 className="text-xl font-normal md:tracking-[-2px] tracking-tight leading-tight text-black md:text-3xl lg:text-4xl">
                 {item.question}
               </h3>
               <div className="flex-shrink-0 pt-1">
-                {isOpen ? <XIcon /> : <PlusIcon />}
+                {isOpen ? <XIcon/> : <PlusIcon />}
               </div>
             </button>
 
@@ -102,7 +106,7 @@ export function FaqAccordion() {
             >
               <div className="overflow-hidden">
                 <div className="px-8 pb-8 md:px-10 md:pb-10 lg:px-12 lg:pb-12">
-                  <p className="text-lg leading-relaxed text-black/80 md:text-xl lg:text-2xl">
+                  <p className="text-lg leading-relaxed tracking-tight  text-black/80 md:text-xl lg:text-2xl">
                     {item.answer}
                   </p>
                 </div>

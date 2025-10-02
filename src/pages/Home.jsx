@@ -2,45 +2,13 @@
 
 import { useState, useEffect, useRef } from "react";
 import ContactForm from "./ContactForm";
-
-const PlusIcon = () => (
-  <svg
-    width="40"
-    height="40"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-  >
-    <line x1="12" y1="5" x2="12" y2="19" />
-    <line x1="5" y1="12" x2="19" y2="12" />
-  </svg>
-);
-
-const XIcon = () => (
-  <svg
-    width="40"
-    height="40"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-  >
-    <line x1="18" y1="6" x2="6" y2="18" />
-    <line x1="6" y1="6" x2="18" y2="18" />
-  </svg>
-);
+import { FaqAccordion } from "./faq-accordion";
 
 export default function Home() {
   const [phoneNumber, setPhoneNumber] = useState("");
   const [clientName, setClientName] = useState("");
   const [clientComment, setClientComment] = useState("");
   const [isVisible, setIsVisible] = useState(false);
-  const [openFaqIndex, setOpenFaqIndex] = useState(null);
   const [showModal, setShowModal] = useState(false);
 
   const handleSubmit = async (e) => {
@@ -135,11 +103,6 @@ export default function Home() {
     setPhoneNumber(formatPhoneNumber(e.target.value));
   };
 
-  // FAQ toggle function - animatsiyasiz
-  const toggleFaq = (index) => {
-    setOpenFaqIndex(openFaqIndex === index ? null : index);
-  };
-
   // Service card component - animatsiya qo'shilgan
   const ServiceCard = ({
     id,
@@ -219,48 +182,6 @@ export default function Home() {
       </div>
     </div>
   );
-
-  const FaqItem = ({ question, answer, index }) => {
-    const isOpen = openFaqIndex === index;
-
-    return (
-      <div
-        className={`relative rounded-[32px] bg-[#f5f5f0] text-black overflow-hidden transition-all duration-300 ease-in-out cursor-pointer ${
-          isOpen ? "shadow-lg" : "shadow-md"
-        }`}
-        onClick={() => toggleFaq(index)}
-      >
-        <div className="px-6 md:px-10 py-6 md:py-8">
-          <div className="flex items-start justify-between gap-4">
-            <h3 className="font-['Poppins'] font-normal text-[20px] md:text-[32px] lg:text-[38px] leading-tight md:leading-[40px] tracking-[-1px] md:tracking-[-2px] pr-4 flex-1">
-              {question}
-            </h3>
-            <button
-              className="flex-shrink-0 transition-transform duration-300 ease-in-out mt-1"
-              style={{
-                transform: isOpen ? "rotate(0deg)" : "rotate(0deg)",
-              }}
-            >
-              {isOpen ? <XIcon /> : <PlusIcon />}
-            </button>
-          </div>
-
-          <div
-            className="grid transition-all duration-300 ease-in-out"
-            style={{
-              gridTemplateRows: isOpen ? "1fr" : "0fr",
-            }}
-          >
-            <div className="overflow-hidden">
-              <p className="font-['Open_Sans'] font-light text-[16px] md:text-[20px] lg:text-[22px] text-black leading-relaxed mt-4 md:mt-6 pr-12">
-                {answer}
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    );
-  };
 
   // Services data
   const services = [
@@ -363,41 +284,6 @@ export default function Home() {
         "Biz siz bilan uzoq muddatli hamkorlik o'rnatishga intilamiz va biznesingizning rivojiga sherik bo'lamiz.",
       alignment: "right",
       delay: "0.6s",
-    },
-  ];
-
-  // FAQ ma'lumotlari
-  const faqData = [
-    {
-      question: "Shaxsiy brend savdo va ishonchga qanday ta'sir qiladi ?",
-      answer:
-        "Odamlar mahsulot yoki xizmatni ko'pincha kampaniya emas, balki uning ortidagi shaxsga ishonib sotib olishadi. Agar sizning shaxsiy brendingiz kuchli bo'lsa — mijozlar sizga ko'proq ishonadi, shu ishonch esa savdo o'sishiga olib keladi.",
-      delay: "0.1s",
-    },
-    {
-      question:
-        "Tadbirkor uchun shaxsiy brend rivojlantirish nima uchun zarur ?",
-      answer:
-        "Shaxsiy brend — bu tadbirkorning yuzidir. U orqali siz mijoz va hamkorlarda ishonch uyg‘otasiz, raqobatchilardan ajralib turasiz va o‘z sohangizda ekspert sifatida tanilasiz. Kuchli brend esa sizga barqaror obro‘ va cheksiz imkoniyatlar eshigini ochadi.",
-      delay: "0.2s",
-    },
-    {
-      question: "Veb-sayt ijtimoiy tarmoqlardan qaysi jihatlarda ustun ?",
-      answer:
-        "Veb-sayt biznesingiz uchun 24/7 ishlaydi: mijozlar kunu-tun ma’lumot olishi, buyurtma berishi yoki bog‘lanishi mumkin. Shu bilan birga, professional sayt kompaniyaning obro‘sini oshiradi va uni ijtimoiy tarmoqlardan ko‘ra ishonchliroq ko‘rsatadi.",
-      delay: "0.3s",
-    },
-    {
-      question: "Marketing SMM o'zi kerakmi va nimaga ?",
-      answer:
-        "Marketing va SMM biznes uchun zarur, chunki ular mahsulot va xizmatlarni to‘g‘ri auditoriyaga yetkazadi, brendni tanitadi, mijozlarni jalb qiladi, savdoni oshiradi va kompaniyaning obro‘sini mustahkamlaydi.",
-      delay: "0.4s",
-    },
-    {
-      question: "Qaysi xizmatni maslahat beramiz ?",
-      answer:
-        "Biz sizga special taklifni tavsiya qilamiz, chunki u biznesingizni har tomonlama rivojlantiradi: obro‘ni mustahkamlaydi , savdoni oshiradi va yangi mijozlarni jalb qilishda yordam beradi. Shu orqali siz qisqa muddatda natija ko‘rib , uzoq muddatli barqaror o‘sishga erishasiz.",
-      delay: "0.5s",
     },
   ];
 
@@ -550,14 +436,7 @@ export default function Home() {
           </h1>
 
           <div className="flex flex-col gap-4 md:gap-6">
-            {faqData.map((faq, index) => (
-              <FaqItem
-                key={index}
-                question={faq.question}
-                answer={faq.answer}
-                index={index}
-              />
-            ))}
+            <FaqAccordion/>
           </div>
         </div>
       </section>
