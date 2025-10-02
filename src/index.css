@@ -43,8 +43,8 @@ body {
   -webkit-overflow-scrolling: touch; /* iOS uchun */
 }
 #cursor-dot {
-  width: 14px;
-  height: 14px;
+  width: 18px;
+  height: 18px;
   border-radius: 50%;
   position: fixed;
   top: 0;
@@ -53,6 +53,9 @@ body {
   transform: translate(-50%, -40%);
   z-index: 9999;
   transition: background 0.1s ease;
+  -webkit-box-shadow: 0px 0px 31px 12px rgba(255, 255, 255, 0.25);
+-moz-box-shadow: 0px 0px 31px 12px rgba(255, 255, 255, 0.25);
+box-shadow: 0px 0px 31px 12px rgba(255, 255, 255, 0.25);
 }
 
 nav a {

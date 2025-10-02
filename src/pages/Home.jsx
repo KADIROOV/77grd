@@ -1,6 +1,39 @@
+"use client";
+
 import { useState, useEffect, useRef } from "react";
 import ContactForm from "./ContactForm";
-import { FiPlus } from "react-icons/fi";
+
+const PlusIcon = () => (
+  <svg
+    width="40"
+    height="40"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <line x1="12" y1="5" x2="12" y2="19" />
+    <line x1="5" y1="12" x2="19" y2="12" />
+  </svg>
+);
+
+const XIcon = () => (
+  <svg
+    width="40"
+    height="40"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <line x1="18" y1="6" x2="6" y2="18" />
+    <line x1="6" y1="6" x2="18" y2="18" />
+  </svg>
+);
 
 export default function Home() {
   const [phoneNumber, setPhoneNumber] = useState("");
@@ -138,22 +171,22 @@ export default function Home() {
       </div>
 
       {id === 4 ? (
-        <img src={imageSrc} alt={altText} className="" />
+        <img src={imageSrc || "/placeholder.svg"} alt={altText} className="" />
       ) : id == 5 ? (
         <img
-          src={imageSrc}
+          src={imageSrc || "/placeholder.svg"}
           alt={altText}
           className="md:w-[300px]  lg:w-[349px] w-[220px] mx-auto mt-8 md:mt-20"
         />
       ) : id === 6 ? (
         <img
-          src={imageSrc}
+          src={imageSrc || "/placeholder.svg"}
           alt={altText}
           className="md:w-[280px]  lg:w-[300px] w-[200px] mx-auto mt-8 md:mt-12 mb-10"
         />
       ) : (
         <img
-          src={imageSrc}
+          src={imageSrc || "/placeholder.svg"}
           alt={altText}
           className="md:w-[300px]  lg:w-[349px] w-[230px] mt-12 md:mt-4 mx-auto"
         />
@@ -187,43 +220,47 @@ export default function Home() {
     </div>
   );
 
-  const FaqItem = ({ question, answer, index }) => (
-    <div>
-      <div
-        onClick={() => toggleFaq(index)}
-        className={`md:rounded-[25px] rounded-[8px] relative bg-white text-black overflow-hidden 
-        px-8 md:py-8 py-2 cursor-pointer 
-        transition-[max-height] duration-500 ease-in-out
-        ${
-          openFaqIndex === index ? "max-h-96" : "max-h-[58px] md:max-h-[110px]"
-        }`}
-      >
-        <div className="max-w-full mb-[31px]">
-          <p className="font-['Poppins'] font-normal md:pt-0 mt-2 md:text-[38px] text-[18px] tracking-[-1px] md:leading-[40px] leading-[18px] md:tracking-[-3px]">
-            {question}
-          </p>
-          <span className="absolute md:right-8 right-4 md:top-8 top-4 text-2xl md:text-5xl ml-2">
-            <FiPlus
-              className={`transform transition-transform duration-500 ${
-                openFaqIndex === index ? "rotate-45" : "rotate-0"
-              }`}
-            />
-          </span>
-        </div>
+  const FaqItem = ({ question, answer, index }) => {
+    const isOpen = openFaqIndex === index;
 
-        {/* Javob matni */}
-        <div
-          className={`transition-opacity duration-500 ${
-            openFaqIndex === index ? "opacity-100 mt-4" : "opacity-0 h-0"
-          }`}
-        >
-          <p className="font-['Open_Sans'] mb-[10px] font-light text-[16px] md:text-[20px] lg:text-[22px] text-black md:tracking-[-1px]">
-            {answer}
-          </p>
+    return (
+      <div
+        className={`relative rounded-[32px] bg-[#f5f5f0] text-black overflow-hidden transition-all duration-300 ease-in-out cursor-pointer ${
+          isOpen ? "shadow-lg" : "shadow-md"
+        }`}
+        onClick={() => toggleFaq(index)}
+      >
+        <div className="px-6 md:px-10 py-6 md:py-8">
+          <div className="flex items-start justify-between gap-4">
+            <h3 className="font-['Poppins'] font-normal text-[20px] md:text-[32px] lg:text-[38px] leading-tight md:leading-[40px] tracking-[-1px] md:tracking-[-2px] pr-4 flex-1">
+              {question}
+            </h3>
+            <button
+              className="flex-shrink-0 transition-transform duration-300 ease-in-out mt-1"
+              style={{
+                transform: isOpen ? "rotate(0deg)" : "rotate(0deg)",
+              }}
+            >
+              {isOpen ? <XIcon /> : <PlusIcon />}
+            </button>
+          </div>
+
+          <div
+            className="grid transition-all duration-300 ease-in-out"
+            style={{
+              gridTemplateRows: isOpen ? "1fr" : "0fr",
+            }}
+          >
+            <div className="overflow-hidden">
+              <p className="font-['Open_Sans'] font-light text-[16px] md:text-[20px] lg:text-[22px] text-black leading-relaxed mt-4 md:mt-6 pr-12">
+                {answer}
+              </p>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  );
+    );
+  };
 
   // Services data
   const services = [
@@ -467,11 +504,11 @@ export default function Home() {
 
       {/* Why Choose Us Section */}
       <section ref={sectionRefs.whyWe} id="whyWe" className="md:mx-4 opacity-0">
-        <div className="max-w-[1380px] lg:px-0 md:px-0 px-[45px] flex flex-col">
+        <div className="max-w-[1380px] lg:px-0 md:px-0 px-[45px] flex flex-col mb-20">
           <h1 className="font-['Poppins'] font-normal text-[60px] md:text-[120px] lg:text-[150px] xl:text-[200px] lg:tracking-[-7px] tracking-[-3px] text-left mb-[35px] lg:mb-[145px]">
             Nega Biz ?
           </h1>
-          <h1 className="font-['Poppins'] font-normal text-[60px] md:text-[120px] lg:text-[150px] xl:text-[200px] lg:tracking-[-7px] tracking-[-3px] text-right mb-[70px] lg:mb-[0px]">
+          <h1 className="font-['Poppins'] font-normal text-[60px] md:text-[120px] lg:text-[150px] xl:text-[200px] lg:tracking-[-7px] tracking-[-3px] leading-10 md:leading-18 lg:leading-32 text-right mb-[70px] lg:mb-[0px]">
             Chunki :
           </h1>
         </div>
@@ -501,18 +538,18 @@ export default function Home() {
         </div>
       </section>
 
-      {/* FAQ Section - YANGI QO'SHILGAN */}
+      {/* FAQ Section */}
       <section
         ref={sectionRefs.faq}
         id="faq"
-        className="mt-[65px] md:mt-[250px] px-7 md:px-8 opacity-0 "
+        className="mt-[65px] md:mt-[250px] px-7 md:px-8 opacity-0"
       >
         <div className="max-w-[1280px] mx-auto">
           <h1 className="font-['Poppins'] font-normal text-[40px] md:text-[80px] lg:text-[120px] xl:text-[150px] lg:tracking-[-7px] tracking-[-3px] leading-10 md:leading-18 lg:leading-32 text-left mb-[60px] md:mb-[100px]">
             Savollarga <br /> Javoblar :
           </h1>
 
-          <div className="flex flex-col md:gap-[47px] gap-[15px] transition-all duration-200">
+          <div className="flex flex-col gap-4 md:gap-6">
             {faqData.map((faq, index) => (
               <FaqItem
                 key={index}
