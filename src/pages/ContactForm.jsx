@@ -8,14 +8,14 @@ export default function ContactForm({
   setClientComment,
 }) {
   return (
-    <div className="max-w-[1280px] flex flex-col lg:flex-row items-center rounded-[50px] mx-6 md:mx-auto md:mt-[142px] mt-[78px] text-black mb-20">
+    <div className="max-w-[1280px] flex flex-col lg:flex-row items-center  justify-center rounded-[50px] lg:mx-6 md:mx-auto xl:mx-auto md:mt-[142px] mt-[78px] text-black mb-20 ">
       <div className="">
-        <h2 className="font-['Poppins'] font-normal text-[30px] lg:text-[150px] text-white text-center lg:text-left leading-[160px]  lg:tracking-[-3px] md:mb-[57px] lg:mb-0">
-          Taklifingiz bormi?
+        <h2 className="font-['Poppins'] font-normal text-[30px] sm:text-[60px] xl:text-[150px] lg:text-[120px] text-white text-center lg:text-left leading-[160px]  lg:tracking-[-3px] md:mb-[57px] lg:mb-0">
+          Taklifingiz bormi ?
         </h2>
       </div>
 
-      <div className="max-w-[403px]   rounded-[15px] md:rounded-[30px] bg-white md:px-14 px-[29px] py-[21px] md:py-0 text-black transition-all duration-500 hover:shadow-2xl">
+      <div className="max-w-[403px]   rounded-[15px] md:rounded-[30px] bg-white md:px-14 px-[29px] py-[21px] md:py-0 text-black">
         <div className="flex flex-col items-center justify-center gap-[25px] md:gap-[26px]">
           <input
             type="tel"

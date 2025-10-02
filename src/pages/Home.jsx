@@ -131,7 +131,7 @@ export default function Home() {
             {description}
           </p>
         ) : (
-          <p className="w-[96%] mt-8 md:mb-[30px] mb-[10px] font-['Poppins'] font-normal text-sm sm:text-xl lg:text-[25px] text-[#424242] text-left">
+          <p className="w-[98%] mt-8 md:mb-[30px] mb-[10px] font-['Poppins'] font-normal text-sm sm:text-xl lg:text-[25px] text-[#424242] text-left">
             {description}
           </p>
         )}
@@ -149,13 +149,13 @@ export default function Home() {
         <img
           src={imageSrc}
           alt={altText}
-          className="md:w-[280px]  lg:w-[300px] w-[200px] mx-auto mt-8 md:mt-20 mb-10"
+          className="md:w-[280px]  lg:w-[300px] w-[200px] mx-auto mt-8 md:mt-12 mb-10"
         />
       ) : (
         <img
           src={imageSrc}
           alt={altText}
-          className="md:w-[300px]  lg:w-[349px] w-[230px] mt-12 md:mt-0 mx-auto"
+          className="md:w-[300px]  lg:w-[349px] w-[230px] mt-12 md:mt-4 mx-auto"
         />
       )}
     </div>
@@ -332,32 +332,32 @@ export default function Home() {
   // FAQ ma'lumotlari
   const faqData = [
     {
-      question: "Shaxsiy brend savdo va ishonchga qanday ta'sir qiladi?",
+      question: "Shaxsiy brend savdo va ishonchga qanday ta'sir qiladi ?",
       answer:
         "Odamlar mahsulot yoki xizmatni ko'pincha kampaniya emas, balki uning ortidagi shaxsga ishonib sotib olishadi. Agar sizning shaxsiy brendingiz kuchli bo'lsa — mijozlar sizga ko'proq ishonadi, shu ishonch esa savdo o'sishiga olib keladi.",
       delay: "0.1s",
     },
     {
       question:
-        "Tadbirkor uchun shaxsiy brend rivojlantirish nima uchun zarur?",
+        "Tadbirkor uchun shaxsiy brend rivojlantirish nima uchun zarur ?",
       answer:
         "Shaxsiy brend — bu tadbirkorning yuzidir. U orqali siz mijoz va hamkorlarda ishonch uyg‘otasiz, raqobatchilardan ajralib turasiz va o‘z sohangizda ekspert sifatida tanilasiz. Kuchli brend esa sizga barqaror obro‘ va cheksiz imkoniyatlar eshigini ochadi.",
       delay: "0.2s",
     },
     {
-      question: "Veb-sayt ijtimoiy tarmoqlardan qaysi jihatlarda ustun?",
+      question: "Veb-sayt ijtimoiy tarmoqlardan qaysi jihatlarda ustun ?",
       answer:
         "Veb-sayt biznesingiz uchun 24/7 ishlaydi: mijozlar kunu-tun ma’lumot olishi, buyurtma berishi yoki bog‘lanishi mumkin. Shu bilan birga, professional sayt kompaniyaning obro‘sini oshiradi va uni ijtimoiy tarmoqlardan ko‘ra ishonchliroq ko‘rsatadi.",
       delay: "0.3s",
     },
     {
-      question: "Marketing SMM o'zi kerakmi va nimaga?",
+      question: "Marketing SMM o'zi kerakmi va nimaga ?",
       answer:
         "Marketing va SMM biznes uchun zarur, chunki ular mahsulot va xizmatlarni to‘g‘ri auditoriyaga yetkazadi, brendni tanitadi, mijozlarni jalb qiladi, savdoni oshiradi va kompaniyaning obro‘sini mustahkamlaydi.",
       delay: "0.4s",
     },
     {
-      question: "Qaysi xizmatni maslahat beramiz?",
+      question: "Qaysi xizmatni maslahat beramiz ?",
       answer:
         "Biz sizga special taklifni tavsiya qilamiz, chunki u biznesingizni har tomonlama rivojlantiradi: obro‘ni mustahkamlaydi , savdoni oshiradi va yangi mijozlarni jalb qilishda yordam beradi. Shu orqali siz qisqa muddatda natija ko‘rib , uzoq muddatli barqaror o‘sishga erishasiz.",
       delay: "0.5s",
@@ -369,17 +369,17 @@ export default function Home() {
       {/* Hero Section */}
       <div
         ref={sectionRefs.hero}
-        className="mt-[207px] md:mt-[215px] flex lg:justify-center items-start px-2 opacity-0"
+        className="mt-[207px] md:mt-[215px] flex lg:justify-center items-start px-2 mx-6 opacity-0"
       >
         <div className="hero-1">
-          <p className="lg:max-w-[1054px] text-[40px] md:text-5xl lg:text-6xl sm:mr-20 xl:text-[90px] leading-[50px] md:leading-[60px] lg:leading-[80px] xl:leading-[100px] mx-[33px] md:mx-0 text-start">
+          <p className="lg:max-w-[1054px] text-[38px] md:text-5xl lg:text-[50px] sm:mr-20 xl:text-[70px] 2xl:text-[90px] leading-[50px] md:leading-[60px] lg:leading-[60px] xl:leading-[80px] mx-[30px] md:mx-0 text-start">
             Biz bilan birga biznesingizni yangi bosqichga olib chiqing !
           </p>
-          <button className="cursor-pointer w-[191px] lg:w-[290px] md:h-[60px] h-[40px] rounded-[20px] hover:bg-white hover:text-black border border-white font-normal text-[17px] md:text-[25px] md:tracking-[-2px] flex justify-center items-center mt-[86px] md:mt-[131px] mx-8 md:mx-0 transition-all duration-200">
+          <button className="cursor-pointer w-[176px] lg:w-[290px] md:h-[60px] h-[40px] md:rounded-[20px] rounded-[14px] hover:bg-white hover:text-black border border-white font-normal text-[17px] md:text-[25px] md:tracking-[-2px] flex justify-center items-center mt-[86px] md:mt-[131px] mx-8 md:mx-0 transition-all duration-200">
             Bog'lanish
           </button>
         </div>
-        <p className="lg:flex hidden font-['Poppins'] font-medium xl:text-[200px] text-[150px] transform rotate-[7deg] text-white text-shadow-down">
+        <p className="md:flex hidden font-['Poppins'] font-medium xl:text-[200px] lg:text-[130px] text-[110px] transform rotate-[7deg] text-white text-shadow-down mb-20">
           77grd
         </p>
       </div>
@@ -388,39 +388,29 @@ export default function Home() {
       <section
         ref={sectionRefs.services}
         id="services"
-        className="mt-[234px] md:mt-[321px] mx-auto px-12 lg:px-0 opacity-0"
+        className="mt-[234px] md:mt-[321px] mx-[30px] opacity-0"
       >
         <h2 className="font-['Poppins'] font-medium text-[30px] md:text-[50px] lg:text-[70px] md:tracking-[-4px] tracking-[-2px] text-white text-center">
           Xizmatlarimiz :
         </h2>
 
         {/* First row of services */}
-        <div className="mt-[47px] md:mt-[163px] grid grid-cols-1 lg:grid-cols-3 gap-[30px]  md:gap-[22px] lg:gap-[40px]">
-          {services.slice(0, 3).map((service, index) => (
+        <div className="mt-[47px] md:mt-[163px] justify-items-center grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-[30px] md:gap-[22px] lg:gap-[40px]">
+          {services.map((service, index) => (
             <ServiceCard key={index} {...service} />
-          ))}
-        </div>
-
-        {/* Second row of services */}
-        <div className="lg:mt-[163px] mt-[30px]  grid grid-cols-1 lg:grid-cols-3 gap-[30px]  md:gap-[22px] lg:gap-[40px]">
-          {services.slice(3, 6).map((service, index) => (
-            <ServiceCard key={index + 3} {...service} />
           ))}
         </div>
       </section>
 
       {/* Contact Section */}
-      <section
-        ref={sectionRefs.contact}
-        id="contact"
-        className="px-2 opacity-0"
-      >
-        <h1 className="font-['Poppins'] font-normal text-[35px] md:text-[45px] lg:text-[60px] xl:text-[80px] leading-tight lg:tracking-[-4px] tracking-[-1px] md:tracking-[-6px] text-left mt-[76px] md:mt-[213px] mb-[58px] md:mb-[131px] mx-[53px] md:mx-2">
-          Xizmatlarimiz va narxlar haqida ko'proq ma'lumot olmoqchimisiz ?
+      <section ref={sectionRefs.contact} id="contact" className="opacity-0">
+        <h1 className="max-w-[1680px] px-10 font-['Poppins'] font-normal text-[35px] md:text-[45px] lg:text-[60px] xl:text-[80px] leading-tight lg:tracking-[-4px] tracking-[-1px] md:tracking-[-3px] md:text-right text-left mt-[76px] md:mt-[213px] mb-[58px] md:mb-[131px] mx-[0px] md:mx-0">
+          Xizmatlarimiz va narxlar haqida <br /> ko'proq ma'lumot olmoqchimisiz
+          ?
         </h1>
 
-        <div className="max-w-[1580px] flex lg:flex-row flex-col lg:justify-around justify-center items-center lg:text-left md:text-center rounded-[30px] bg-white mx-14 md:mx-auto md:px-14 px-[42px] md:py-0 py-[40px] text-black mb-[151px] md:mb-[303px] lg:mb-[441px] transition-all duration-500 hover:shadow-2xl">
-          <h2 className="max-w-[601px] font-['Poppins'] font-normal text-[30px] md:text-[60px] lg:text-[80px] xl:text-[90px] leading-[34px] md:leading-[70px] lg:leading-[80px] tracking-[-3px] md:mt-[42px]">
+        <div className="max-w-[1580px] flex lg:flex-row flex-col lg:justify-around justify-center items-center lg:text-left md:text-center rounded-[30px] bg-white mx-14 md:mx-34 lg:mx-0 xl:mx-12 md:px-10 px-[42px] md:py-0 py-[40px] text-black mb-[151px] md:mb-[303px] lg:mb-[441px] transition-all duration-500 hover:shadow-2xl">
+          <h2 className="max-w-[601px] font-['Poppins'] font-normal text-[30px] md:text-[60px] lg:text-[80px] xl:text-[90px] leading-[34px] md:leading-[70px] lg:leading-[80px] tracking-[-3px] lg:mt-0 md:mt-[42px]">
             Unda biz bilan bog'laning !
           </h2>
 
