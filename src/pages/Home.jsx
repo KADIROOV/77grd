@@ -7,6 +7,8 @@ import { FaqAccordion } from "./faq-accordion";
 export default function Home() {
   const [phoneNumber, setPhoneNumber] = useState("");
   const [clientName, setClientName] = useState("");
+  const [phoneNumber2, setPhoneNumber2] = useState("");
+  const [clientName2, setClientName2] = useState("");
   const [clientComment, setClientComment] = useState("");
   const [isVisible, setIsVisible] = useState(false);
   const [showModal, setShowModal] = useState(false);
@@ -18,7 +20,13 @@ export default function Home() {
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ phoneNumber, clientName, clientComment }),
+        body: JSON.stringify({
+          phoneNumber,
+          phoneNumber2,
+          clientName,
+          clientName2,
+          clientComment,
+        }),
       });
 
       if (res.ok) {
@@ -27,7 +35,9 @@ export default function Home() {
       } else {
         setShowModal(true);
         setPhoneNumber("");
+        setPhoneNumber2("");
         setClientName("");
+        setClientName2("");
         setClientComment("");
       }
     } catch (err) {
@@ -99,8 +109,13 @@ export default function Home() {
     return formatted;
   };
 
-  const handlePhoneChange = (e) => {
+  const handlePhoneChange1 = (e) => {
     setPhoneNumber(formatPhoneNumber(e.target.value));
+  };
+
+  // Yangi: Ikkinchi section (fikr bildirish) uchun alohida handler
+  const handlePhoneChange2 = (e) => {
+    setPhoneNumber2(formatPhoneNumber(e.target.value));
   };
 
   // Service card component - animatsiya qo'shilgan
@@ -295,7 +310,7 @@ export default function Home() {
         className="mt-[207px] md:mt-[215px] flex lg:justify-center items-start px-2 mx-6 opacity-0"
       >
         <div className="hero-1">
-          <p className="lg:max-w-[1054px] text-[38px] md:text-5xl lg:text-[50px] sm:mr-20 xl:text-[70px] 2xl:text-[90px] leading-[50px] md:leading-[60px] lg:leading-[60px] xl:leading-[80px] mx-[30px] md:mx-0 text-start">
+          <p className="lg:max-w-[1054px] text-[38px] md:text-5xl lg:text-[50px] sm:mr-20 xl:text-[70px] 2xl:text-[90px] leading-[50px] md:leading-[60px] lg:leading-[60px] xl:leading-[80px] 2xl:leading-[100px] mx-[30px] md:mx-0 text-start">
             Biz bilan birga biznesingizni yangi bosqichga olib chiqing !
           </p>
           <button className="cursor-pointer w-[176px] lg:w-[290px] md:h-[60px] h-[40px] md:rounded-[20px] rounded-[14px] hover:bg-white hover:text-black border border-white font-normal text-[17px] md:text-[25px] md:tracking-[-2px] flex justify-center items-center mt-[86px] md:mt-[131px] mx-8 md:mx-0 transition-all duration-200">
@@ -344,7 +359,7 @@ export default function Home() {
             <input
               type="tel"
               value={phoneNumber}
-              onChange={handlePhoneChange}
+              onChange={handlePhoneChange1}
               className="rounded-[14px] px-4 py-2 w-[218px] md:w-[317px] lg:w-[360px] outline-none border border-black text-[#333333] md:mt-[55px] mt-[27px] font-['Poppins'] font-light text-[15px] md:text-[20px] lg:text-[25px]"
               placeholder="+998-99-999-99-99"
             />
@@ -436,17 +451,17 @@ export default function Home() {
           </h1>
 
           <div className="flex flex-col gap-4 md:gap-6">
-            <FaqAccordion/>
+            <FaqAccordion />
           </div>
         </div>
       </section>
       <section>
         <ContactForm
-          phoneNumber={phoneNumber}
-          handlePhoneChange={handlePhoneChange}
-          clientName={clientName}
+          phoneNumber={phoneNumber2}
+          handlePhoneChange={handlePhoneChange2}
+          clientName={clientName2}
           handleSubmit={handleSubmit}
-          setClientName={setClientName}
+          setClientName={setClientName2}
           setClientComment={setClientComment}
           clientComment={clientComment}
         />

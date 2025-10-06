@@ -38,15 +38,15 @@ export default function Header() {
     <div className="fixed top-0 left-0 w-full z-50 pt-[20px]">
       <div
         id="home"
-        className="max-w-[1680px] mx-auto flex items-center justify-between 
-                md:px-8 px-[35px] bg-black/90 backdrop-blur-sm xl:border-2 border-white rounded-[20px]"
+        className="max-w-[1580px] mx-auto flex items-center justify-around 
+                md:px-8 px-[35px] bg-black/80 backdrop-blur rounded-[20px] py-4 "
       >
         {/* Logo */}
         <a href="#home">
           <img
-            src="/images/logo_img.svg"
+            src="/images/77.png"
             alt="77 Logo image"
-            className="lg:w-[98px] md:w-[76px] w-[70px]"
+            className="lg:w-[50px] md:w-[34px] w-[26px]"
           />
         </a>
 
@@ -108,8 +108,8 @@ export default function Header() {
 
         {/* Mobile Menu */}
         <div
-          className={`w-[40%] mx-auto fixed top-14 right-0 text-black flex flex-col items-center z-50 justify-center gap-4 py-2 h-72 rounded-xl text-xl bg-white shadow-lg transform transition-transform duration-300 ease md:hidden
-        ${isOpen ? "translate-x-0" : "translate-x-full"}`}
+          className={`w-[40%] mx-auto fixed top-14 right-12 text-black flex flex-col items-center z-50 justify-center gap-4 py-2 h-72 rounded-xl text-xl bg-white shadow-lg transform transition-transform duration-300 ease md:hidden
+        ${isOpen ? "translate-x-0" : "translate-x-[356px]"}`}
         >
           <button
             className="absolute right-2 top-2"

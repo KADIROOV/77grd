@@ -86,14 +86,14 @@ export function FaqAccordion() {
           >
             <button
               onClick={() => toggleItem(index)}
-              className="flex w-full items-start justify-between gap-4 p-4 text-left transition-all duration-300 md:p-4 lg:p-6"
+              className="flex w-full items-start justify-between gap-4 p-4 text-left transition-all duration-300 md:py-4 md:px-6 lg:p-6"
               aria-expanded={isOpen}
             >
-              <h3 className="text-xl font-normal md:tracking-[-2px] tracking-tight leading-tight text-black md:text-3xl lg:text-4xl">
+              <h3 className="text-xl font-normal md:tracking-[-2px] tracking-tight leading-tight text-black md:text-[28px] lg:text-4xl lg:pt-0 md:pt-[4px] pt-2">
                 {item.question}
               </h3>
               <div className="flex-shrink-0 pt-1">
-                {isOpen ? <XIcon/> : <PlusIcon />}
+                {isOpen ? <XIcon /> : <PlusIcon />}
               </div>
             </button>
 
@@ -105,8 +105,8 @@ export function FaqAccordion() {
               }`}
             >
               <div className="overflow-hidden">
-                <div className="px-8 pb-8 md:px-10 md:pb-10 lg:px-12 lg:pb-12">
-                  <p className="text-lg leading-relaxed tracking-tight  text-black/80 md:text-xl lg:text-2xl">
+                <div className="px-4 pb-8 md:px-8 md:pb-10 lg:px-10 lg:pb-12">
+                  <p className="text-lg leading-relaxed tracking-tight  text-black/80 md:text-[12px] lg:text-2xl">
                     {item.answer}
                   </p>
                 </div>
