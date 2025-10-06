@@ -1,6 +1,8 @@
 import { useState } from "react";
 
-const XIcon = () => (
+const PlusIcon = (
+  { className = "" } // Prop qo'shdik: className default bo'sh
+) => (
   <svg
     width="40"
     height="40"
@@ -10,24 +12,7 @@ const XIcon = () => (
     strokeWidth="2"
     strokeLinecap="round"
     strokeLinejoin="round"
-    className="h-8 w-8 text-black transition-transform duration-300 md:h-10 md:w-10"
-  >
-    <line x1="18" y1="6" x2="6" y2="18" />
-    <line x1="6" y1="6" x2="18" y2="18" />
-  </svg>
-);
-
-const PlusIcon = () => (
-  <svg
-    width="40"
-    height="40"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    className="h-8 w-8 text-black transition-transform duration-300 md:h-10 md:w-10"
+    className={`h-8 w-8 text-black transition-transform duration-300 md:h-10 md:w-10 ${className}`} // Eski class'larga yangisini qo'shdik
   >
     <line x1="12" y1="5" x2="12" y2="19" />
     <line x1="5" y1="12" x2="19" y2="12" />
@@ -92,8 +77,11 @@ export function FaqAccordion() {
               <h3 className="text-xl font-normal md:tracking-[-2px] tracking-tight leading-tight text-black md:text-[28px] lg:text-4xl lg:pt-0 md:pt-[4px] pt-2">
                 {item.question}
               </h3>
-              <div className="flex-shrink-0 pt-1">
-                {isOpen ? <XIcon /> : <PlusIcon />}
+              <div className="flex-shrink-0 pt-1 transition-transform duration-250 ease-out">
+                {" "}
+                {/* transition-all → transition-transform qilib, duration'ni 300ga oshirdim */}
+                <PlusIcon className={isOpen ? "rotate-45" : "rotate-0"} />{" "}
+                {/* Conditional rotate class! */}
               </div>
             </button>
 
