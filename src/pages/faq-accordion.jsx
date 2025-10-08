@@ -67,14 +67,14 @@ export function FaqAccordion() {
         return (
           <div
             key={index}
-            className="overflow-hidden md:rounded-[25px] rounded-[18px] bg-[#f5f5f0] transition-all duration-300 ease-in-out p-2"
+            className="overflow-hidden md:rounded-[25px] rounded-[18px] bg-[#f5f5f0] transition-all duration-300 ease-in-out sm:p-2 p-0"
           >
             <button
               onClick={() => toggleItem(index)}
               className="flex w-full items-start justify-between gap-4 p-4 text-left transition-all duration-300 md:py-4 md:px-6 lg:p-6"
               aria-expanded={isOpen}
             >
-              <h3 className="text-[26px] font-normal md:tracking-[-2px] tracking-tight leading-tight text-black md:text-[32px] lg:text-[42px] lg:pt-0 md:pt-[4px] pt-2">
+              <h3 className="text-[16px] font-medium md:tracking-[-2px] tracking-tight leading-tight text-black md:text-[32px] lg:text-[42px] lg:pt-0 md:pt-[4px] pt-2">
                 {item.question}
               </h3>
               <div className="flex-shrink-0 pt-1 transition-transform duration-250 ease-out">
@@ -94,7 +94,7 @@ export function FaqAccordion() {
             >
               <div className="overflow-hidden">
                 <div className="px-4 pb-8 md:px-8 md:pb-10 lg:px-10 lg:pb-12">
-                  <p className="text-lg leading-relaxed tracking-tight  text-black/80 md:text-[12px] lg:text-2xl">
+                  <p className="sm:text-lg text-[14px] leading-relaxed tracking-tight  text-black/80 md:text-[20px] lg:text-2xl">
                     {item.answer}
                   </p>
                 </div>
