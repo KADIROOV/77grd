@@ -5,6 +5,13 @@ import Home from "./pages/Home";
 
 export default function App() {
   useEffect(() => {
+    // Zamonaviy usul: hover va fine pointer (sichqoncha) borligini tekshirish
+    const mediaQuery = window.matchMedia("(hover: hover) and (pointer: fine)");
+    const hasMouse = mediaQuery.matches;
+
+    // Agar matchMedia qo'llab-quvvatlanmasa (eski brauzerlar), desktop deb hisoblaymiz
+    if (!hasMouse) return; // Mouse bo'lmasa, cursor yaratmaslik
+
     // Custom cursor setup
     const cursor = document.createElement("div");
     cursor.id = "cursor-dot";
@@ -75,10 +82,25 @@ export default function App() {
 
     window.addEventListener("mousemove", move);
 
+    // Media query o'zgarishini kuzatish (masalan, touch qurilmada mouse ulanganda)
+    const handleChange = (e) => {
+      if (!e.matches) {
+        // Agar mouse yo'qolgan bo'lsa, cursor ni olib tashlash
+        cursor.remove();
+        window.removeEventListener("mousemove", move);
+      } else {
+        // Qayta ishga tushirish (lekin bu holda oddiygina)
+        document.body.appendChild(cursor);
+        window.addEventListener("mousemove", move);
+      }
+    };
+    mediaQuery.addEventListener("change", handleChange);
+
     return () => {
       if (rafId) cancelAnimationFrame(rafId);
       cursor.remove();
       window.removeEventListener("mousemove", move);
+      mediaQuery.removeEventListener("change", handleChange);
     };
   }, []);
 

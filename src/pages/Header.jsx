@@ -35,7 +35,7 @@ export default function Header() {
   };
 
   return (
-    <div className="fixed top-0 left-0 w-full z-50 pt-[20px]">
+    <div className="fixed top-0 left-[5%] w-[90%] z-50 pt-[20px] ">
       <div
         id="home"
         className="max-w-[1580px] mx-auto flex items-center justify-between 
@@ -66,10 +66,10 @@ export default function Header() {
         {/* Desktop Language Selector */}
         <div
           ref={langRef}
-          className="hidden md:flex relative w-[127px] h-[40px] border border-white rounded-2xl bg-black items-center justify-center cursor-pointer"
+          className="hidden md:flex relative w-[127px] h-[40px] border border-white rounded-2xl bg-transparent items-center justify-center cursor-pointer"
           onClick={() => setLangOpen(!langOpen)}
         >
-          <div className="text-white font-medium">
+          <div className="text-white font-normal font-[Open_Sans] text-[25px]">
             {languages.find((l) => l.code === selectedLang)?.label}
           </div>
           <IoIosArrowDown
@@ -83,7 +83,7 @@ export default function Header() {
                 <button
                   key={lang.code}
                   onClick={() => handleSelect(lang.code)}
-                  className={`w-full h-[40px] text-white font-medium hover:bg-white/10 transition-colors ${
+                  className={`w-full h-[40px] text-white font-medium text-2xl hover:bg-white/10 transition-colors ${
                     selectedLang === lang.code ? "bg-white/5" : ""
                   }`}
                 >

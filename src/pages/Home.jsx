@@ -134,7 +134,7 @@ export default function Home() {
       style={{ animationDelay: delay }}
     >
       <div className="pt-10 flex flex-col items-center px-[30px]">
-        <h4 className="font-['Poppins'] font-medium text-2xl md:text-[60px] lg:text-[60px] text-black md:tracking-[-5px] text-center">
+        <h4 className="font-['Poppins'] font-medium text-2xl md:text-[60px] lg:text-[58px] text-black md:tracking-[-5px] text-center">
           {title}
         </h4>
         {id === 1 ? (
@@ -152,7 +152,7 @@ export default function Home() {
         <img
           src={imageSrc || "/placeholder.svg"}
           alt={altText}
-          className="mt-8 md:mt-0"
+          className="mt-8 md:mt-2"
         />
       ) : id === 4 ? (
         <img src={imageSrc || "/placeholder.svg"} alt={altText} className="" />
@@ -309,7 +309,7 @@ export default function Home() {
   ];
 
   return (
-    <div className="max-w-[1680px] mx-auto p-2 transition-all ease duration-800">
+    <div className="max-w-[1680px] mx-auto px-6 pt-2 transition-all ease duration-800">
       {/* Hero Section */}
       <div
         ref={sectionRefs.hero}
@@ -323,8 +323,8 @@ export default function Home() {
             Bog'lanish
           </button>
         </div>
-        <p className="md:flex hidden font-['Poppins'] font-medium xl:text-[200px] lg:text-[130px] text-[110px] transform rotate-[7deg] text-white text-shadow-down mb-20">
-          77grd
+        <p className="md:flex hidden font-['Poppins'] font-medium xl:text-[130px] lg:text-[90px] text-[68px] transform rotate-[7deg] text-white text-shadow-down">
+          77grade
         </p>
       </div>
 
