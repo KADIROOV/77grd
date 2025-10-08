@@ -8,7 +8,7 @@ export default function ContactForm({
   setClientComment,
 }) {
   return (
-    <div className="max-w-[1280px] flex flex-col lg:flex-row items-center  justify-center rounded-[50px] lg:mx-6 md:mx-auto xl:mx-auto md:mt-[142px] mt-[78px] text-black mb-20 ">
+    <div className="max-w-[1280px] flex flex-col lg:flex-row items-center  justify-center rounded-[50px] lg:mx-6 md:mx-auto xl:mx-auto lg:mt-[347px] md:mt-[142px] mt-[78px] text-black lg:mb-[289px] md:mb-[315px] mb-[147px] ">
       <div className="">
         <h2 className="font-['Poppins'] font-normal text-[30px] sm:text-[60px] xl:text-[150px] lg:text-[120px] text-white text-center lg:text-left leading-[160px]  lg:tracking-[-3px] md:mb-[57px] lg:mb-0">
           Taklifingiz bormi ?

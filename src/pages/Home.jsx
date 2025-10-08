@@ -307,13 +307,13 @@ export default function Home() {
       {/* Hero Section */}
       <div
         ref={sectionRefs.hero}
-        className="mt-[207px] md:mt-[215px] flex lg:justify-center items-start px-2 mx-6 opacity-0"
+        className="mt-[310px] md:mt-[305px] lg:mt-[300px] flex lg:justify-center items-left px-2 sm:mx-6 mx-0 opacity-0"
       >
         <div className="hero-1">
-          <p className="lg:max-w-[1054px] text-[38px] md:text-5xl lg:text-[50px] sm:mr-20 xl:text-[70px] 2xl:text-[90px] leading-[50px] md:leading-[60px] lg:leading-[60px] xl:leading-[80px] 2xl:leading-[100px] mx-[30px] md:mx-0 text-start">
+          <p className="lg:max-w-[1054px] text-[38px] md:text-5xl lg:text-[50px] sm:mr-20 xl:text-[70px] 2xl:text-[90px] leading-[50px] md:leading-[60px] lg:leading-[60px] xl:leading-[80px] 2xl:leading-[100px] mx-[30px] md:mx-0 text-left">
             Biz bilan birga biznesingizni yangi bosqichga olib chiqing !
           </p>
-          <button className="cursor-pointer w-[176px] lg:w-[290px] md:h-[60px] h-[40px] md:rounded-[20px] rounded-[14px] hover:bg-white hover:text-black border border-white font-normal text-[17px] md:text-[25px] md:tracking-[-2px] flex justify-center items-center mt-[86px] md:mt-[131px] mx-8 md:mx-0 transition-all duration-200">
+          <button className="cursor-pointer w-[191px] md:w-[290px] md:h-[60px] h-[40px] md:rounded-[20px] rounded-[14px] hover:bg-white hover:text-black border border-white font-normal text-[17px] md:text-[25px] md:tracking-[-2px] flex justify-center items-center mt-[86px] md:mt-[131px] mx-8 md:mx-0 transition-all duration-200">
             Bog'lanish
           </button>
         </div>
@@ -446,7 +446,7 @@ export default function Home() {
         className="mt-[65px] md:mt-[250px] px-7 md:px-8 opacity-0"
       >
         <div className="max-w-[1280px] mx-auto">
-          <h1 className="font-['Poppins'] font-normal text-[40px] md:text-[80px] lg:text-[120px] xl:text-[150px] lg:tracking-[-7px] tracking-[-3px] leading-10 md:leading-18 lg:leading-32 text-left mb-[60px] md:mb-[100px]">
+          <h1 className="font-['Poppins'] font-normal text-[50px] md:text-[90px] lg:text-[128px] xl:text-[156px] lg:tracking-[-7px] tracking-[-3px] leading-11 md:leading-20 lg:leading-34 text-left mb-[60px] md:mb-[100px] lg:mb-[158px]">
             Savollarga <br /> Javoblar :
           </h1>
 

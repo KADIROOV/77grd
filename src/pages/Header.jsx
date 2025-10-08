@@ -38,7 +38,7 @@ export default function Header() {
     <div className="fixed top-0 left-0 w-full z-50 pt-[20px]">
       <div
         id="home"
-        className="max-w-[1580px] mx-auto flex items-center justify-around 
+        className="max-w-[1580px] mx-auto flex items-center justify-between 
                 md:px-8 px-[35px] bg-black/80 backdrop-blur rounded-[20px] py-4 "
       >
         {/* Logo */}

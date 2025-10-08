@@ -60,21 +60,21 @@ export function FaqAccordion() {
   };
 
   return (
-    <div className="space-y-6">
+    <div className="lg:space-y-[55px] md:space-y-[50px] space-y-[15px]">
       {faqData.map((item, index) => {
         const isOpen = openId === index;
 
         return (
           <div
             key={index}
-            className="overflow-hidden rounded-[2rem] bg-[#f5f5f0] transition-all duration-300 ease-in-out"
+            className="overflow-hidden md:rounded-[25px] rounded-[18px] bg-[#f5f5f0] transition-all duration-300 ease-in-out p-2"
           >
             <button
               onClick={() => toggleItem(index)}
               className="flex w-full items-start justify-between gap-4 p-4 text-left transition-all duration-300 md:py-4 md:px-6 lg:p-6"
               aria-expanded={isOpen}
             >
-              <h3 className="text-xl font-normal md:tracking-[-2px] tracking-tight leading-tight text-black md:text-[28px] lg:text-4xl lg:pt-0 md:pt-[4px] pt-2">
+              <h3 className="text-[26px] font-normal md:tracking-[-2px] tracking-tight leading-tight text-black md:text-[32px] lg:text-[42px] lg:pt-0 md:pt-[4px] pt-2">
                 {item.question}
               </h3>
               <div className="flex-shrink-0 pt-1 transition-transform duration-250 ease-out">
