@@ -148,25 +148,31 @@ export default function Home() {
         )}
       </div>
 
-      {id === 4 ? (
+      {id === 1 ? (
+        <img
+          src={imageSrc || "/placeholder.svg"}
+          alt={altText}
+          className="mt-8 md:mt-0"
+        />
+      ) : id === 4 ? (
         <img src={imageSrc || "/placeholder.svg"} alt={altText} className="" />
       ) : id == 5 ? (
         <img
           src={imageSrc || "/placeholder.svg"}
           alt={altText}
-          className="md:w-[300px]  lg:w-[349px] w-[220px] mx-auto mt-8 md:mt-20"
+          className="md:w-[300px]  lg:w-[349px] w-[220px] mx-auto mt-8 md:mt-10"
         />
       ) : id === 6 ? (
         <img
           src={imageSrc || "/placeholder.svg"}
           alt={altText}
-          className="md:w-[280px]  lg:w-[300px] w-[200px] mx-auto mt-8 md:mt-12 mb-10"
+          className="md:w-[280px]  lg:w-[300px] w-[200px] mx-auto mt-8 md:mt-10 mb-10"
         />
       ) : (
         <img
           src={imageSrc || "/placeholder.svg"}
           alt={altText}
-          className="md:w-[300px]  lg:w-[349px] w-[230px] mt-12 md:mt-4 mx-auto"
+          className="md:w-[300px]  lg:w-[349px] w-[230px] mt-12 md:mt-16 mx-auto"
         />
       )}
     </div>
