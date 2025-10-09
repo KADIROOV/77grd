@@ -315,7 +315,7 @@ export default function Home() {
         ref={sectionRefs.hero}
         className="mt-[310px] md:mt-[305px] lg:mt-[300px] flex lg:justify-center items-left px-2 sm:mx-6 mx-0 opacity-0"
       >
-        <div className="hero-1">
+        <div id="home" className="hero-1">
           <p className="lg:max-w-[1054px] text-[38px] md:text-5xl lg:text-[50px] sm:mr-20 xl:text-[70px] 2xl:text-[90px] leading-[50px] md:leading-[60px] lg:leading-[60px] xl:leading-[80px] 2xl:leading-[100px] mx-[30px] md:mx-0 text-left">
             Biz bilan birga biznesingizni yangi bosqichga olib chiqing !
           </p>
@@ -323,7 +323,7 @@ export default function Home() {
             Bog'lanish
           </button>
         </div>
-        <p className="md:flex hidden font-['Poppins'] font-medium xl:text-[130px] lg:text-[90px] text-[68px] transform rotate-[7deg] text-white text-shadow-down">
+        <p className="md:flex hidden font-['Poppins'] font-medium xl:text-[130px] lg:text-[90px] text-[68px] transform rotate-[7deg] text-white text-shadow-down mt-6">
           77grade
         </p>
       </div>

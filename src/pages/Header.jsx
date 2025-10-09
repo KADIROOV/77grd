@@ -5,15 +5,15 @@ import { IoIosArrowDown, IoMdClose } from "react-icons/io";
 import { RxHamburgerMenu } from "react-icons/rx";
 
 const languages = [
-  { code: "ru", label: "RU" },
-  { code: "uz", label: "UZ" },
-  { code: "en", label: "EN" },
+  { code: "uz", label: "uz" },
+  { code: "ru", label: "ru" },
+  { code: "en", label: "en" },
 ];
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [langOpen, setLangOpen] = useState(false);
-  const [selectedLang, setSelectedLang] = useState("ru");
+  const [selectedLang, setSelectedLang] = useState("uz");
 
   const langRef = useRef(null);
 
@@ -37,7 +37,6 @@ export default function Header() {
   return (
     <div className="fixed top-0 left-[5%] w-[90%] z-50 pt-[20px] ">
       <div
-        id="home"
         className="max-w-[1580px] mx-auto flex items-center justify-between 
                 md:px-8 px-[35px] bg-black/80 backdrop-blur rounded-[20px] py-4 "
       >
