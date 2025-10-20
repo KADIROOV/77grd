@@ -10,8 +10,8 @@ export default function ContactForm({
   return (
     <div className="max-w-[1280px] flex flex-col lg:flex-row items-center  justify-center rounded-[50px] lg:mx-6 md:mx-auto xl:mx-auto lg:mt-[347px] md:mt-[142px] mt-[78px] text-black lg:mb-[289px] md:mb-[315px] mb-[147px] ">
       <div className="">
-        <h2 className="font-['Poppins'] font-normal text-[30px] sm:text-[60px] xl:text-[150px] lg:text-[120px] text-white text-center lg:text-left leading-[160px]  lg:tracking-[-3px] md:mb-[57px] lg:mb-0">
-          Taklifingiz bormi ?
+        <h2 className="font-['Poppins'] font-normal text-[30px] sm:text-[60px] xl:text-[150px] lg:text-[120px] text-white text-center lg:text-left leading-[160px]  lg:tracking-[-14px] md:mb-[57px] lg:mb-0">
+          Xizmatimiz kerakmi ?
         </h2>
       </div>
 
@@ -40,7 +40,7 @@ export default function ContactForm({
           />
           <button
             onClick={handleSubmit}
-            className="cursor-pointer rounded-[14px] px-4 py-2 w-[240px] md:w-[311px]  outline-none border border-black text-[#333333] md:mb-[55px] font-['Poppins'] font-light text-[15px] md:text-[25px] lg:text-[30px] hover:bg-black hover:text-white transition-all duration-200"
+            className=" konsultat-btn cursor-pointer rounded-[14px] px-4 py-2 w-[240px] md:w-[311px]  outline-none  text-[#000000] md:mb-[55px] font-['Poppins'] font-light text-[15px] md:text-[25px] lg:text-[30px] bg-[#77E095] "
           >
             Jo'natish
           </button>

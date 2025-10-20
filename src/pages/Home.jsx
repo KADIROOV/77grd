@@ -119,25 +119,13 @@ export default function Home() {
   };
 
   // Why choose us item component - animatsiya qo'shilgan
-  const WhyChooseUsItem = ({
-    number,
-    description,
-    alignment = "left",
-    delay,
-  }) => (
-    <div
-      className={`max-w-[1580px] flex ${
-        alignment === "right" ? "lg:justify-end" : "lg:justify-start"
-      } justify-center items-${
-        alignment === "right" ? "end" : "start"
-      } opacity-0 ${isVisible ? "animate-fade-in-up" : ""}`}
-      style={{ animationDelay: delay }}
-    >
-      <div className="lg:max-w-[747px] max-w-[684px] flex justify-center items-center rounded-[20px] bg-white text-black mx-8 md:mx-0 py-2 px-4 gap-4">
-        <span className="w-[173px] flex justify-center items-center font-['Poppins'] font-normal text-[80px] md:text-[120px] lg:text-[150px] tracking-[-8px]">
+  const WhyChooseUsItem = ({ number, description, delay }) => (
+    <div className={`max-w-[1480px] mx-auto`} style={{ animationDelay: delay }}>
+      <div className="max-w-[1480px] flex justify-center items-center rounded-[20px] bg-white text-black py-2 pr-20 gap-4">
+        <span className="w-[491px] flex justify-center items-center font-['Poppins'] font-normal text-[80px] md:text-[120px] lg:text-[150px] tracking-[-8px]">
           {number}
         </span>
-        <p className="max-w-[534px] font-['Open_Sans'] font-normal text-xs md:text-xl lg:text-3xl lg:leading-[35px] lg:tracking-[-2px] flex justify-center items-center">
+        <p className="max-w-[898px] font-['Open_Sans'] font-normal text-xs md:text-xl lg:text-[40px] lg:leading-[38px] lg:tracking-[-2px]">
           {description}
         </p>
       </div>
@@ -150,53 +138,60 @@ export default function Home() {
       description:
         "Bizning ishimiz nafaqat chiroyli ko'rinadi, balki real natija ham beradi. Haftalik va oylik hisobotlar orqali siz loyihaning qayerga ketayotganini aniq ko'rasiz.",
       alignment: "left",
-      delay: "0.1s",
+      delay: "0.4s",
     },
     {
       number: 2,
       description:
         "Bizning kontent va dizayn bo'yicha kreativ yechimlar bazamiz doimiy yangilanib boradi va mijozning talablarini qondiradi",
       alignment: "right",
-      delay: "0.2s",
+      delay: "0.8s",
     },
     {
       number: 3,
       description:
         "Bizda marketing, dizayn, kontent va boshqaruv bo'yicha tajribali mutaxassislar bor, har biri vazifasini professional bajaradi.",
       alignment: "left",
-      delay: "0.3s",
+      delay: "1.2s",
     },
     {
       number: 4,
       description:
         "Biz vaqtingizni qadrlaymiz. Shu sababli ishlar belgilangan muddatda topshiriladi. Muddatlar biz uchun majburiyat, siz uchun esa kafolatdir.",
       alignment: "right",
-      delay: "0.4s",
+      delay: "1.6s",
     },
     {
       number: 5,
       description:
         "Biz jamoamizni doimiy o'qitib va rivojlantirib boramiz. Bu sizning loyihangizga yangi bilimlar, trendlar va texnologiyalarni olib kirish imkonini beradi.",
       alignment: "left",
-      delay: "0.5s",
+      delay: "2.0s",
     },
     {
       number: 6,
       description:
-        "Biz siz bilan uzoq muddatli hamkorlik o'rnatishga intilamiz va biznesingizning rivojiga sherik bo'lamiz.",
+        "Biz siz bilan uzoq muddatli hamkorlik o‘rnatishga intilamiz va biznesingizning rivojiga sherik bo‘lamiz. Har bir loyiha biz uchun yangi imkoniyat, siz uchun esa ishonchli natijadir.",
       alignment: "right",
-      delay: "0.6s",
+      delay: "2.4s",
+    },
+    {
+      number: 7,
+      description:
+        " Hamkorlik davomida nafaqat loyiha, balki biznesingiz ham o‘sadi. Biz natijaga yo‘naltirilgan strategiya va ijodiy yechimlar bilan har qadamda siz bilan birgamiz.",
+      alignment: "right",
+      delay: "2.8s",
     },
   ];
 
   return (
-    <div className="max-w-[1680px] mx-auto pt-2 transition-all ease duration-800 overflow-x-hidden">
+    <div className="pt-2 transition-all ease duration-800 overflow-x-hidden">
       {/* Hero Section */}
       <div
         ref={sectionRefs.hero}
-        className="mt-[320px] md:mt-[300px] lg:mt-[320px] flex items-left lg:px-0 px-2 sm:mx-6 mx-0 opacity-0 overflow-x-hidden"
+        className="mt-[320px] md:mt-[300px] lg:mt-[320px] items-left lg:px-0 px-2 mx-0 opacity-0 overflow-x-hidden"
       >
-        <div id="home" className="hero-1">
+        <div id="home" className="hero-1 max-w-[1680px] mx-auto">
           <p className="font-[Poppins] font-normal text-[38px] md:text-5xl lg:text-[50px] xl:text-[70px] 2xl:text-[110px] leading-[60px] md:leading-[65px] lg:leading-[70px] xl:leading-[85px] 2xl:leading-[115px]  tracking-[-2px] md:tracking-[-4px] lg:tracking-[-7px] mb-[86px] md:mb-[131px]">
             Biznesingizni yangi cho‘qqilarga <br /> olib chiqadigan{" "}
             <em className="text-[#77E095]">xizmatlar.</em>
@@ -210,152 +205,139 @@ export default function Home() {
               vositalari va yechimlar.
             </p>
           </div>
+        </div>
 
-          {/* Animatsiyali tekst qismi – eng pastda, button va p dan keyin */}
-          <div className="marquee-container mt-[100px] md:mt-[170px] relative overflow-hidden h-12 md:h-16 w-full">
-            <div className="marquee-wrapper flex whitespace-nowrap animate-marquee will-change-transform">
-              <span className="mr-4 text-lg md:text-xl lg:text-2xl font-bold text-gray-700 min-w-max inline-block">
-                Biznesingizni o‘stiramiz. Brendingizni kuchaytiramiz. Sotuvni
-                ko‘paytiramiz. 77Grade — natijaga yo‘naltirilgan marketing
-                agentligi. Biznesingizni yangi
-              </span>
-              {/* Duplicate for seamless loop */}
-              <span className="text-lg md:text-xl lg:text-2xl font-bold text-gray-700 min-w-max inline-block">
-                Biznesingizni o‘stiramiz. Brendingizni kuchaytiramiz. Sotuvni
-                ko‘paytiramiz. 77Grade — natijaga yo‘naltirilgan marketing
-                agentligi. Biznesingizni yangi
-              </span>
-            </div>
+        {/* Animatsiyali tekst qismi – eng pastda, button va p dan keyin */}
+        <div className="marquee-container mt-[100px] md:mt-[170px] relative overflow-hidden h-12 md:h-16 w-full">
+          <div className="marquee-wrapper flex whitespace-nowrap animate-marquee will-change-transform">
+            <span className="font-['Poppins'] font-light  mr-4 text-[30px] md:text-xl lg:text-2xl  text-white tracking-[-2px] inline-block">
+              Biznesingizni o‘stiramiz. Brendingizni kuchaytiramiz. Sotuvni
+              ko‘paytiramiz. 77Grade — natijaga yo‘naltirilgan marketing
+              agentligi. Biznesingizni yangi
+            </span>
+            {/* Duplicate for seamless loop */}
+            <span className="font-['Poppins'] font-light  text-[30px] md:text-xl lg:text-2xl  text-white tracking-[-1px] inline-block">
+              Biznesingizni o‘stiramiz. Brendingizni kuchaytiramiz. Sotuvni
+              ko‘paytiramiz. 77Grade — natijaga yo‘naltirilgan marketing
+              agentligi. Biznesingizni yangiz
+            </span>
           </div>
         </div>
       </div>
 
-      {/* Contact Section */}
-      <section ref={sectionRefs.contact} id="contact" className="opacity-0">
-        <h1 className="max-w-[1680px] px-10 font-['Poppins'] font-normal text-[35px] md:text-[45px] lg:text-[60px] xl:text-[80px] leading-tight lg:tracking-[-4px] tracking-[-1px] md:tracking-[-3px] md:text-right text-left mt-[76px] md:mt-[213px] mb-[58px] md:mb-[131px] mx-[0px] md:mx-0">
-          Xizmatlarimiz va narxlar haqida <br /> ko'proq ma'lumot olmoqchimisiz
-          ?
-        </h1>
+      <div className="max-w-[1680px] mx-auto pt-2 transition-all ease duration-800">
+        {/* Contact Section */}
+        <section ref={sectionRefs.contact} id="contact" className="opacity-0">
+          <h1 className="max-w-[1680px] px-10 font-['Poppins'] font-normal text-[35px] md:text-[45px] lg:text-[60px] xl:text-[150px] leading-tight lg:tracking-[-4px] tracking-[-1px] md:tracking-[-3px] md:text-right text-left mt-[76px] md:mt-[213px] mb-[58px] md:mb-[131px] mx-[0px] md:mx-0">
+            Bizga savolingiz yoki <br /> taklifingiz bormi ?
+          </h1>
 
-        <div className="max-w-[1580px] flex lg:flex-row flex-col lg:justify-around justify-center items-center lg:text-left md:text-center rounded-[30px] bg-white mx-14 md:mx-34 lg:mx-0 xl:mx-12 md:px-10 px-[42px] md:py-0 py-[40px] text-black mb-[151px] md:mb-[303px] lg:mb-[441px] transition-all duration-500 hover:shadow-2xl">
-          <h2 className="max-w-[601px] font-['Poppins'] font-normal text-[30px] md:text-[60px] lg:text-[80px] xl:text-[90px] leading-[34px] md:leading-[70px] lg:leading-[80px] tracking-[-3px] lg:mt-0 md:mt-[42px]">
-            Unda biz bilan bog'laning !
-          </h2>
+          <div className="max-w-[1580px] flex lg:flex-row flex-col lg:justify-around justify-center items-center lg:text-left md:text-center rounded-[30px] bg-white mx-14 md:mx-34 lg:mx-0 xl:mx-12 md:px-10 px-[42px] md:py-0 py-[40px] text-black mb-[151px] md:mb-[303px] lg:mb-[441px] transition-all duration-500 hover:shadow-2xl">
+            <h2 className="max-w-[601px] font-['Poppins'] font-normal text-[30px] md:text-[60px] lg:text-[80px] xl:text-[90px] leading-[34px] md:leading-[70px] lg:leading-[80px] tracking-[-3px] lg:mt-0 md:mt-[42px]">
+              Unda biz bilan bog'laning !
+            </h2>
 
-          <form
-            onSubmit={handleSubmit}
-            className="flex flex-col lg:items-start items-center justify-center gap-3 md:gap-[26px]"
-          >
-            <input
-              type="tel"
-              value={phoneNumber}
-              onChange={handlePhoneChange1}
-              className="rounded-[14px] px-4 py-2 w-[218px] md:w-[317px] lg:w-[360px] outline-none border border-black text-[#333333] md:mt-[55px] mt-[27px] font-['Poppins'] font-light text-[15px] md:text-[20px] lg:text-[25px]"
-              placeholder="+998-99-999-99-99"
-            />
-            <input
-              type="text"
-              value={clientName}
-              onChange={(e) => setClientName(e.target.value)}
-              className="rounded-[14px] px-4 py-2 w-[218px] md:w-[317px] lg:w-[360px] outline-none border border-black text-[#333333] font-['Poppins'] font-light text-[15px] md:text-[20px] lg:text-[25px]"
-              placeholder="Ismingiz"
-            />
-            <button
-              type="submit"
-              className="cursor-pointer rounded-[14px] px-4 py-2 w-[218px] md:w-[317px] lg:w-[360px] outline-none border border-black text-[#333333] md:mb-[55px] font-['Poppins'] font-light text-[15px] md:text-[25px] lg:text-[30px] transition-all duration-200 hover:bg-black hover:text-white"
+            <form
+              onSubmit={handleSubmit}
+              className="flex flex-col lg:items-start items-center justify-center gap-3 md:gap-[26px]"
             >
-              Ariza qoldirish
-            </button>
-          </form>
-        </div>
-      </section>
-
-      {showModal && (
-        <div
-          onClick={() => setShowModal(false)} // tashqariga bosganda yopiladi
-          className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50"
-        >
-          <div
-            onClick={(e) => e.stopPropagation()} // ichiga bosganda yopilmasin
-            className="bg-white rounded-[30px] text-black max-w-[615px] px-6 py-14 relative text-center shadow-lg"
-          >
-            <button
-              onClick={() => setShowModal(false)}
-              className="absolute top-0 right-6 font-light text-[70px]"
-            >
-              ×
-            </button>
-
-            <p className="font-['Poppins'] text-xl md:text-[30px] font-normal mx-15 my-10">
-              Arizangiz jo‘natildi tez orada siz bilan bog‘lanamiz!
-            </p>
+              <input
+                type="tel"
+                value={phoneNumber}
+                onChange={handlePhoneChange1}
+                className="rounded-[14px] px-4 py-2 w-[218px] md:w-[317px] lg:w-[360px] outline-none border border-black text-[#333333] md:mt-[55px] mt-[27px] font-['Poppins'] font-light text-[15px] md:text-[20px] lg:text-[25px]"
+                placeholder="+998-99-999-99-99"
+              />
+              <input
+                type="text"
+                value={clientName}
+                onChange={(e) => setClientName(e.target.value)}
+                className="rounded-[14px] px-4 py-2 w-[218px] md:w-[317px] lg:w-[360px] outline-none border border-black text-[#333333] font-['Poppins'] font-light text-[15px] md:text-[20px] lg:text-[25px]"
+                placeholder="Ismingiz"
+              />
+              <button
+                type="submit"
+                className="konsultat-btn cursor-pointer rounded-[14px] px-4 py-2 w-[218px] md:w-[317px] lg:w-[360px] outline-none text-[#000000] md:mb-[55px] font-['Poppins'] font-light text-[15px] md:text-[25px] lg:text-[30px]  bg-[#77E095]"
+              >
+                Jo'natish
+              </button>
+            </form>
           </div>
-        </div>
-      )}
+        </section>
 
-      {/* Why Choose Us Section */}
-      <section ref={sectionRefs.whyWe} id="whyWe" className="md:mx-4 opacity-0">
-        <div className="max-w-[1380px] lg:px-0 md:px-0 px-[45px] flex flex-col mb-20">
-          <h1 className="font-['Poppins'] font-normal text-[60px] md:text-[120px] lg:text-[150px] xl:text-[200px] lg:tracking-[-7px] tracking-[-3px] text-left mb-[35px] lg:mb-[145px]">
-            Nega Biz ?
-          </h1>
-          <h1 className="font-['Poppins'] font-normal text-[60px] md:text-[120px] lg:text-[150px] xl:text-[200px] lg:tracking-[-7px] tracking-[-3px] leading-10 md:leading-18 lg:leading-32 text-right mb-[70px] lg:mb-[0px]">
-            Chunki :
-          </h1>
-        </div>
-
-        <div className="flex flex-col gap-[66px]">
-          {whyChooseUsItems.map((item, index) => (
-            <WhyChooseUsItem key={index} {...item} />
-          ))}
-
-          {/* Special centered item */}
+        {showModal && (
           <div
-            className="max-w-[1580px] flex justify-center items-center opacity-0 animate-fade-in-up"
-            style={{ animationDelay: "0.7s" }}
+            onClick={() => setShowModal(false)} // tashqariga bosganda yopiladi
+            className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50"
           >
-            <div className="max-w-[1096px] flex justify-center items-center rounded-[20px] bg-white text-black mx-8 md:mx-0 py-2 px-4 gap-4">
-              <span className="w-[173px] flex justify-center items-center font-['Poppins'] font-normal text-[80px] md:text-[120px] lg:text-[150px] tracking-[-8px]">
-                7
-              </span>
-              <p className="max-w-[828px] font-['Open_Sans'] font-normal text-xs md:text-xl lg:text-3xl lg:leading-[35px] lg:tracking-[-2px] flex justify-center items-center">
-                Hamkorlik davomida nafaqat loyiha, balki sizning biznesingiz va
-                shaxsiy rivojlanishingiz ham parallel ravishda o'sadi. Biz
-                natijaga yo'naltirilgan strategiya va ijodiy yechimlar orqali
-                har bir qadamda siz bilan birga rivojlanamiz.
+            <div
+              onClick={(e) => e.stopPropagation()} // ichiga bosganda yopilmasin
+              className="bg-white rounded-[30px] text-black max-w-[615px] px-6 py-14 relative text-center shadow-lg"
+            >
+              <button
+                onClick={() => setShowModal(false)}
+                className="absolute top-0 right-6 font-light text-[70px]"
+              >
+                ×
+              </button>
+
+              <p className="font-['Poppins'] text-xl md:text-[30px] font-normal mx-15 my-10">
+                Arizangiz jo‘natildi tez orada siz bilan bog‘lanamiz!
               </p>
             </div>
           </div>
-        </div>
-      </section>
+        )}
 
-      {/* FAQ Section */}
-      <section
-        ref={sectionRefs.faq}
-        id="faq"
-        className="mt-[65px] md:mt-[250px] px-7 md:px-8 opacity-0"
-      >
-        <div className="max-w-[1280px] mx-auto">
-          <h1 className="font-['Poppins'] font-normal text-[50px] md:text-[90px] lg:text-[128px] xl:text-[156px] lg:tracking-[-7px] tracking-[-3px] leading-11 md:leading-20 lg:leading-34 text-left mb-[60px] md:mb-[100px] lg:mb-[158px]">
-            Savollarga <br /> Javoblar :
-          </h1>
-
-          <div className="flex flex-col gap-4 md:gap-6">
-            <FaqAccordion />
+        {/* Why Choose Us Section */}
+        <section
+          ref={sectionRefs.whyWe}
+          id="whyWe"
+          className="md:mx-4 opacity-0"
+        >
+          <div className="max-w-[1380px] mx-auto lg:px-0 md:px-0 px-[45px] flex flex-col">
+            <h1 className="font-['Poppins'] font-normal text-[60px] md:text-[120px] lg:text-[150px] xl:text-[200px] lg:tracking-[-7px] tracking-[-3px] text-left mb-[35px] lg:mb-[145px]">
+              Nega Biz ?
+            </h1>
+            <h1 className="font-['Poppins'] font-normal text-[60px] md:text-[120px] lg:text-[150px] xl:text-[200px] lg:tracking-[-7px] tracking-[-3px] leading-10 md:leading-18 lg:leading-32 text-right mb-[70px] lg:mb-[156px]">
+              Chunki :
+            </h1>
           </div>
-        </div>
-      </section>
-      <section>
-        <ContactForm
-          phoneNumber={phoneNumber2}
-          handlePhoneChange={handlePhoneChange2}
-          clientName={clientName2}
-          handleSubmit={handleSubmit}
-          setClientName={setClientName2}
-          setClientComment={setClientComment}
-          clientComment={clientComment}
-        />
-      </section>
+
+          <div className="flex flex-col gap-[66px]">
+            {whyChooseUsItems.map((item, index) => (
+              <WhyChooseUsItem key={index} {...item} />
+            ))}
+          </div>
+        </section>
+
+        {/* FAQ Section */}
+        <section
+          ref={sectionRefs.faq}
+          id="faq"
+          className="mt-[65px] md:mt-[250px] px-7 md:px-8 opacity-0"
+        >
+          <div className="max-w-[1280px] mx-auto">
+            <h1 className="font-['Poppins'] font-normal text-[50px] md:text-[90px] lg:text-[128px] xl:text-[200px] lg:tracking-[-7px] tracking-[-3px] leading-11 md:leading-20 lg:leading-[175px] text-center mb-[60px] md:mb-[100px] lg:mb-[158px]">
+              Savollarga <br /> Javoblar :
+            </h1>
+
+            <div className="flex flex-col gap-4 md:gap-6">
+              <FaqAccordion />
+            </div>
+          </div>
+        </section>
+        <section>
+          <ContactForm
+            phoneNumber={phoneNumber2}
+            handlePhoneChange={handlePhoneChange2}
+            clientName={clientName2}
+            handleSubmit={handleSubmit}
+            setClientName={setClientName2}
+            setClientComment={setClientComment}
+            clientComment={clientComment}
+          />
+        </section>
+      </div>
       <style jsx>{`
         @keyframes fadeInUp {
           from {
@@ -398,7 +380,7 @@ export default function Home() {
         }
 
         .animate-marquee {
-          animation: marquee 20s linear infinite;
+          animation: marquee 10s linear infinite;
         }
 
         .text-shadow-down {
