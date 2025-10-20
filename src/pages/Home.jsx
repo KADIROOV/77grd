@@ -118,66 +118,6 @@ export default function Home() {
     setPhoneNumber2(formatPhoneNumber(e.target.value));
   };
 
-  // Service card component - animatsiya qo'shilgan
-  const ServiceCard = ({
-    id,
-    title,
-    description,
-    imageSrc,
-    altText,
-    delay,
-  }) => (
-    <div
-      className={`md:max-w-[520px] mx-auto md:rounded-[80px] rounded-[30px] md:mx-0 bg-white shadow-lg transform transition-all duration-400 hover:-translate-y-3 opacity-0 ${
-        isVisible ? "animate-fade-in-up" : ""
-      }`}
-      style={{ animationDelay: delay }}
-    >
-      <div className="pt-10 flex flex-col items-center px-[30px]">
-        <h4 className="font-['Poppins'] font-medium text-2xl md:text-[60px] lg:text-[58px] text-black md:tracking-[-5px] text-center">
-          {title}
-        </h4>
-        {id === 1 ? (
-          <p className=" mt-8 md:mb-[80px] mb-[10px] font-['Poppins'] font-normal text-sm sm:text-xl lg:text-[25px] text-[#424242] text-left">
-            {description}
-          </p>
-        ) : (
-          <p className="w-[98%] mt-8 md:mb-[30px] mb-[10px] font-['Poppins'] font-normal text-sm sm:text-xl lg:text-[25px] text-[#424242] text-left">
-            {description}
-          </p>
-        )}
-      </div>
-
-      {id === 1 ? (
-        <img
-          src={imageSrc || "/placeholder.svg"}
-          alt={altText}
-          className="mt-8 md:mt-2"
-        />
-      ) : id === 4 ? (
-        <img src={imageSrc || "/placeholder.svg"} alt={altText} className="" />
-      ) : id == 5 ? (
-        <img
-          src={imageSrc || "/placeholder.svg"}
-          alt={altText}
-          className="md:w-[300px]  lg:w-[349px] w-[220px] mx-auto mt-8 md:mt-10"
-        />
-      ) : id === 6 ? (
-        <img
-          src={imageSrc || "/placeholder.svg"}
-          alt={altText}
-          className="md:w-[280px]  lg:w-[300px] w-[200px] mx-auto mt-8 md:mt-10 mb-10"
-        />
-      ) : (
-        <img
-          src={imageSrc || "/placeholder.svg"}
-          alt={altText}
-          className="md:w-[300px]  lg:w-[349px] w-[230px] mt-12 md:mt-16 mx-auto"
-        />
-      )}
-    </div>
-  );
-
   // Why choose us item component - animatsiya qo'shilgan
   const WhyChooseUsItem = ({
     number,
@@ -203,65 +143,6 @@ export default function Home() {
       </div>
     </div>
   );
-
-  // Services data
-  const services = [
-    {
-      id: 1,
-      title: "Marketing",
-      description:
-        "Biznesingizni ijtimoiy tarmoqlarda ommalashtirish, sotuv va obunachilar oqimini ko'paytirish.",
-      imageSrc: "/images/card1_img.png",
-      altText: "marketing image",
-      delay: "0.1s",
-    },
-    {
-      id: 2,
-      title: "Website",
-      description:
-        "Kompaniyangiz uchun zamonaviy va qulay web-site yaratish, mijozlar bilan aloqa va savdolarni onlayn rivojlantirish.",
-      imageSrc: "/images/card2_img.png",
-      altText: "website image",
-      delay: "0.2s",
-    },
-    {
-      id: 3,
-      title: "Shaxsiy brend",
-      description:
-        "Tadbirkor yoki mutaxassis sifatida onlayn imidjingizni shakllantirish, kontent va reklama orqali ko'proq auditoriyaga yetib borish.",
-      imageSrc: "/images/card3_img.png",
-      altText: "personal brand image",
-      delay: "0.3s",
-    },
-    {
-      id: 4,
-      title: "Brending",
-      description:
-        "Logotip, firma uslubi va marketing materiallari orqali brend imidjini shakllantirish, mustahkamlash hamda uni auditoriya xotirasida esda qolarli qilish.",
-      imageSrc: "/images/card4_img.png",
-      altText: "brending image",
-      delay: "0.4s",
-    },
-    {
-      id: 5,
-      title: "Telegram-bot",
-      description:
-        "Mijozlar bilan ishlashni avtomatlashtirish, buyurtmalarni boshqarish va sotuvlarni yengillashtirish vositasi.",
-      imageSrc: "/images/card5_img.png",
-      altText: "telegram bot image",
-      delay: "0.5s",
-    },
-    {
-      id: 6,
-      title: "Special Taklif",
-      description:
-        "Biznesingizni ijtimoiy tarmoqlarda ommalashtirish, mijozlar oqimini ko'paytirish, zamonaviy veb-sayt yaratish va kuchli brend imidjini shakllantirish.",
-      imageSrc: "/images/card6_img.png",
-      altText: "special offer image",
-      delay: "0.6s",
-    },
-  ];
-
   // Why choose us data
   const whyChooseUsItems = [
     {
@@ -309,42 +190,45 @@ export default function Home() {
   ];
 
   return (
-    <div className="max-w-[1680px] mx-auto px-6 pt-2 transition-all ease duration-800">
+    <div className="max-w-[1680px] mx-auto pt-2 transition-all ease duration-800 overflow-x-hidden">
       {/* Hero Section */}
       <div
         ref={sectionRefs.hero}
-        className="mt-[310px] md:mt-[305px] lg:mt-[300px] flex lg:justify-center items-left px-2 sm:mx-6 mx-0 opacity-0"
+        className="mt-[320px] md:mt-[300px] lg:mt-[320px] flex items-left lg:px-0 px-2 sm:mx-6 mx-0 opacity-0 overflow-x-hidden"
       >
         <div id="home" className="hero-1">
-          <p className="lg:max-w-[1054px] text-[38px] md:text-5xl lg:text-[50px] sm:mr-20 xl:text-[70px] 2xl:text-[90px] leading-[50px] md:leading-[60px] lg:leading-[60px] xl:leading-[80px] 2xl:leading-[100px] mx-[30px] md:mx-0 text-left">
-            Biz bilan birga biznesingizni yangi bosqichga olib chiqing !
+          <p className="font-[Poppins] font-normal text-[38px] md:text-5xl lg:text-[50px] xl:text-[70px] 2xl:text-[110px] leading-[60px] md:leading-[65px] lg:leading-[70px] xl:leading-[85px] 2xl:leading-[115px]  tracking-[-2px] md:tracking-[-4px] lg:tracking-[-7px] mb-[86px] md:mb-[131px]">
+            Biznesingizni yangi cho‘qqilarga <br /> olib chiqadigan{" "}
+            <em className="text-[#77E095]">xizmatlar.</em>
           </p>
-          <button className="cursor-pointer w-[191px] md:w-[290px] md:h-[60px] h-[40px] md:rounded-[20px] rounded-[14px] hover:bg-white hover:text-black border border-white font-normal text-[17px] md:text-[25px] md:tracking-[-2px] flex justify-center items-center mt-[86px] md:mt-[131px] mx-8 md:mx-0 transition-all duration-200">
-            Bog'lanish
-          </button>
+          <div className="flex justify-between items-center">
+            <button className="konsultat-btn cursor-pointer w-[191px] md:w-[350px] md:h-[80px] h-[40px] md:rounded-[15px] rounded-[10px] bg-[#77E095] text-black font-normal text-[17px] md:text-[30px] md:tracking-[-1px] flex justify-center items-center  mx-8 md:mx-0 transition-all duration-200">
+              Konsultatsiya olish
+            </button>
+            <p className="font-[Montserrat] font-normal text-[35px] leading-[40px] tracking-[-2px] text-right">
+              Raqobatda ajralib turish uchun zamonaviy <br /> marketing
+              vositalari va yechimlar.
+            </p>
+          </div>
+
+          {/* Animatsiyali tekst qismi – eng pastda, button va p dan keyin */}
+          <div className="marquee-container mt-[100px] md:mt-[170px] relative overflow-hidden h-12 md:h-16 w-full">
+            <div className="marquee-wrapper flex whitespace-nowrap animate-marquee will-change-transform">
+              <span className="mr-4 text-lg md:text-xl lg:text-2xl font-bold text-gray-700 min-w-max inline-block">
+                Biznesingizni o‘stiramiz. Brendingizni kuchaytiramiz. Sotuvni
+                ko‘paytiramiz. 77Grade — natijaga yo‘naltirilgan marketing
+                agentligi. Biznesingizni yangi
+              </span>
+              {/* Duplicate for seamless loop */}
+              <span className="text-lg md:text-xl lg:text-2xl font-bold text-gray-700 min-w-max inline-block">
+                Biznesingizni o‘stiramiz. Brendingizni kuchaytiramiz. Sotuvni
+                ko‘paytiramiz. 77Grade — natijaga yo‘naltirilgan marketing
+                agentligi. Biznesingizni yangi
+              </span>
+            </div>
+          </div>
         </div>
-        <p className="md:flex hidden font-['Poppins'] font-medium xl:text-[130px] lg:text-[90px] text-[68px] transform rotate-[7deg] text-white text-shadow-down mt-6">
-          77grade
-        </p>
       </div>
-
-      {/* Services Section */}
-      <section
-        ref={sectionRefs.services}
-        id="services"
-        className="mt-[234px] md:mt-[321px] mx-[30px] opacity-0"
-      >
-        <h2 className="font-['Poppins'] font-medium text-[30px] md:text-[50px] lg:text-[70px] md:tracking-[-4px] tracking-[-2px] text-white text-center">
-          Xizmatlarimiz :
-        </h2>
-
-        {/* First row of services */}
-        <div className="mt-[47px] md:mt-[163px] justify-items-center grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-[30px] md:gap-[22px] lg:gap-[40px]">
-          {services.map((service, index) => (
-            <ServiceCard key={index} {...service} />
-          ))}
-        </div>
-      </section>
 
       {/* Contact Section */}
       <section ref={sectionRefs.contact} id="contact" className="opacity-0">
@@ -496,6 +380,15 @@ export default function Home() {
           }
         }
 
+        @keyframes marquee {
+          0% {
+            transform: translateX(0);
+          }
+          100% {
+            transform: translateX(-50%);
+          }
+        }
+
         .animate-fade-in-up {
           animation: fadeInUp 0.8s ease-out forwards;
         }
@@ -504,8 +397,16 @@ export default function Home() {
           animation: float 4s ease-in-out infinite;
         }
 
+        .animate-marquee {
+          animation: marquee 20s linear infinite;
+        }
+
         .text-shadow-down {
           text-shadow: 90px 30px 100px #a9a9a9;
+        }
+
+        .will-change-transform {
+          will-change: transform;
         }
       `}</style>
     </div>

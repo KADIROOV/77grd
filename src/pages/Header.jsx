@@ -1,13 +1,12 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState } from "react";
 import { IoIosArrowDown, IoMdClose } from "react-icons/io";
 import { RxHamburgerMenu } from "react-icons/rx";
 
 const languages = [
   { code: "uz", label: "uz" },
   { code: "ru", label: "ru" },
-  { code: "en", label: "en" },
 ];
 
 export default function Header() {
@@ -15,30 +14,15 @@ export default function Header() {
   const [langOpen, setLangOpen] = useState(false);
   const [selectedLang, setSelectedLang] = useState("uz");
 
-  const langRef = useRef(null);
-
-  useEffect(() => {
-    function handleClickOutside(event) {
-      if (langRef.current && !langRef.current.contains(event.target)) {
-        setLangOpen(false);
-      }
-    }
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, []);
-
   const handleSelect = (code) => {
     setSelectedLang(code);
-    setLangOpen(false);
   };
 
   return (
     <div className="fixed top-0 left-[5%] w-[90%] z-50 pt-[20px] ">
       <div
         className="max-w-[1580px] mx-auto flex items-center justify-between 
-                md:px-8 px-[35px] bg-black/80 backdrop-blur rounded-[20px] py-4 "
+                md:px-8 px-[35px] bg-black/70 backdrop-blur rounded-[20px] py-4 "
       >
         {/* Logo */}
         <a href="#home">
@@ -48,7 +32,6 @@ export default function Header() {
             className="lg:w-[50px] md:w-[34px] w-[26px]"
           />
         </a>
-
         {/* Desktop Navbar */}
         <nav className="md:flex hidden justify-center items-center lg:gap-[76px] gap-[37px] lg:text-[25px] text-[18px]">
           <a href="#services">Xizmatlar</a>
@@ -56,43 +39,33 @@ export default function Header() {
           <a href="#faq">FAQ</a>
           <a
             href="#contact"
-            className="contact-a text-[16px] lg:text-[20px] lg:w-[153px] lg:h-[39px] w-[140px] h-[36px]"
+            className=""
           >
             Bog'lanish
           </a>
         </nav>
-
         {/* Desktop Language Selector */}
-        <div
-          ref={langRef}
-          className="hidden md:flex relative w-[127px] h-[40px] border border-white rounded-2xl bg-transparent items-center justify-center cursor-pointer"
-          onClick={() => setLangOpen(!langOpen)}
-        >
-          <div className="text-white font-normal font-[Open_Sans] text-[25px]">
-            {languages.find((l) => l.code === selectedLang)?.label}
-          </div>
-          <IoIosArrowDown
-            className={`absolute right-[28px] text-white w-[17px] h-[17px] transition-transform duration-300 ${
-              langOpen ? "rotate-180" : "rotate-0"
+        {/* Desktop Language Selector */}
+        <div className="hidden md:flex relative w-[127px] h-[40px] rounded-2xl bg-transparent items-center justify-center cursor-pointer gap-2">
+          <div
+            className={`text-white font-normal font-[Open_Sans] text-[25px] transition-colors ${
+              selectedLang === "uz" ? "text-[#77E095]" : "hover:text-[#77E095]"
             }`}
-          />
-          {langOpen && (
-            <div className="absolute top-[45px] left-0 w-full bg-black border border-white rounded-2xl overflow-hidden z-50">
-              {languages.map((lang) => (
-                <button
-                  key={lang.code}
-                  onClick={() => handleSelect(lang.code)}
-                  className={`w-full h-[40px] text-white font-medium text-2xl hover:bg-white/10 transition-colors ${
-                    selectedLang === lang.code ? "bg-white/5" : ""
-                  }`}
-                >
-                  {lang.label}
-                </button>
-              ))}
-            </div>
-          )}
+            onClick={() => handleSelect("uz")}
+          >
+            UZ
+          </div>
+          <div className="w-[2px] h-6 flex items-center bg-white opacity-50"></div>{" "}
+          {/* Chiziqni biroz shaffof qildim */}
+          <div
+            className={`text-white font-normal font-[Open_Sans] text-[25px] transition-colors ${
+              selectedLang === "ru" ? "text-[#77E095]" : "hover:text-[#77E095]"
+            }`}
+            onClick={() => handleSelect("ru")}
+          >
+            RU
+          </div>
         </div>
-
         {/* Mobile Burger */}
         <button
           className="md:hidden transition-all duration-800"
@@ -104,7 +77,6 @@ export default function Header() {
             <RxHamburgerMenu className="w-[43px] h-[34px]" />
           )}
         </button>
-
         {/* Mobile Menu */}
         <div
           className={`w-[40%] mx-auto fixed top-14 right-12 text-black flex flex-col items-center z-50 justify-center gap-4 py-2 h-72 rounded-xl text-xl bg-white shadow-lg transform transition-transform duration-300 ease md:hidden

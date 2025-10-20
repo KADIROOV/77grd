@@ -33,6 +33,14 @@
   font-weight: 500;
   src: url("../fonts/poppins-v23-latin-500.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }
+/* montserrat-regular - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../fonts/montserrat-v31-latin-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
 
 html {
   scroll-behavior: smooth;
@@ -50,8 +58,8 @@ body {
   z-index: 9999;
   transition: background 0.1s ease;
   -webkit-box-shadow: 0px 0px 31px 16px rgba(255, 255, 255, 0.25);
--moz-box-shadow: 0px 0px 31px 16px rgba(255, 255, 255, 0.25);
-box-shadow: 0px 0px 31px 16px rgba(255, 255, 255, 0.25);
+  -moz-box-shadow: 0px 0px 31px 16px rgba(255, 255, 255, 0.25);
+  box-shadow: 0px 0px 31px 16px rgba(255, 255, 255, 0.25);
 }
 
 nav a {
@@ -67,43 +75,11 @@ nav a:hover {
   color: #808080;
 }
 
-nav .contact-a {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: solid 1px white;
-  border-radius: 10px;
-  font-family: "Open Sans", sans-serif;
-  font-weight: 400;
-}
 
-.contact-a:hover {
-  background-color: white;
-  color: black;
-}
-
-.contact-a:hover::after {
-  width: 0;
-}
-
-select {
-  font-family: "Open Sans", sans-serif;
-  font-weight: 400;
-  font-size: 25px;
-  color: white;
-  border: none;
-  outline: none;
-}
-
-.hero-1 {
-  font-family: "Poppins", sans-serif;
-}
-
-.hero-1 p {
-  font-family: "Poppins", sans-serif;
-  font-weight: 500;
-  font-style: Medium;
-  letter-spacing: -3px;
+.konsultat-btn {
+  -webkit-box-shadow: 0px 8px 15px 0px rgba(119, 224, 149, 0.5);
+  -moz-box-shadow: 0px 8px 15px 0px rgba(119, 224, 149, 0.5);
+  box-shadow: 0px 8px 15px 0px rgba(119, 224, 149, 0.5);
 }
 
 /* index.css */
