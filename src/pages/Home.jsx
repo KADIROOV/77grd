@@ -208,7 +208,7 @@ export default function Home() {
         </div>
 
         {/* Animatsiyali tekst qismi – eng pastda, button va p dan keyin */}
-        <div className="marquee-container mt-[100px] md:mt-[170px] relative overflow-hidden h-12 md:h-16 w-full">
+        <div className="marquee-container mt-[100px] md:mt-[170px] relative overflow-hidden h-12 md:h-16 w-[1780px] mx-auto">
           <div className="marquee-wrapper flex whitespace-nowrap animate-marquee will-change-transform">
             <span className="font-['Poppins'] font-light  mr-4 text-[30px] md:text-xl lg:text-2xl  text-white tracking-[-2px] inline-block">
               Biznesingizni o‘stiramiz. Brendingizni kuchaytiramiz. Sotuvni

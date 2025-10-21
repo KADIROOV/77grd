@@ -10,7 +10,11 @@ export default function App() {
     const hasMouse = mediaQuery.matches;
 
     // Agar matchMedia qo'llab-quvvatlanmasa (eski brauzerlar), desktop deb hisoblaymiz
-    if (!hasMouse) return; // Mouse bo'lmasa, cursor yaratmaslik
+    if (!window.matchMedia) {
+      // Eski brauzerlarda oddiygina mouse deb hisoblaymiz
+      const hasMouseFallback = "ontouchstart" in window ? false : true;
+      if (!hasMouseFallback) return;
+    } else if (!hasMouse) return; // Mouse bo'lmasa, cursor yaratmaslik
 
     // Custom cursor setup
     const cursor = document.createElement("div");
@@ -19,46 +23,44 @@ export default function App() {
       position: "fixed",
       width: "18px", // Kichik dot uchun o'lcham
       height: "18px",
-      background: "white", // Boshlang'ich rang (oq, chunki fon qora)
+      background: "white", // Boshlang'ich rang (oq, chunki fon qora deb hisoblaymiz)
       borderRadius: "50%",
       pointerEvents: "none", // Sichqoncha ta'sirini bloklamaslik uchun
-      zIndex: "9999",
-      transition: "background 0.1s ease", // Rang o'zgarishini smooth qilish
-      mixBlendMode: "difference", // Opsiyonal: Fon bilan kontrast uchun (qora/oq avto)
+      zIndex: "999",
+      transition: "background 0.3s ease", // Rang o'zgarishini smooth qilish
+      // mixBlendMode ni olib tashladik, chunki u ranglarni buzib yuborayotgan edi (masalan, pushti rang)
     });
     document.body.appendChild(cursor);
 
     let rafId; // requestAnimationFrame uchun
 
-    // Rangni parse qilish va white-ish ekanligini tekshirish
+    // Effektiv fon rangini olish (shaffof bo'lsa, ota elementgacha ko'tarilish)
+    const getEffectiveBackgroundColor = (el) => {
+      let current = el;
+      while (current && current !== document.documentElement) {
+        const bg = window.getComputedStyle(current).backgroundColor;
+        if (bg !== "rgba(0, 0, 0, 0)" && bg !== "transparent") {
+          return bg;
+        }
+        current = current.parentElement;
+      }
+      // Hujjatning asosiy fonini olish (body yoki html)
+      return (
+        window.getComputedStyle(document.body).backgroundColor || "rgb(0, 0, 0)"
+      );
+    };
+
+    // Rangni parse qilish va light/dark ekanligini tekshirish (faqat oq/qora, boshqa rang yo'q)
     const isLightBackground = (bgColor) => {
-      if (
-        !bgColor ||
-        bgColor === "transparent" ||
-        bgColor === "rgba(0, 0, 0, 0)"
-      ) {
-        return false; // Shaffof yoki qora deb hisoblaymiz
+      // Computed style har doim rgba formatida bo'ladi, shuning uchun oddiy parse
+      const matches = bgColor.match(/(\d+)/g);
+      if (!matches || matches.length < 3) {
+        return false; // Noma'lum bo'lsa, qorong'u deb hisoblaymiz
       }
-
-      // RGB formatini parse qilish (hex yoki named ranglarni ham qo'llab-quvvatlash uchun)
-      let r, g, b;
-      if (bgColor.startsWith("rgb")) {
-        const matches = bgColor.match(/\d+/g);
-        if (matches) [r, g, b] = matches.map(Number);
-      } else if (bgColor.startsWith("#")) {
-        // Hex to RGB (oddiy, to'liq hex uchun kengaytirsa bo'ladi)
-        const hex = bgColor.replace("#", "");
-        r = parseInt(hex.substr(0, 2), 16);
-        g = parseInt(hex.substr(2, 2), 16);
-        b = parseInt(hex.substr(4, 2), 16);
-      } else {
-        // Named ranglar uchun (masalan, "white" → true)
-        return bgColor.toLowerCase().includes("white");
-      }
-
-      // Luminance hisoblash (0-255 orasida)
+      const [r, g, b] = matches.slice(0, 3).map(Number);
+      // Luminance hisoblash (YIQ formula bo'yicha)
       const luminance = 0.299 * r + 0.587 * g + 0.114 * b;
-      return luminance > 200; // 200+ bo'lsa "light" (oq-ish) deb hisoblaymiz
+      return luminance > 128; // 128+ bo'lsa light (oq-ish), cursor qora bo'ladi
     };
 
     // Throttled mousemove handler (requestAnimationFrame bilan)
@@ -69,10 +71,11 @@ export default function App() {
         cursor.style.left = e.clientX + "px";
         cursor.style.top = e.clientY + "px";
 
-        // Element va uning fonini topish
+        // Element va uning effektiv fonini topish
         const el = document.elementFromPoint(e.clientX, e.clientY);
         if (el) {
-          const bg = window.getComputedStyle(el).backgroundColor;
+          const bg = getEffectiveBackgroundColor(el);
+          // Faqat oq yoki qora: light bo'lsa qora, dark bo'lsa oq
           cursor.style.background = isLightBackground(bg) ? "black" : "white";
         }
 
@@ -89,35 +92,28 @@ export default function App() {
         cursor.remove();
         window.removeEventListener("mousemove", move);
       } else {
-        // Qayta ishga tushirish (lekin bu holda oddiygina)
+        // Qayta ishga tushirish
         document.body.appendChild(cursor);
         window.addEventListener("mousemove", move);
       }
     };
-    mediaQuery.addEventListener("change", handleChange);
+    if (window.matchMedia) {
+      mediaQuery.addEventListener("change", handleChange);
+    }
 
     return () => {
       if (rafId) cancelAnimationFrame(rafId);
       cursor.remove();
       window.removeEventListener("mousemove", move);
-      mediaQuery.removeEventListener("change", handleChange);
+      if (window.matchMedia) {
+        mediaQuery.removeEventListener("change", handleChange);
+      }
     };
   }, []);
 
   return (
-    <div className="bg-black text-white relative min-h-screen">
-      <img
-        src="/images/bg_shadow.svg"
-        className="absolute right-0 md:top-[648px] top-[937px] z-0"
-        alt=""
-      />
-      <img
-        src="/images/bg_shadow2.svg"
-        className="absolute left-0 top-[2417px] hidden md:block z-0"
-        alt=""
-      />
-
-      <div className="relative z-10">
+    <div className="bg-black text-white relative">
+      <div>
         <Header />
         <Home />
         <Footer />
