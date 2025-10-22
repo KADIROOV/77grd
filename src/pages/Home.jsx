@@ -234,35 +234,160 @@ export default function Home() {
             -ta narsani qiling :
           </h1>
 
-          <div className="rounded-[30px] border border-white flex flex-col md:flex-row overflow-hidden max-w-[1539px]">
-            {/* Chap taraf */}
-            <div className="flex items-center justify-center md:w-64 border-b md:border-b-0 md:border-r border-white py-4 md:py-0">
-              <span className="text-5xl md:text-[120px] font-normal font-['Poppins'] ">
-                1
-              </span>
-            </div>
-
-            {/* O‘ng taraf */}
-            <div className="flex flex-col w-full">
-              {/* Sarlavha */}
-              <div className="border-b border-white pl-[34px] py-8">
-                <h2 className="text-xl md:text-[50px] font-normal font-['Poppins'] ">
-                  Auditoriyani chuqur o‘rganing.
-                </h2>
+          <div className="flex  flex-col gap-[44px]">
+            <div className="rounded-[30px] border border-white flex flex-col md:flex-row overflow-hidden max-w-[1539px]">
+              {/* Chap taraf */}
+              <div className="flex items-center justify-center md:w-64 border-b md:border-b-0 md:border-r border-white py-4 md:py-0">
+                <span className="text-5xl md:text-[120px] font-normal font-['Poppins'] ">
+                  1
+                </span>
               </div>
 
-              {/* Matn */}
-              <div className="font-['Poppins'] pl-[34px] pr-[44px] py-10  md:text-[40px] leading-[50px] tracking-[-2px]">
-                <p>
-                  Siz kimga sotayapsiz — shuni aniq biling. Mijozning yoshi,
-                  qiziqishi, muammosi va istagini tushungan biznes har doim
-                  oldinda bo‘ladi, chunki u har bir taklifni aniq ehtiyojga
-                  yo‘naltiradi.
-                </p>
+              {/* O‘ng taraf */}
+              <div className="flex flex-col w-full">
+                {/* Sarlavha */}
+                <div className="border-b border-white pl-[34px] py-8">
+                  <h2 className="text-xl md:text-[50px] font-normal font-['Poppins'] ">
+                    Auditoriyani chuqur o‘rganing.
+                  </h2>
+                </div>
+
+                {/* Matn */}
+                <div className="font-['Poppins'] pl-[34px] pr-[44px] py-10  md:text-[40px] leading-[50px] tracking-[-2px]">
+                  <p>
+                    Siz kimga sotayapsiz — shuni aniq biling. Mijozning yoshi,
+                    qiziqishi, muammosi va istagini tushungan biznes har doim
+                    oldinda bo‘ladi, chunki u har bir taklifni aniq ehtiyojga
+                    yo‘naltiradi.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div className="rounded-[30px] border border-white flex flex-col md:flex-row overflow-hidden max-w-[1539px]">
+              {/* Chap taraf */}
+              <div className="flex items-center justify-center md:w-64 border-b md:border-b-0 md:border-r border-white py-4 md:py-0">
+                <span className="text-5xl md:text-[120px] font-normal font-['Poppins'] ">
+                  2
+                </span>
+              </div>
+
+              {/* O‘ng taraf */}
+              <div className="flex flex-col w-full">
+                {/* Sarlavha */}
+                <div className="border-b border-white pl-[34px] py-8">
+                  <h2 className="text-xl md:text-[50px] font-normal font-['Poppins'] ">
+                    Brending qiling
+                  </h2>
+                </div>
+
+                {/* Matn */}
+                <div className="font-['Poppins'] pl-[34px] pr-[44px] py-10  md:text-[40px] leading-[50px] tracking-[-2px]">
+                  <p>
+                    Ranglar, dizayn, logotip, til — barchasi bir yo‘nalishda
+                    bo‘lishi kerak. Mijoz sizni ko‘rgan zahoti “ha, bu o‘sha
+                    brend” deb tanisin. Har bir detal sizning qadriyatlaringizni
+                    ifodalasin va brendingizni esda qolarli, ishonchli hamda
+                    professional tarzda namoyon etsin.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div className="rounded-[30px] border border-white flex flex-col md:flex-row overflow-hidden max-w-[1539px]">
+              {/* Chap taraf */}
+              <div className="flex items-center justify-center md:w-64 border-b md:border-b-0 md:border-r border-white py-4 md:py-0">
+                <span className="text-5xl md:text-[120px] font-normal font-['Poppins'] ">
+                  3
+                </span>
+              </div>
+
+              {/* O‘ng taraf */}
+              <div className="flex flex-col w-full">
+                {/* Sarlavha */}
+                <div className="border-b border-white pl-[34px] py-8">
+                  <h2 className="text-xl md:text-[50px] font-normal font-['Poppins'] ">
+                    Kontent orqali ishonch yarating.
+                  </h2>
+                </div>
+
+                {/* Matn */}
+                <div className="font-['Poppins'] pl-[34px] pr-[44px] py-10  md:text-[40px] leading-[50px] tracking-[-2px]">
+                  <p>
+                    Faqat reklama emas, foydali, ilhomlantiruvchi va ishonchli
+                    kontent bering. Postlar, videolar, storislar — hammasi
+                    sizning qadriyatingizni ko‘rsatsin. Har bir kontent
+                    auditoriya bilan aloqa o‘rnatsin, ishonch uyg‘otsin va
+                    brendingizni haqiqiy hamda foydali qilib ko‘rsatsin.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div className="rounded-[30px] border border-white flex flex-col md:flex-row overflow-hidden max-w-[1539px]">
+              {/* Chap taraf */}
+              <div className="flex items-center justify-center md:w-64 border-b md:border-b-0 md:border-r border-white py-4 md:py-0">
+                <span className="text-5xl md:text-[120px] font-normal font-['Poppins'] ">
+                  4
+                </span>
+              </div>
+
+              {/* O‘ng taraf */}
+              <div className="flex flex-col w-full">
+                {/* Sarlavha */}
+                <div className="border-b border-white pl-[34px] py-8">
+                  <h2 className="text-xl md:text-[50px] font-normal font-['Poppins'] ">
+                    Axborot oqimida ajralib turing.
+                  </h2>
+                </div>
+
+                {/* Matn */}
+                <div className="font-['Poppins'] pl-[34px] pr-[44px] py-10  md:text-[40px] leading-[50px] tracking-[-2px]">
+                  <p>
+                    Bugun odamlar yuzlab brendlarni ko‘radi, ammo faqat hissiyot
+                    uyg‘otganini eslab qoladi. Shu sabab, marketing
+                    yondashuvingiz hissiy, kreativ va ta’sirli bo‘lishi kerak.
+                    Har bir g‘oya qalbga yetib borsin, har bir vizual esa
+                    brendingizni esda qolarli qilsin.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div className="rounded-[30px] border border-white flex flex-col md:flex-row overflow-hidden max-w-[1539px]">
+              {/* Chap taraf */}
+              <div className="flex items-center justify-center md:w-64 border-b md:border-b-0 md:border-r border-white py-4 md:py-0">
+                <span className="text-5xl md:text-[120px] font-normal font-['Poppins'] ">
+                  5
+                </span>
+              </div>
+
+              {/* O‘ng taraf */}
+              <div className="flex flex-col w-full">
+                {/* Sarlavha */}
+                <div className="border-b border-white pl-[34px] py-8">
+                  <h2 className="text-xl md:text-[50px] font-normal font-['Poppins'] ">
+                    Natijani o‘lchang va takomillashtiring.
+                  </h2>
+                </div>
+
+                {/* Matn */}
+                <div className="font-['Poppins'] pl-[34px] pr-[44px] py-10  md:text-[40px] leading-[50px] tracking-[-2px]">
+                  <p>
+                    Qaysi narsa ishlayapti, qaysi biri yo‘q — shuni tahlil
+                    qiling. Strategiyani doimiy yangilab, yangi yondashuvlar
+                    bilan o‘sishga erishing. Har bir natijadan xulosa chiqaring,
+                    ma’lumotlarga asoslaning va qarorlarni aniq dalillar bilan
+                    bering — shunda rivojlanish tizimli bo‘ladi.
+                  </p>
+                </div>
               </div>
             </div>
           </div>
         </section>
+
+        {/* bog'lanish  section */}
+        <section>
+          <div><h1>Biznesingizni har tomonlama kuchaytirishni istasangiz biz bilan bog'laning !</h1></div>
+          <div></div>
+        </section>
+
         {/* Contact Section */}
         <section ref={sectionRefs.contact} id="contact" className="opacity-0">
           <h1 className="max-w-[1680px] px-10 font-['Poppins'] font-normal text-[35px] md:text-[45px] lg:text-[60px] xl:text-[150px] leading-tight lg:tracking-[-4px] tracking-[-1px] md:tracking-[-3px] md:text-right text-left mt-[76px] md:mt-[213px] mb-[58px] md:mb-[131px] mx-[0px] md:mx-0">
