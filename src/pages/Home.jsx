@@ -208,7 +208,7 @@ export default function Home() {
         </div>
 
         {/* Animatsiyali tekst qismi – eng pastda, button va p dan keyin */}
-        <div className="marquee-container mt-[100px] md:mt-[170px] relative overflow-hidden h-12 md:h-16 w-[1780px] mx-auto">
+        <div className="marquee-container mt-[100px] md:mt-[170px] relative overflow-hidden h-12 md:h-16 w-[1940px] mx-auto">
           <div className="marquee-wrapper flex whitespace-nowrap animate-marquee will-change-transform">
             <span className="font-['Poppins'] font-light  mr-4 text-[30px] md:text-xl lg:text-2xl  text-white tracking-[-2px] inline-block">
               Biznesingizni o‘stiramiz. Brendingizni kuchaytiramiz. Sotuvni
@@ -226,6 +226,43 @@ export default function Home() {
       </div>
 
       <div className="max-w-[1680px] mx-auto pt-2 transition-all ease duration-800">
+        {/* Recommends section*/}
+        <section className="mt-[166px] mb-[70px]">
+          <h1 className="font-['Poppins'] font-normal text-[90px] leading-[90px] tracking-[-5px] mb-[138px]">
+            Agar biznesingizni sotuvini oshirish yoki brend darajasiga olib
+            chiqmoqchi bol’sangiz bu <span className="text-[#77E095]">5</span>
+            -ta narsani qiling :
+          </h1>
+
+          <div className="rounded-[30px] border border-white flex flex-col md:flex-row overflow-hidden max-w-[1539px]">
+            {/* Chap taraf */}
+            <div className="flex items-center justify-center md:w-64 border-b md:border-b-0 md:border-r border-white py-4 md:py-0">
+              <span className="text-5xl md:text-[120px] font-normal font-['Poppins'] ">
+                1
+              </span>
+            </div>
+
+            {/* O‘ng taraf */}
+            <div className="flex flex-col w-full">
+              {/* Sarlavha */}
+              <div className="border-b border-white pl-[34px] py-8">
+                <h2 className="text-xl md:text-[50px] font-normal font-['Poppins'] ">
+                  Auditoriyani chuqur o‘rganing.
+                </h2>
+              </div>
+
+              {/* Matn */}
+              <div className="font-['Poppins'] pl-[34px] pr-[44px] py-10  md:text-[40px] leading-[50px] tracking-[-2px]">
+                <p>
+                  Siz kimga sotayapsiz — shuni aniq biling. Mijozning yoshi,
+                  qiziqishi, muammosi va istagini tushungan biznes har doim
+                  oldinda bo‘ladi, chunki u har bir taklifni aniq ehtiyojga
+                  yo‘naltiradi.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
         {/* Contact Section */}
         <section ref={sectionRefs.contact} id="contact" className="opacity-0">
           <h1 className="max-w-[1680px] px-10 font-['Poppins'] font-normal text-[35px] md:text-[45px] lg:text-[60px] xl:text-[150px] leading-tight lg:tracking-[-4px] tracking-[-1px] md:tracking-[-3px] md:text-right text-left mt-[76px] md:mt-[213px] mb-[58px] md:mb-[131px] mx-[0px] md:mx-0">
