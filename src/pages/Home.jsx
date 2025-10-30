@@ -185,7 +185,7 @@ export default function Home() {
   ];
 
   return (
-    <div className="pt-2 transition-all ease duration-800 overflow-x-hidden">
+    <div className="pt-2 transition-all ease duration-800 overflow-x-hidden px-12">
       {/* Hero Section */}
       <div
         ref={sectionRefs.hero}
@@ -384,8 +384,22 @@ export default function Home() {
 
         {/* bog'lanish  section */}
         <section>
-          <div><h1>Biznesingizni har tomonlama kuchaytirishni istasangiz biz bilan bog'laning !</h1></div>
-          <div></div>
+          <h1 className="font-[Poppins] font-normal text-[70px] leading-[70px] tracking-[-5px] mb-[70px]">
+            Biznesingizni har tomonlama kuchaytirishni istasangiz biz bilan
+            bog'laning !
+          </h1>
+          <div className="contact-div max-w-[1280px]  font-[Poppins] bg-white rounded-[20px] p-10">
+            <p className="font-normal text-[40px] leading-[45px] tracking-[-3px] text-right text-black">
+              Birgalikda biznesingiz uchun aniq strategiya ishlab chiqamiz,
+              brendingizni mustahkamlaymiz va sotuvni natijaga yo‘naltiramiz.
+            </p>
+            <button
+              type="submit"
+              className="konsultat-btn cursor-pointer rounded-[14px] tracking-[-2px] px-4 py-2 w-[218px] md:w-[317px] lg:w-[360px] outline-none text-[#000000] md:mb-[55px] font-['Poppins'] font-normal text-[15px] md:text-[25px] lg:text-[30px]  bg-[#77E095]"
+            >
+              Bog'lanish
+            </button>
+          </div>
         </section>
 
         {/* Contact Section */}
