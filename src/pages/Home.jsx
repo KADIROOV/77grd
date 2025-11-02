@@ -383,7 +383,7 @@ export default function Home() {
         </section>
 
         {/* bog'lanish  section */}
-        <section>
+        <section className="max-w-[1580px] flex flex-col justify-between items-end border-b border-dashed border-white">
           <h1 className="font-[Poppins] font-normal text-[70px] leading-[70px] tracking-[-5px] mb-[70px]">
             Biznesingizni har tomonlama kuchaytirishni istasangiz biz bilan
             bog'laning !
@@ -405,7 +405,7 @@ export default function Home() {
         {/* Contact Section */}
         <section ref={sectionRefs.contact} id="contact" className="opacity-0">
           <h1 className="max-w-[1680px] px-10 font-['Poppins'] font-normal text-[35px] md:text-[45px] lg:text-[60px] xl:text-[150px] leading-tight lg:tracking-[-4px] tracking-[-1px] md:tracking-[-3px] md:text-right text-left mt-[76px] md:mt-[213px] mb-[58px] md:mb-[131px] mx-[0px] md:mx-0">
-            Bizga savolingiz yoki <br /> taklifingiz bormi ?
+            Bizga savolingiz yoki taklifingiz bormi ?
           </h1>
 
           <div className="max-w-[1580px] flex lg:flex-row flex-col lg:justify-around justify-center items-center lg:text-left md:text-center rounded-[30px] bg-white mx-14 md:mx-34 lg:mx-0 xl:mx-12 md:px-10 px-[42px] md:py-0 py-[40px] text-black mb-[151px] md:mb-[303px] lg:mb-[441px] transition-all duration-500 hover:shadow-2xl">

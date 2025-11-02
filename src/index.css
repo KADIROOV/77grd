@@ -82,5 +82,17 @@ nav a:hover {
 
 .contact-div {
   clip-path: polygon(0 0, 100% 0, 100% 100%, 12% 100%);
+  margin-bottom: 136px;
+}
+
+.border-dashed-widee {
+  border-style: dashed;
+  border-width: 1px;
+  border-image: repeating-linear-gradient(
+      90deg,
+      currentColor 0 10px,
+      transparent 10px 20px
+    )
+    1;
 }
 /* index.css */
