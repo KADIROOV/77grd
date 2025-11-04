@@ -227,7 +227,7 @@ export default function Home() {
 
       <div className="max-w-[1680px] mx-auto pt-2 transition-all ease duration-800">
         {/* Recommends section*/}
-        <section className="mt-[166px] mb-[70px]">
+        <section className="max-w-[1680px] mt-[166px] mb-[70px]">
           <h1 className="font-['Poppins'] font-normal text-[90px] leading-[90px] tracking-[-5px] mb-[138px]">
             Agar biznesingizni sotuvini oshirish yoki brend darajasiga olib
             chiqmoqchi bol’sangiz bu <span className="text-[#77E095]">5</span>
@@ -383,22 +383,132 @@ export default function Home() {
         </section>
 
         {/* bog'lanish  section */}
-        <section className="max-w-[1580px] flex flex-col justify-between items-end border-b border-dashed border-white">
+        <section className="max-w-[1580px] flex flex-col justify-between items-end pb-[116px] mb-38 border-b border-dashed border-white">
           <h1 className="font-[Poppins] font-normal text-[70px] leading-[70px] tracking-[-5px] mb-[70px]">
             Biznesingizni har tomonlama kuchaytirishni istasangiz biz bilan
             bog'laning !
           </h1>
-          <div className="contact-div max-w-[1280px]  font-[Poppins] bg-white rounded-[20px] p-10">
-            <p className="font-normal text-[40px] leading-[45px] tracking-[-3px] text-right text-black">
-              Birgalikda biznesingiz uchun aniq strategiya ishlab chiqamiz,
-              brendingizni mustahkamlaymiz va sotuvni natijaga yo‘naltiramiz.
-            </p>
-            <button
-              type="submit"
-              className="konsultat-btn cursor-pointer rounded-[14px] tracking-[-2px] px-4 py-2 w-[218px] md:w-[317px] lg:w-[360px] outline-none text-[#000000] md:mb-[55px] font-['Poppins'] font-normal text-[15px] md:text-[25px] lg:text-[30px]  bg-[#77E095]"
-            >
-              Bog'lanish
+          <div className="">
+            <button className="">
+              <img src="./images/card.svg" />
             </button>
+          </div>
+        </section>
+
+        <section className="max-w-[1780px] flex flex-col mt-[95px]">
+          <h1 className="font-[Poppins] font-normal text-[120px] leading-[47.34px] tracking-[-5px] mb-[44px]">
+            Xizmatlarga kelsak :
+          </h1>
+          <p className="font-[Poppins] font-light text-[35px] tracking-[-3px] mb-[56px]">
+            Biznesingizni{" "}
+            <span className="text-[50px] text-[#77E095]">portlatib</span>{" "}
+            yuboradigan strategiyalar shu yerda.
+          </p>
+          <div className="py-[99px] border-t border-b border-white">
+            <div className="font-[Poppins] font-normal  tracking-[-5px] mb-[56px] flex justify-start items-center gap-6">
+              <h1 className="text-[120px]">Marketing</h1>
+              <p className="text-[70px] text-[#77E095] mt-10">
+                499<span className="text-[50px] text-[#77E095]">$</span>
+              </p>
+              <h4 className="text-[70px] mt-10">dan boshlab</h4>
+            </div>
+            <p className="max-w-[1441px] font-[Poppins] font-light text-[40px] leading-[50px] tracking-[-3px]">
+              Biznesingizni ijtimoiy tarmoqlarda ommalashtirish, sotuv va
+              obunachilar oqimini ko‘paytirish, hamda natija beradigan marketing
+              strategiyalari orqali brendingizni barqaror o‘sishini ta’minlash.
+              Strategiya tuzib chiqish, raqobatchilarni chuqur tahlil qilish,
+              brendingizni to‘liq raspakovka qilish, reels uchun kontent reja
+              tuzish, syomka jarayonlarini tashkil etish hamda analitika va
+              qo‘shimcha instrumentlar orqali samaradorlikni oshirish.
+            </p>
+          </div>
+          <div className="py-[99px] border-b border-white">
+            <div className="font-[Poppins] font-normal  tracking-[-5px] mb-[56px] flex justify-start items-center gap-6">
+              <h1 className="text-[120px]">Website</h1>
+              <p className="text-[70px] text-[#77E095] mt-10">
+                399<span className="text-[50px] text-[#77E095]">$</span>
+              </p>
+              <h4 className="text-[70px] mt-10">dan boshlab</h4>
+            </div>
+            <p className="max-w-[1441px] font-[Poppins] font-light text-[40px] leading-[50px] tracking-[-3px]">
+              Kompaniyangiz uchun zamonaviy va qulay website yaratish —
+              mijozlarga doimiy onlayn qulaylik yaratish, mahsulot va
+              xizmatlaringizni kengroq auditoriyaga taqdim etish, savdo
+              jarayonini tez va samarali qilish, brend imidjingizni
+              mustahkamlash hamda biznesingizni raqamli maydonda yangi bosqichga
+              olib chiqish uchun.
+            </p>
+          </div>
+          <div className="py-[99px] border-b border-white">
+            <div className="font-[Poppins] font-normal  tracking-[-5px] mb-[56px] flex justify-start items-center gap-6">
+              <h1 className="text-[120px]">Brending</h1>
+              <p className="text-[70px] text-[#77E095] mt-10">
+                199<span className="text-[50px] text-[#77E095]">$</span>
+              </p>
+              <h4 className="text-[70px] mt-10">dan boshlab</h4>
+            </div>
+            <p className="max-w-[1441px] font-[Poppins] font-light text-[40px] leading-[50px] tracking-[-3px]">
+              Logotip, firma uslubi va marketing materiallari orqali brend
+              imidjini shakllantirish, mustahkamlash hamda uni auditoriya
+              xotirasida esda qolarli va tanib olinadigan darajaga olib chiqish.
+              Ranglar kombinatsiyasi, shriftlar, billboardlar, futbolkalar,
+              bloknotlar, vizitkalar va boshqa brend atributlari orqali yagona
+              va professional ko‘rinish yaratish.
+            </p>
+          </div>
+          <div className="py-[99px] border-b border-white">
+            <div className="font-[Poppins] font-normal  tracking-[-5px] mb-[56px] flex justify-start items-center gap-6">
+              <h1 className="text-[120px]">Telegram-Bot</h1>
+              <p className="text-[70px] text-[#77E095] mt-10">
+                33<span className="text-[50px] text-[#77E095]">$</span>
+              </p>
+              <h4 className="text-[70px] mt-10">dan boshlab</h4>
+            </div>
+            <p className="max-w-[1441px] font-[Poppins] font-light text-[40px] leading-[50px] tracking-[-3px]">
+              mijozlar bilan ishlashni avtomatlashtirish, buyurtmalarni
+              boshqarish va sotuvlarni yengillashtirish vositasi. U orqali siz
+              mijozlarga tezkor javob berasiz, buyurtmalarni avtomatik qabul
+              qilasiz, to‘lov tizimlarini ulaysiz va natijalarni kuzatib
+              borasiz. Biznesingizni 24/7 ishlaydigan virtual yordamchiga
+              aylantiradi.
+            </p>
+          </div>
+          <div className="py-[99px] border-b border-white">
+            <div className="font-[Poppins] font-normal  tracking-[-5px] mb-[56px] flex justify-start items-center gap-6">
+              <h1 className="text-[120px]">Shaxsiy-brend</h1>
+              <p className="text-[70px] text-[#77E095] mt-10">
+                999<span className="text-[50px] text-[#77E095]">$</span>
+              </p>
+              <h4 className="text-[70px] mt-10">dan boshlab</h4>
+            </div>
+            <p className="max-w-[1441px] font-[Poppins] font-light text-[40px] leading-[50px] tracking-[-3px]">
+              Tadbirkor yoki mutaxassis sifatida onlayn imidjingizni
+              shakllantirish, kontent va reklama orqali ko‘proq auditoriyaga
+              yetib borish, ishonch qozonish va o‘z brendingizni rivojlantirish
+              imkoniyati. Biz sizga raqamli maydonda tanilish, mijozlar bilan
+              samarali aloqa o‘rnatish va professional ko‘rinishga ega bo‘lishda
+              yordam beramiz. Har bir detal – dizayn, kontent va strategiya –
+              sizning shaxsiy uslubingizni aks ettiradi.
+            </p>
+          </div>
+          <div className="py-[99px] border-b border-white">
+            <div className="font-[Poppins] font-normal  tracking-[-5px] mb-[56px] flex justify-start items-center gap-6">
+              <h1 className="text-[120px]">Special-Taklif</h1>
+              <p className="text-[70px] text-[#FF3A3D] mt-10">
+                899<span className="text-[50px] text-[#FF3A3D]">$</span>
+              </p>
+              <h4 className="text-[70px] mt-10">dan boshlab</h4>
+            </div>
+            <p className="max-w-[1441px] font-[Poppins] font-light text-[40px] leading-[50px] tracking-[-3px]">
+              Biznesingizni ijtimoiy tarmoqlarda ommalashtirish, mijozlar
+              oqimini ko‘paytirish, zamonaviy veb-sayt yaratish va kuchli brend
+              imidjini shakllantirish. Shuningdek, onlayn savdolarni
+              rivojlantirish, mijozlar bilan samarali aloqa o‘rnatish va
+              marketing jarayonlarini avtomatlashtirish orqali biznesingizni
+              yangi bosqichga olib chiqamiz. Har bir loyiha uchun individual
+              yondashuv, zamonaviy yechimlar va natijaga yo‘naltirilgan
+              strategiyalarni taklif etamiz.
+            </p>
           </div>
         </section>
 
